@@ -95,11 +95,7 @@ export default function HeaderLinks(props) {
       </ListItem>
 
       <ListItem className={classes.listItem}>
-        {/*<Tooltip title="Delete">
-          <IconButton aria-label="Delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>*/}
+      
         <Tooltip
           id="shop"
           title="view Your Cart"
@@ -112,7 +108,10 @@ export default function HeaderLinks(props) {
             color="transparent"
             className={classes.navLink}
           >
-            <i className={classes.socialIcons + " fas fa-shopping-cart"} />
+          <i className={classes.socialIcons + " fas fa-shopping-cart"} />
+          <div className="card_count">
+            <span>9</span>
+          </div>
           </Button>
         </Tooltip>
       </ListItem>
