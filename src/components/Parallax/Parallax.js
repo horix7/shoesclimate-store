@@ -49,6 +49,8 @@ export default function Parallax(props) {
       style={{
         ...style,
         backgroundImage: "url(" + image + ")",
+        // backgroundAttachment: "fixed",
+        // backgroundPosition: "center",
         transform: transform
       }}
     >

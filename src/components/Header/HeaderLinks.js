@@ -10,15 +10,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Tooltip from "@material-ui/core/Tooltip";
-
-// @material-ui/icons
-import { Apps, CloudDownload } from "@material-ui/icons";
-
-// core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
-
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
+import CartDrawer from 'components/cardDrawer/cart'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 
 const useStyles = makeStyles(styles);
 
@@ -26,6 +23,22 @@ export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
     <List className={classes.list}>
+       <ListItem className={classes.listItem}>
+        <Button
+          color="transparent"
+          className={classes.navLink}
+        >
+           HOME 
+        </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button
+          color="transparent"
+          className={classes.navLink}
+        >
+           SHOP 
+        </Button>
+      </ListItem>
       <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
@@ -48,16 +61,7 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button
-          href="#"
-          color="transparent"
-          target="_blank"
-          className={classes.navLink}
-        >
-           SHOP 
-        </Button>
-      </ListItem>
+     
       <ListItem className={classes.listItem}>
         <Tooltip
           id="account"
@@ -67,8 +71,6 @@ export default function HeaderLinks(props) {
         >
           <Button
             color="transparent"
-            href="#"
-            target="_blank"
             className={classes.navLink}
           >
             <i className={classes.socialIcons + " fas fa-user"} />
@@ -94,28 +96,29 @@ export default function HeaderLinks(props) {
         </Tooltip>
       </ListItem>
 
+      
+
       <ListItem className={classes.listItem}>
       
+          <CartDrawer />
+      </ListItem>
+
+      <ListItem className={classes.listItem}>
         <Tooltip
-          id="shop"
-          title="view Your Cart"
-          placement={window.innerWidth > 959 ? "top" : "left"}
-          classes={{ tooltip: classes.tooltip }}
+          id="search"
+          // classes={{ tooltip: classes.tooltip }}
         >
-          <Button
-            href="#"
-            target="_blank"
-            color="transparent"
-            className={classes.navLink}
-          >
-          <i className={classes.socialIcons + " fas fa-shopping-cart"} />
-          <div className="card_count">
-            <span>9</span>
-          </div>
-          </Button>
+            <select
+          id="nav-simple-select"
+          className={classes.navLink}
+
+        >
+          <option value={10}>USD</option>
+          <option value={20}>EURO</option>
+          <option value={30}>FR</option>
+        </select>
         </Tooltip>
       </ListItem>
-   
     
     </List>
   );

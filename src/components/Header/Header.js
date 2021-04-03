@@ -15,6 +15,8 @@ import Drawer from "@material-ui/core/Drawer";
 import Menu from "@material-ui/icons/Menu";
 // core components
 import styles from "assets/jss/material-kit-react/components/headerStyle.js";
+import LogoImg from '../../assets/img/logo.jpeg'
+
 
 const useStyles = makeStyles(styles);
 

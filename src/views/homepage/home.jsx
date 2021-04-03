@@ -62,6 +62,7 @@ export default function Components(props) {
           </GridContainer>
         </div>
       </Parallax>
+      <SectionTabs />
  <Footer />
     </div>
   );

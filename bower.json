@@ -1,19 +1,19 @@
 {
-  "name": "material-kit-react",
-  "homepage": "https://github.com/creativetimofficial/material-kit-react",
+  "name": "shoes climate",
+  "homepage": "#",
   "authors": [
-    "creative-tim"
+    "Paul Mahoro"
   ],
-  "description": "A Badass Material-UI Kit based on Material Design",
+  "description": "Shoes Climate Online Shop ",
   "main": "dist/index.js",
   "keywords": [
-    "material",
-    "design",
-    "material-ui",
-    "google",
-    "twitter"
+    "Shoes Climate ",
+    "checkout",
+    "paul mahoro",
+    "shoes",
+    "shop"
   ],
-  "license": "Creative TIM License",
+  "license": "Paul Mahoro License ",
   "ignore": [
     "**/.*",
     "node_modules",
