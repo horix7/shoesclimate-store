@@ -48,7 +48,7 @@ export default function HomePage(props) {
           </GridContainer>
         </div>
       </Parallax>
-      <SHowCaseCoursel />
+      <SHowCaseCoursel play={true} />
       <ProductGrids />
 
  <Footer />
