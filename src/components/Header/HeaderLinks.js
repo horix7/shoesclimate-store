@@ -53,7 +53,6 @@ export default function HeaderLinks(props) {
             </Link>,
             <a
               href="#"
-              target="_blank"
               className={classes.dropdownLink}
             >
               shop 

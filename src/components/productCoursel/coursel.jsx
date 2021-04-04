@@ -1,79 +1,65 @@
-import React, { Fragment, Component } from 'react'
-import Slider from "react-slick";
+// src/reusable/image-gallery.component.js
+import React from "react";
+import { Carousel } from 'react-responsive-carousel';
+import ImgExample from "../../assets/img/bg4.png"
 
+export default class ImageGallaryComponent extends React.Component {
 
-export  default class ProductCoursel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nav1: null,
-      nav2: null
+    onChangeEvent = () => {
+        console.log('onChange Event Triggered');
+    }
+
+    onClickItemEvent = () => {
+        console.log('onClickItem Event Triggered');
+    }
+
+    onClickThumbEvent = () => {
+        console.log('onClickThumb Event Triggered');
+    }
+
+    onSwipeStartEvent = () => {
+        console.log('onSwipeStart Event Triggered');
+    }
+
+    onSwipeEndEvent = () => {
+        console.log('onSwipeEnd Event Triggered');
+    }
+
+    onSwipeMoveEvent = () => {
+        console.log('onSwipeMove Event Triggered');
+    }
+
+    render() {
+        return (
+            <div>
+                <Carousel autoPlay interval="5000" infiniteLoop transitionTime="1000"
+
+                    onChange={this.onChangeEvent}
+                    onClickItem={this.onClickItemEvent}
+                    onClickThumb={this.onClickThumbEvent}
+                    onSwipeStart={this.onSwipeStartEvent}
+                    onSwipeEnd={this.onSwipeEndEvent}
+                    onSwipeMove={this.onSwipeMoveEvent}
+
+                >
+                    <div>
+                        <img src={ImgExample} />
+                    </div>
+                    <div>
+                        <img src={ImgExample} />
+                    </div>
+                    <div>
+                        <img src={ImgExample} />
+                    </div>
+                    <div>
+                        <img src={ImgExample} />
+                    </div> 
+                    <div>
+                        <img src={ImgExample} />
+                    </div>
+                </Carousel>
+            </div>
+        )
     };
-  }
-
-  componentDidMount() {
-    this.setState({
-      nav1: this.slider1,
-      nav2: this.slider2
-    });
-  }
-
-  render() {
-    return (
-      <div style={{width: "200px"}}>
-        <Slider
-          asNavFor={this.state.nav2}
-          ref={slider => (this.slider1 = slider)}
-        >
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-        </Slider>
-        <h4>Second Slider</h4>
-        <Slider
-          asNavFor={this.state.nav1}
-          ref={slider => (this.slider2 = slider)}
-          slidesToShow={3}
-          swipeToSlide={true}
-          focusOnSelect={true}
-        >
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-        </Slider>
-      </div>
-    );
-  }
 }
-
 

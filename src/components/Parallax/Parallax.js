@@ -59,7 +59,7 @@ export default function Parallax(props) {
         width: "100%",
         height: "100%"
       }}> 
-     <div style={{marginTop: "40vh"}}>
+     <div style={{marginTop: "30vh"}}>
      {children}
      </div>
 
