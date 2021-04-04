@@ -16,6 +16,8 @@ import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js
 import CartDrawer from 'components/cardDrawer/cart'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
+import LoginModel from 'components/models/login.model'
+
 
 const useStyles = makeStyles(styles);
 
@@ -62,19 +64,7 @@ export default function HeaderLinks(props) {
       </ListItem>
      
       <ListItem className={classes.listItem}>
-        <Tooltip
-          id="account"
-          title="view Your Account Details"
-          placement={window.innerWidth > 959 ? "top" : "left"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            color="transparent"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fas fa-user"} />
-          </Button>
-        </Tooltip>
+      <LoginModel />
       </ListItem>
 
       <ListItem className={classes.listItem}>

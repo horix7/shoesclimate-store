@@ -4,6 +4,8 @@ import { Button, InputLabel , Select, MenuItem, Typography, FormControl } from "
 import Header from 'components/Header/Header'
 import HeaderLinks from 'components/Header/HeaderLinks'
 import LogoImg from 'assets/img/logo.jpeg'
+import RelatedCoursel from 'components/productCoursel/showcasecoursel'
+import Footer from 'components/Footer/Footer'
 
 export default class ProductPage extends Component {
 
@@ -38,13 +40,13 @@ export default class ProductPage extends Component {
                         <p className="product-label"> Quantinty    </p>
                         <div className="counterForm">
                        <div className="count-i">
-                       <i width="100%" className="fas fa-plus"></i>
+                       <i width="100%" className="fas fa-minus"></i>
                        </div>
                        <div className="count-i">
                         10
                        </div>
                        <div className="count-i">
-                        <i width="100%" className="fas fa-minus"></i>
+                        <i width="100%" className="fas fa-plus"></i>
                         </div>
                         </div>
 
@@ -52,11 +54,16 @@ export default class ProductPage extends Component {
 
                         <Typography className="product-description">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, aliquam harum perferendis sit incidunt odit alias beatae mollitia exercitationem velit eaque quidem laboriosam natus nulla tenetur, accusantium provident, unde excepturi.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, aliquam harum perferendis sit incidunt odit alias beatae mollitia exercitationem velit eaque quidem laboriosam natus nulla tenetur, accusantium provident, unde excepturi.
                         </Typography>
                     </div>
                 </div>
+                
+                <RelatedCoursel play={false}/>  
 
+                <Footer  />  
             </Fragment>
         )
     }
 }
+

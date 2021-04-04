@@ -11,7 +11,7 @@ export default class ProductCoursel extends Component {
             infinite: true,
             slidesToShow: 4 ,
             slidesToScroll: 1,
-            autoplay: true,
+            autoplay: this.props.play,
             speed: 2000,
             autoplaySpeed: 2000,
             cssEase: "linear"
