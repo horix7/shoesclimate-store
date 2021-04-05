@@ -3,7 +3,7 @@ import ProductCoursel from 'components/productCoursel/coursel'
 import { Button, InputLabel , Select, MenuItem, Typography, FormControl } from "@material-ui/core"
 import Header from 'components/Header/Header'
 import HeaderLinks from 'components/Header/HeaderLinks'
-import LogoImg from 'assets/img/logo.jpeg'
+import LogoImg from 'assets/img/logo.png'
 import RelatedCoursel from 'components/productCoursel/showcasecoursel'
 import Footer from 'components/Footer/Footer'
 

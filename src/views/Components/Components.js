@@ -10,7 +10,7 @@ import styles from "assets/jss/material-kit-react/views/components.js";
 import ProductCoursel from "components/productCoursel/coursel";
 import SHowCaseCoursel from  'components/productCoursel/showcasecoursel'
 import Button from '@material-ui/core/Button'
-import LogoImg from '../../assets/img/logo.jpeg'
+import LogoImg from '../../assets/img/logo.png'
 import ProductGrids from "./grids/productsGrids"
 
 const useStyles = makeStyles(styles);
