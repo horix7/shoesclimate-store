@@ -6,10 +6,9 @@ export default class ProductCard extends Component {
 
  render () {
 
-  console.log('------------------------------------->', this.props)
     return (
         <div style={{margin: "0px", width: "100%", padding: "10px"}}>
-        {/* <div className='product_cardroot'>
+        <div className='product_cardroot'>
           <img
             className='product_cardmedia'
             src={this.props.product.imageUrl}
@@ -23,7 +22,7 @@ export default class ProductCard extends Component {
           {this.props.product.price} RWF 
 
           </div>
-        </div> */}
+        </div>
         </div>
 
       );

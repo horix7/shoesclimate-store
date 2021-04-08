@@ -23,7 +23,7 @@ export default class ProductGrids extends Component {
             <Fragment>
                 <h1 className="gridHeader">Just dropped </h1>
                 
-                    {this.state.products.length >= 1 ?? <div className="product_grids"> { this.state.products.map(elem => <ProductCard key={elem.id} product={elem} />)} </div>}
+                  <div className="product_grids"> { this.state.products.map(elem => <ProductCard key={elem.id} product={elem} />)} </div> 
                
             </Fragment>
         )

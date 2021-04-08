@@ -1,0 +1,295 @@
+.card_count {
+    background-color: rgb(0, 177, 247);
+    color: white;
+    border-radius: 50%;
+    margin-left: 15px;
+    margin-top: -14px;
+    position: absolute;
+
+}
+
+
+.card_count span {
+    padding: 7.5px;
+}
+
+.shop-button {
+    background-color: white;
+    color: black;
+    border: none;
+    outline: none;
+    width: 200px;
+    height: 50px;
+    font-weight: 900;
+    font-size: x-large;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 2px;
+    margin-top: 10px;
+}
+
+
+.nav-logo {
+    height: 30px;
+}
+
+.nav-text {
+    font-weight: 1000;
+    padding-left: 7px;
+    font-size: 20px;
+}
+
+#nav-simple-select {
+    background: transparent;
+    border: none;
+    font-size: medium;
+    outline: none;
+}
+
+option {
+    background: transparent;
+    color: black;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.product_grids {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.gridHeader {
+    text-align: center;
+    padding-top: 20px;
+    font-weight: 800;
+    font-size: xx-large;
+    text-transform: uppercase;
+
+}
+
+
+.product_cardmedia {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: black;
+}
+
+.product_cardmedia:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.product_cardroot {
+    width: fit-content;
+    text-align: center;
+    font-weight: bold;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+    margin-top: 10vh;
+}
+
+.product-view-coursel {
+    width: 100%;
+}
+
+.product-image-coursel {
+    width: fit-content ;
+    width: 100%;
+    object-fit: contain;
+}
+
+.product-content {
+    padding: 10px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.product-select {
+    height: 50px;
+    background-color: rgb(228, 228, 228);
+    border: none;
+}
+
+.pro-select {
+    /* background-color: black; */
+}
+
+.product-content h1  {
+    margin-top: 0px;
+}
+
+.product-content .cart-button {
+    margin-top: 20px;
+}
+
+.product-content .product-price  {
+    margin-bottom: 20px;
+    font-weight: 800;
+    color: black;
+    font-size: 20px;
+
+}
+.cart-button {
+    background-color: rgb(34, 34, 34);
+    color: white;
+    border: 1px solid black;
+    font-weight: 800;
+    font-size: large;
+    text-transform: uppercase;
+    height: 60px;
+}
+
+
+
+button, a, span, select:hover {
+    cursor: pointer;
+}
+
+.counterForm {
+    background-color: rgb(189, 189, 189);
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    text-align: center;
+    color: black;
+}
+
+.nav-link {
+    margin-left: 20px;
+    color: red;
+    padding: 200px;
+}
+
+.counterForm i {
+    width: 100%;
+    height: -content;
+}
+
+.count-i {
+    padding: 10px;
+    width: 100%;
+}
+
+
+.count-i i {
+    width: 100%;
+}
+
+
+.product-label {
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.product-description {
+    padding-top: 15px;
+}
+
+.links-holder {
+    font-size: small;
+    padding-top: 10px;
+}
+.links-holder span{
+    color: blue;
+}
+
+
+.mobileHeader {
+    display: none;
+}
+
+.mobile-icon {
+    font-size: 20px;
+    color: white;
+}
+@media only screen and (max-width: 900px) {
+   .nav-text {
+       display: none;
+   }
+
+   .product_cardmedia {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    background-color: black;
+}
+
+   .product_grids {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5px;
+    margin-top: 30px;
+}
+
+   .product-content {
+    padding: 10px;
+    margin-left: 0px;
+    text-align: center;
+}
+
+.product-content p {
+    text-align: start;
+}
+
+.product-content .product-price {
+    text-align: center;
+}
+
+   #nav-simple-select {
+    background: transparent;
+    border: none;
+    font-size: small;
+    font-weight: normal;
+    outline: none;
+}
+
+
+   .mobile-holder {
+    display: grid;
+    grid-template-areas: 1fr 1fr ;
+   }
+   .mobileHeader {
+    display: grid;
+    grid-column-gap: 5px;
+    grid-template-columns: 30px 30px 1fr 30px;
+}
+
+.product-grid {
+    grid-template-columns: 100%;
+    padding: 0px;
+    margin-top: 30px;
+}
+
+.product-grid h1 {
+    font-size: x-large;
+    color: black;
+    text-transform: uppercase;
+}
+.card_count {
+    background-color: rgb(0, 177, 247);
+    color: white;
+    border-radius: 50%;
+    margin-left: 17px;
+    margin-top: -7px;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+
+}
+
+.card_count span {
+    padding: 0px;
+    display: none;
+}
+  }
