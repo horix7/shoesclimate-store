@@ -19,7 +19,7 @@ export default class ProductCoursel extends Component {
 
         return (
             <Fragment>  
-        <div style={{width:"98%", paddingLeft: "1%"}}>
+        <div style={{width:"90%", paddingLeft: "1%"}}>
         <h2> </h2>
         <Slider {...settings}>
           <div>

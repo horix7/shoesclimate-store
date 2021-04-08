@@ -14,10 +14,9 @@ import Tooltip from '@material-ui/core/Tooltip'
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 
 
-
 const useStyles = makeStyles({
   list: {
-    width: 400,
+    width: 350,
   },
   fullList: {
     width: 'auto',
@@ -97,7 +96,7 @@ export default function TemporaryDrawer(props) {
           onClick={toggleDrawer('right', true)}
           placement={window.innerWidth > 959 ? "top" : "left"}
         >
-        <i className={" fas fa-shopping-cart mobile-icon"} />
+        <i className={classes2.socialIcons + " fas fa-shopping-cart"} />
         <div className="card_count">
           <span>9</span>
         </div>
@@ -107,6 +106,8 @@ export default function TemporaryDrawer(props) {
           id="shop"
           title="view Your Cart"
       
+          onClick={toggleDrawer('right', true)}
+          placement={window.innerWidth > 959 ? "top" : "left"}
           classes={{ tooltip: classes2.tooltip }}
         >
           <Button

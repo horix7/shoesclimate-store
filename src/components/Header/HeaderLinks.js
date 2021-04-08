@@ -21,6 +21,9 @@ import LoginModel from 'components/models/login.model'
 
 const useStyles = makeStyles(styles);
 
+const linksStyles = {
+  marginRight: "10px"
+}
 export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
@@ -29,6 +32,8 @@ export default function HeaderLinks(props) {
         <Button
           color="transparent"
           className={classes.navLink}
+          style={linksStyles}
+
         >
            HOME 
         </Button>
@@ -37,6 +42,7 @@ export default function HeaderLinks(props) {
         <Button
           color="transparent"
           className={classes.navLink}
+          style={linksStyles}
         >
            SHOP 
         </Button>
@@ -49,6 +55,8 @@ export default function HeaderLinks(props) {
             className: classes.navLink,
             color: "transparent"
           }}
+          style={linksStyles}
+
           dropdownList={[
             <Link to="/" className={classes.dropdownLink}>
                collections

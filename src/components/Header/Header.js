@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // nodejs library to set properties for components
@@ -72,28 +72,34 @@ export default function Header(props) {
               {leftLinks}
             </Hidden>
           ) : (
-            brandComponent
-          )}
-        </div>
-        <MobilerHeaderLinks />
-        
-        <Hidden smDown implementation="css">
-          {rightLinks}
-        </Hidden>
-        <Hidden mdUp>
+            <Fragment>
+              <Hidden mdUp>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerToggle}
           >
             <Menu />
+            
           </IconButton>
         </Hidden>
+        {brandComponent}
+            </Fragment>
+            
+          )}
+        </div>
+
+        <MobilerHeaderLinks />
+        
+        <Hidden smDown implementation="css">
+          {rightLinks}
+        </Hidden>
+        
       </Toolbar>
       <Hidden mdUp implementation="js">
         <Drawer
-          variant="temporary"
-          anchor={"right"}
+          variant="left"
+          anchor={"left"}
           open={mobileOpen}
           classes={{
             paper: classes.drawerPaper

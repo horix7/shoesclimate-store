@@ -39,9 +39,9 @@ const headerLinksStyle = theme => ({
   navLink: {
     color: "inherit",
     position: "relative",
-    padding: "0.9375rem",
+    padding: "0",
     fontWeight: "700",
-    fontSize: "14px",
+    fontSize: "12px",
     textTransform: "uppercase",
     borderRadius: "3px",
     lineHeight: "20px",

@@ -22,7 +22,9 @@ export default function HeaderLinks(props) {
 
       <div className="mobileHeader">
 
+          <div className="div-holder">
           <LoginModel className="mobile-nav-link" />
+          </div>
           <Button
             color="transparent"
             href="#"
@@ -32,7 +34,7 @@ export default function HeaderLinks(props) {
             <i className={classes.socialIcons + " fas fa-search"} />
           </Button>
       
-          <CartDrawer className="mobile-nav-link" />
+        <div>
 
         <select
           id="nav-simple-select"
@@ -43,6 +45,9 @@ export default function HeaderLinks(props) {
           <option value={20}>EURO</option>
           <option value={30}>FR</option>
         </select>
+          </div>
+          <CartDrawer className="mobile-nav-link" />
+         
         </div>
       
     

@@ -12,7 +12,7 @@ import SHowCaseCoursel from  'components/productCoursel/showcasecoursel'
 import Button from '@material-ui/core/Button'
 import LogoImg from '../../assets/img/logo.png'
 import ProductGrids from "./grids/productsGrids"
-
+import BackgroundImage from 'assets/img/bg4.jpg'
 const useStyles = makeStyles(styles);
 
 export default function HomePage(props) {
@@ -31,7 +31,7 @@ export default function HomePage(props) {
         }}
         {...rest}
       />
-      <Parallax image={require("assets/img/bg4.jpg")}>
+      <Parallax image={BackgroundImage}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
