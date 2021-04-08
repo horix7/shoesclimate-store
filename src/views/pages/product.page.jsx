@@ -7,6 +7,7 @@ import LogoImg from 'assets/img/logo.png'
 import RelatedCoursel from 'components/productCoursel/showcasecoursel'
 import Footer from 'components/Footer/Footer'
 
+
 export default class ProductPage extends Component {
 
     render() {
