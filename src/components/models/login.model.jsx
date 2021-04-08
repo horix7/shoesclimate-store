@@ -12,7 +12,7 @@ import Tooltip from "@material-ui/core/Tooltip"
 
 const useStyles = makeStyles(styles);
 
-export default function FormDialog() {
+export default function FormDialog(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -28,7 +28,7 @@ export default function FormDialog() {
 
   return (
     <div>
-        <Tooltip
+       {!props.className ?  <Tooltip
           id="account"
           title="account"
           placement={window.innerWidth > 959 ? "top" : "left"}
@@ -37,11 +37,17 @@ export default function FormDialog() {
           <Button
             color="transparent"
             onClick={handleClickOpen}
-            className={classes.navLink}
+            className={props.className ? props.className : classes.navLink}
           >
             <i className={classes.socialIcons + " fas fa-user"} />
           </Button>
-        </Tooltip>
+        </Tooltip> : <Button
+            color="black"
+            onClick={handleClickOpen}
+            className={classes.navLink}
+          >
+            <i className={classes.socialIcons + " fas fa-user"} />
+          </Button> }
       <Dialog open={open} onClose={handleClose} maxWidth={"xs"} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Login To Your Account </DialogTitle>
         <DialogContent>

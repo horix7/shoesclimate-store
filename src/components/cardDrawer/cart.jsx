@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 const useStyles2 = makeStyles(styles);
 
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer(props) {
   const classes = useStyles();
   const classes2 = useStyles2();
   const [state, setState] = React.useState({
@@ -89,24 +89,38 @@ export default function TemporaryDrawer() {
     </div>)
     } else {
        return (
-        <Tooltip
-        id="shop"
-        title="view Your Cart"
-        onClick={toggleDrawer('right', true)}
-        placement={window.innerWidth > 959 ? "top" : "left"}
-        classes={{ tooltip: classes2.tooltip }}
-      >
-        <Button
+       <Fragment>
+         {props.className ? 
+          <Button
           color="transparent"
           className={classes2.navLink}
+          onClick={toggleDrawer('right', true)}
+          placement={window.innerWidth > 959 ? "top" : "left"}
         >
-        <i className={classes2.socialIcons + " fas fa-shopping-cart"} />
+        <i className={" fas fa-shopping-cart mobile-icon"} />
         <div className="card_count">
           <span>9</span>
         </div>
         </Button>
-      </Tooltip>
-
+         :
+          <Tooltip
+          id="shop"
+          title="view Your Cart"
+      
+          classes={{ tooltip: classes2.tooltip }}
+        >
+          <Button
+            color="transparent"
+            className={props.className ? props.className : classes2.navLink}
+          >
+          <i className={classes2.socialIcons + " fas fa-shopping-cart"} />
+          <div className="card_count">
+            <span>9</span>
+          </div>
+          </Button>
+        </Tooltip>
+  }
+       </Fragment>
        )
     }
 }

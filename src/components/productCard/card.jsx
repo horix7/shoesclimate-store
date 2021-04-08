@@ -6,22 +6,24 @@ export default class ProductCard extends Component {
 
  render () {
 
+  console.log('------------------------------------->', this.props)
     return (
         <div style={{margin: "0px", width: "100%", padding: "10px"}}>
-        <div className='product_cardroot'>
+        {/* <div className='product_cardroot'>
           <img
             className='product_cardmedia'
-            src="https://preview.free3d.com/img/2019/11/2202389252124182147/gv3zplpi-900.jpg"
+            src={this.props.product.imageUrl}
           />
           <CardContent>
             <Typography variant="body1" color="textSecondary" component="h1">
-              Air Jordan 5 Retro 'Stealth 2.0
+              {this.props.product.title}
             </Typography>
           </CardContent>
           <div style={{textAlign: "center"}}>
-          147,300 RF
+          {this.props.product.price} RWF 
+
           </div>
-        </div>
+        </div> */}
         </div>
 
       );

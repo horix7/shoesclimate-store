@@ -8,13 +8,10 @@ export const UniversalState = ( {children }) => {
 
     const store = useLocalStore(() => ({
         cart: {
-            title:'tittle',
-            description:'<p> description </p>',
-            price: 120,
-            imageUrl:'https://i.stack.imgur.com/GsDIl.jpg'
+            
         },
-        updateProduct: newProduct =>  {
-            store.product = {...newProduct}
+        updateProduct: newCart =>  {
+            cart.product = {...newCart}
         },
     }));
 

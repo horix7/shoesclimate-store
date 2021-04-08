@@ -4,7 +4,7 @@ import http from './http'
 export const getProductData = async () => {
 
     const products = await http.get("/api/v1/products")
-    return products
+    return products.data
 
 }
 
