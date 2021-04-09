@@ -26,20 +26,41 @@ export default function Footer(props) {
     [classes.a]: true,
     [classes.footerWhiteFont]: whiteFont
   });
+
+  const contacts = {
+    "email": '@ contact@shoesclimate.com',
+    phone: "0782374832"
+  }
+
+
+  const links = ["About us", "Contact us", "Shipping" , "FAQS", "Terms & Conditions", "Purchase and returns"]
+  const social = ["instgram", "facebook"]
+  
   return (
-    <footer className={footerClasses}>
+    <footer style={{backgroundColor: "black"}} className={footerClasses}>
+
       <div className={classes.container}>
         <div className={classes.left}>
           <List className={classes.list}>
-            <ListItem className={classes.inlineBlock}>
+          {Object.values(contacts).map(elem => (  <ListItem key={elem} className={classes.inlineBlock}>
               <a
                 href="#"
                 className={classes.block}
                 target="_blank"
               >
-                ^paul 
+               {elem}
               </a>
-            </ListItem>
+            </ListItem>))}
+
+            {links.map(elem => (  <ListItem key={elem} className={classes.inlineBlock}>
+              <a
+                href="#"
+                className={classes.block}
+                target="_blank"
+              >
+               {elem}
+              </a>
+            </ListItem>))}
             
          
           </List>

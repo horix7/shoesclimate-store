@@ -10,6 +10,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import Components from "views/Components/Components";
 import ProductPage from 'views/pages/product.page'
 import { UniversalState } from "./mobxState/stateManagment";
+import DefaultTHeme from './themes/defaultTheme'
+
+
+DefaultTHeme
+
 
 var hist = createBrowserHistory();
 
