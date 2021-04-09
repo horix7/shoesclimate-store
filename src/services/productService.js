@@ -35,3 +35,9 @@ export const createCartService = async(cart) => {
     return createCart
 }
 
+export const Oneproductservice  = async (id) => {
+    const product = await http.get(`/api/v1/products/${id}`)
+    return product.data
+    
+}
+

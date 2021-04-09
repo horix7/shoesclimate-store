@@ -42,21 +42,12 @@ export default class ImageGallaryComponent extends React.Component {
                     onSwipeMove={this.onSwipeMoveEvent}
 
                 >
-                    <div>
-                        <img src={ImgExample} />
+                   
+                  {this.props.images.map(elem => (
+                    <div key={elem}>
+                        <img src={elem} />
                     </div>
-                    <div>
-                        <img src={ImgExample} />
-                    </div>
-                    <div>
-                        <img src={ImgExample} />
-                    </div>
-                    <div>
-                        <img src={ImgExample} />
-                    </div> 
-                    <div>
-                        <img src={ImgExample} />
-                    </div>
+                  ))}
                 </Carousel>
             </div>
         )

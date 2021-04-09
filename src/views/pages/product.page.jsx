@@ -6,11 +6,28 @@ import HeaderLinks from 'components/Header/HeaderLinks'
 import LogoImg from 'assets/img/logo.png'
 import RelatedCoursel from 'components/productCoursel/showcasecoursel'
 import Footer from 'components/Footer/Footer'
+import { Oneproductservice } from "../../services/productService";
 
 
 export default class ProductPage extends Component {
 
+
+    state = {
+        product: {},
+
+    }
+
+    componentDidMount() {
+        this.getProductData()
+    }
+
+    getProductData = async () => {
+        const product = await Oneproductservice(this.props.match.params.id)
+        this.setState({product: product.data})
+    }
     render() {
+
+        console.log(this.props)
         return (
             <Fragment>
                   <Header
@@ -24,11 +41,11 @@ export default class ProductPage extends Component {
                     }}
                 />
                 <div className="product-grid">
-                    <ProductCoursel /> 
+                    <ProductCoursel images={[this.state.product.imageUrl]} /> 
                     <div className="product-content">
-                        <h1>Air Jordan 1 Retro High OG 'Patina' </h1>
+                        <h1> {this.state.product.title }</h1>
                         <Typography className="product-price" >
-                            157,000 RWF 
+                        {this.state.product.price }
                         </Typography>
                         <FormControl>
                         <p className="product-label"> Size    </p>
@@ -54,9 +71,8 @@ export default class ProductPage extends Component {
                         <button className="cart-button"> Add To cart </button>
 
                         <Typography className="product-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, aliquam harum perferendis sit incidunt odit alias beatae mollitia exercitationem velit eaque quidem laboriosam natus nulla tenetur, accusantium provident, unde excepturi.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, aliquam harum perferendis sit incidunt odit alias beatae mollitia exercitationem velit eaque quidem laboriosam natus nulla tenetur, accusantium provident, unde excepturi.
-                        </Typography>
+                        {this.state.product.description }
+                              </Typography>
                     </div>
                 </div>
                 
