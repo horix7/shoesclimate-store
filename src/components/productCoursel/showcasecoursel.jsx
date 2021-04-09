@@ -57,7 +57,7 @@ export default class ProductCoursel extends Component {
 
         return (
             <Fragment>  
-        <div style={{width:"90%", paddingLeft: "1%"}}>
+        <div className="slider">
         <h2> </h2>
         <Slider {...settings}>
           {this.state.products.map(elem => (
