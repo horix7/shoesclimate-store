@@ -9,6 +9,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip"
+import { userLogin, userSignUp } from "../../services/authServices";
+import { CircularProgress } from '@material-ui/core';
 
 const useStyles = makeStyles(styles);
 
@@ -31,9 +33,27 @@ export default function FormDialog(props) {
     let newState = {...state}
     newState[event.target.id] = event.target.value
 
-    console.log(state)
     setState({...newState})
 
+  }
+
+  const [loading, setLoading] = React.useState(false)
+
+  const hanldeSubmit = async () => {
+    setLoading(true)
+    if(register) {
+      const check = Object.values(state).length >= 6
+      if(check) {
+        const signup = await userSignUp(state)
+        console.log(signup)
+
+      }else {
+       alert("missing content")
+      }
+    }else {
+      const login = await userLogin(state)
+      console.log(login)
+    }
   }
 
   const classes = useStyles();
@@ -131,8 +151,8 @@ export default function FormDialog(props) {
         <div className="links-holder">
             <span onClick={() => setRegister(!register)}> {!register ? "register" : "login"} </span> here 
         </div>
-        <Button onClick={handleClose} style={{marginTop: "10px"}} fullWidth color="primary" variant="outlined">
-            {register ? "register" : "login"}
+        <Button onClick={handleClose} style={{marginTop: "10px"}} fullWidth onClick={hanldeSubmit} color="primary" variant="outlined">
+            {loading ? <CircularProgress /> : register ? "register" : "login"}
           </Button>
         </DialogContent>
         <DialogActions>
