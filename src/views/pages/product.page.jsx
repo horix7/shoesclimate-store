@@ -41,7 +41,7 @@ export default class ProductPage extends Component {
                     }}
                 />
                 <div className="product-grid">
-                    <ProductCoursel images={[this.state.product.imageUrl]} /> 
+                    <ProductCoursel images={this.state.product.imageAddress || [this.state.product.imageUrl]} /> 
                     <div className="product-content">
                         <h1> {this.state.product.title }</h1>
                         <Typography className="product-price" >

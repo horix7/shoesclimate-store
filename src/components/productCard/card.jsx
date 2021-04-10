@@ -18,7 +18,7 @@ export default class ProductCard extends Component {
           />
           <CardContent>
             <p className="product-name">
-              {this.props.product.description}
+              {this.props.product.title}
             </p>
           </CardContent>
           <div style={{textAlign: "center"}}>
