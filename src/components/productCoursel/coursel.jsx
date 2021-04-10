@@ -1,7 +1,6 @@
 // src/reusable/image-gallery.component.js
 import React from "react";
 import { Carousel } from 'react-responsive-carousel';
-import ImgExample from "../../assets/img/bg4.png"
 
 export default class ImageGallaryComponent extends React.Component {
 
@@ -31,7 +30,7 @@ export default class ImageGallaryComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="product-slider-images">
                 <Carousel autoPlay interval="5000" infiniteLoop transitionTime="1000"
 
                     onChange={this.onChangeEvent}
@@ -45,7 +44,7 @@ export default class ImageGallaryComponent extends React.Component {
                    
                   {this.props.images.map(elem => (
                     <div key={elem}>
-                        <img src={elem} />
+                        <img className="product-slider-image" src={elem} />
                     </div>
                   ))}
                 </Carousel>

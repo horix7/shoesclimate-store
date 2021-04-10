@@ -219,6 +219,10 @@ button, a, span, select:hover {
     width: 100%;
 }
 
+.product-slider-image {
+    object-fit: cover;
+}
+
 
 .product-label {
     margin-top: 10px;
@@ -284,6 +288,8 @@ button, a, span, select:hover {
 .product-content .product-price {
     text-align: center;
 }
+
+
 
    #nav-simple-select {
     background: transparent;
