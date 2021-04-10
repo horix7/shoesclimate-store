@@ -15,6 +15,7 @@ const useStyles = makeStyles(styles);
 export default function FormDialog(props) {
   const [open, setOpen] = React.useState(false);
 
+  const [register, setRegister ] = React.useState(false)
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -54,6 +55,43 @@ export default function FormDialog(props) {
             Create An Account For Easy Checkout 
           <DialogContentText>
           </DialogContentText>
+        
+         { register ?  <div className="hidden-signup">
+          <TextField
+            autoFocus
+            margin="dense"
+            id="firstName"
+            label="first name"
+            variant="outlined"
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="lastName"
+            label="last name"
+            variant="outlined"
+            fullWidth
+          />
+
+        <TextField
+            autoFocus
+            margin="dense"
+            id="phone"
+            label="phone number"
+            variant="outlined"
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="location"
+            label="country"
+            variant="outlined"
+            fullWidth
+          />
+          </div> : null }
+
           <TextField
             autoFocus
             margin="dense"
@@ -63,6 +101,8 @@ export default function FormDialog(props) {
             variant="outlined"
             fullWidth
           />
+
+        
 
         <TextField
             margin="dense"
@@ -74,10 +114,10 @@ export default function FormDialog(props) {
           />
 
         <div className="links-holder">
-            <span> register </span> for new users 
+            <span onClick={() => setRegister(!register)}> {!register ? "register" : "login"} </span> here 
         </div>
         <Button onClick={handleClose} style={{marginTop: "10px"}} fullWidth color="primary" variant="outlined">
-            login
+            {register ? "register" : "login"}
           </Button>
         </DialogContent>
         <DialogActions>

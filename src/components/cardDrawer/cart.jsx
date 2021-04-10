@@ -80,7 +80,7 @@ export default function TemporaryDrawer(props) {
 
       </div>
       <div className="cart-bottom" style={{height: "10vh"}}>
-        <Button variant="outlined"> Close </Button>
+        <Button variant="outlined" style={{borderColor: "white", color: "white"}}> Close </Button>
         <Button  variant="contained" style={{backgroundColor: "blue", color: "white"}}> Checkout  </Button>
       </div>
     </div>
