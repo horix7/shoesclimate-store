@@ -16,6 +16,8 @@ export default function FormDialog(props) {
   const [open, setOpen] = React.useState(false);
 
   const [register, setRegister ] = React.useState(false)
+
+  const [state, setState] = React.useState({})
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -23,6 +25,16 @@ export default function FormDialog(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleInputChange = (event ) => {
+
+    let newState = {...state}
+    newState[event.target.id] = event.target.value
+
+    console.log(state)
+    setState({...newState})
+
+  }
 
   const classes = useStyles();
 
@@ -58,15 +70,16 @@ export default function FormDialog(props) {
         
          { register ?  <div className="hidden-signup">
           <TextField
-            autoFocus
+            onChange={handleInputChange}
             margin="dense"
+            autoFocus
             id="firstName"
             label="first name"
             variant="outlined"
             fullWidth
           />
           <TextField
-            autoFocus
+            onChange={handleInputChange}
             margin="dense"
             id="lastName"
             label="last name"
@@ -75,7 +88,7 @@ export default function FormDialog(props) {
           />
 
         <TextField
-            autoFocus
+            onChange={handleInputChange}
             margin="dense"
             id="phone"
             label="phone number"
@@ -83,7 +96,7 @@ export default function FormDialog(props) {
             fullWidth
           />
           <TextField
-            autoFocus
+            onChange={handleInputChange}
             margin="dense"
             id="location"
             label="country"
@@ -93,9 +106,10 @@ export default function FormDialog(props) {
           </div> : null }
 
           <TextField
-            autoFocus
+            onChange={handleInputChange}
             margin="dense"
-            id="name"
+            id="email"
+            autoFocus
             label="Email Address"
             type="email"
             variant="outlined"
@@ -107,6 +121,7 @@ export default function FormDialog(props) {
         <TextField
             margin="dense"
             id="password"
+            onChange={handleInputChange}
             label="password"
             type="password"
             variant="outlined"

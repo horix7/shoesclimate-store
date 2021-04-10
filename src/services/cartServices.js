@@ -13,7 +13,7 @@ export const UpdateCart = async(id) => {
     return updatedCart 
 } 
 
-export const getUserCart = async(data) => {
+export const getUserCart = async() => {
 
     const userOrders = await http.get("/api/v1/cart")
     return userOrders.data 
