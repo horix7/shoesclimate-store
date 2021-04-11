@@ -83,14 +83,18 @@ export default function FormDialog(props) {
         >
           <Button
             color="transparent"
-            onClick={handleClickOpen}
+            onClick={() => {
+              !localStorage.AUTH_TOKEN ? handleClickOpen() : location.href = "/account"
+            }}
             className={props.className ? props.className : classes.navLink}
           >
             <i className={classes.socialIcons + " fas fa-user"} />
           </Button>
         </Tooltip> : <Button
             color="black"
-            onClick={handleClickOpen}
+            onClick={() => {
+              !localStorage.AUTH_TOKEN ? handleClickOpen() : location.href = "/account"
+            }}
             className={classes.navLink}
           >
             <i className={classes.socialIcons + " fas fa-user"} />
