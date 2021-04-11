@@ -280,10 +280,9 @@ button, a, span, select:hover {
 }
 
 .text-fields {
-    margin-bottom: 20px;
-    padding: 20px;
-    width: 100%;
-background-color: red;
+    margin: 120px;
+    width: 400px;
+    height: 70px;
 }
 .orders {
     padding: 20px;
