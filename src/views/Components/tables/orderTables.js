@@ -18,7 +18,7 @@ import {
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { getUserOrders } from '../../../services/productService'
 
-import { useState , useEffect } from 'react';
+import React, { useState , useEffect } from 'react';
 
 const LatestOrders = (props) => {
 
@@ -37,14 +37,15 @@ const LatestOrders = (props) => {
         id: element.id,
         ref: element.id,
         amount: element.grandTotal,
-        customer: {
-          name: element.firstName,
-        }, 
         createdAt: element.createdAt,
         status: element.status
       }
     }) : []
     setState({...newSTate})
+
+
+    console.log(newSTate)
+    
 
   }
 
@@ -55,7 +56,7 @@ const LatestOrders = (props) => {
 
   return (
     <Card {...props}>
-      <CardHeader title="Latest Orders" />
+      <CardHeader title="Orders" />
       <Divider />
       <PerfectScrollbar>
         <Box sx={{ minWidth: 800 }}>
@@ -65,9 +66,7 @@ const LatestOrders = (props) => {
                 <TableCell>
                   Order Ref
                 </TableCell>
-                <TableCell>
-                  Customer
-                </TableCell>
+               
                 <TableCell sortDirection="desc">
                   <Tooltip
                     enterDelay={300}
@@ -82,8 +81,12 @@ const LatestOrders = (props) => {
                   </Tooltip>
                 </TableCell>
                 <TableCell>
+                  Total
+                </TableCell>
+                <TableCell>
                   Status
                 </TableCell>
+
               </TableRow>
             </TableHead>
             <TableBody>
@@ -95,11 +98,12 @@ const LatestOrders = (props) => {
                   <TableCell>
                     {Number(key) + 1}
                   </TableCell>
-                  <TableCell>
-                    {order.customer.name}
-                  </TableCell>
+                 
                   <TableCell>
                     {moment(order.createdAt).format('DD/MM/YYYY')}
+                  </TableCell>
+                  <TableCell>
+                    {order.amount} USD
                   </TableCell>
                   <TableCell>
                     <Chip
@@ -121,15 +125,7 @@ const LatestOrders = (props) => {
           p: 2
         }}
       >
-        <Button
-          color="primary"
-          endIcon={<ArrowRightIcon />}
-          href="/app/orders"
-          size="small"
-          variant="text"
-        >
-          View all
-        </Button>
+       
       </Box>
     </Card>
   );

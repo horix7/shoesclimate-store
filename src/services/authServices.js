@@ -3,6 +3,8 @@ import http from "./http"
 export const userLogin = async(data) => {
 
     const login = await http.post("/login", data)
+
+    localStorage.setItem("AUTH_TOKEN", login.data.data.token)
     return login.data 
 } 
 
@@ -10,6 +12,7 @@ export const userLogin = async(data) => {
 export const userSignUp = async(data) => {
     
     const register = await http.post("/register", data)
+    localStorage.setItem("AUTH_TOKEN", login.data.data.token)
     return register.data 
 } 
 

@@ -48,25 +48,26 @@ export default function FormDialog(props) {
       if(register) {
         const check = Object.values(state).length >= 6
         if(check) {
-          const signup = await userSignUp(state)
-          setsuccess({status: true, message: "registered successfully"})
+        await userSignUp(state)
+        setsuccess({status: true, message: "registered successfully"})
         seterror({status: false, message: null})
-
-          console.log(signup)
+        location.href = "/account"
   
         }else {
-         alert("missing content")
+      seterror({status: true, message: "validation Error"})
+      setLoading(false)
+
         }
       }else {
         const login = await userLogin(state)
 
         setsuccess({status: true, message: "login successfully"})
         seterror({status: false, message: null})
-        console.log(login)
+        location.href = "/account"
       }
     } catch (error) {
       setLoading(false)
-      seterror({status: true, message: "something went wrong"})
+      seterror({status: true, message: "incorrect email or password"})
     }
   }
 

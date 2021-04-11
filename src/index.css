@@ -179,7 +179,7 @@ option {
     grid-template-columns: 70% 30% ;
     padding: 10px;
     background-color: whitesmoke;
-    margin-top: 25px;
+    margin-top: 30px;
 }
 .product-content {
     padding: 10px;
@@ -279,6 +279,10 @@ button, a, span, select:hover {
     font-weight: 700;
 }
 
+.orders {
+    padding: 20px;
+}
+
 .product-description {
     padding-top: 15px;
 }
@@ -316,6 +320,9 @@ button, a, span, select:hover {
        display: none;
    }
 
+   .account {
+        margin-top: 20%;
+    }
    .counterForm {
     grid-template-columns: 20% 60% 20%;
 }

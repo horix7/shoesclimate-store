@@ -18,7 +18,7 @@ export const getUserCart = async () => {
 export const getUserOrders = async () => {
 
     const orders = await http.get("/api/v1/orders")
-    return orders
+    return orders.data
     
 }
 
