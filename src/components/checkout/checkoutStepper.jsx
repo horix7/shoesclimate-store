@@ -7,7 +7,9 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-
+import DeliveryForm from "../forms/delivery.form";
+import PaymentForm from "../forms/payment.form";
+import AuthForm from "../forms/loginForm";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,11 +35,11 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return `deilver at`;
+      return < AuthForm/>;
     case 1:
-      return 'payment ';
-    case 2:
-      return `place order`;
+      return <DeliveryForm />;
+    case 2:                                             
+      return <PaymentForm />;
     default:
       return 'Unknown step';
   }

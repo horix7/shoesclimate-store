@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -13,7 +13,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import Tooltip from '@material-ui/core/Tooltip'
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 import { Avatar, Typography } from '@material-ui/core';
-
+import { StoreContext } from "../../mobxState/stateManagment"
 
 const useStyles = makeStyles({
   list: {
@@ -28,6 +28,8 @@ const useStyles2 = makeStyles(styles);
 
 
 export default function TemporaryDrawer(props) {
+  const store = useContext(StoreContext)
+  
   const classes = useStyles();
   const classes2 = useStyles2();
   const [state, setState] = React.useState({

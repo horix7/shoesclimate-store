@@ -12,6 +12,7 @@ import Tooltip from "@material-ui/core/Tooltip"
 import { userLogin, userSignUp } from "../../services/authServices";
 import { CircularProgress } from '@material-ui/core';
 import { Alert } from "@material-ui/lab"
+import LoginForm from "../forms/loginForm"
 
 const useStyles = makeStyles(styles);
 
@@ -59,7 +60,7 @@ export default function FormDialog(props) {
 
         }
       }else {
-        const login = await userLogin(state)
+        await userLogin(state)
 
         setsuccess({status: true, message: "login successfully"})
         seterror({status: false, message: null})
@@ -115,88 +116,11 @@ export default function FormDialog(props) {
 
           <DialogContentText>
 
+            <LoginForm register={register} hanldeSubmit={hanldeSubmit} loading={loading} setLoading={setLoading}  handleClose={handleClose} handleInputChange={handleInputChange} setRegister={setRegister} />
 
           </DialogContentText>
         
-         { register ?  <div className="hidden-signup">
-          <TextField
-            onChange={handleInputChange}
-            margin="dense"
-            autoFocus
-            id="firstName"
-            label="first name"
-            variant="outlined"
-            fullWidth
-          />
-          <TextField
-            onChange={handleInputChange}
-            margin="dense"
-            id="lastName"
-            label="last name"
-            variant="outlined"
-            fullWidth
-          />
-
-        <TextField
-            onChange={handleInputChange}
-            margin="dense"
-            id="phone"
-            label="phone number"
-            variant="outlined"
-            fullWidth
-          />
-          <TextField
-            onChange={handleInputChange}
-            margin="dense"
-            id="location"
-            label="country"
-            variant="outlined"
-            fullWidth
-          />
-          </div> : null }
-
-          <TextField
-            onChange={handleInputChange}
-            margin="dense"
-            id="email"
-            autoFocus
-            label="Email Address"
-            type="email"
-            variant="outlined"
-            fullWidth
-          />
-
-        
-
-        <TextField
-            margin="dense"
-            id="password"
-            onChange={handleInputChange}
-            label="password"
-            type="password"
-            variant="outlined"
-            fullWidth
-          />
-
-    { register ? 
-
-<TextField
-margin="dense"
-id="passwordConfirmation"
-onChange={handleInputChange}
-label="confirm password"
-type="password"
-variant="outlined"
-fullWidth
-/> : null }
-
-
-        <div className="links-holder">
-            <span onClick={() => setRegister(!register)}> {!register ? "register" : "login"} </span> here 
-        </div>
-        <Button onClick={handleClose} style={{marginTop: "10px"}} fullWidth onClick={hanldeSubmit} color="primary" variant="outlined">
-            {loading ? <CircularProgress /> : register ? "register" : "login"}
-          </Button>
+       
         </DialogContent>
         <DialogActions>
          
