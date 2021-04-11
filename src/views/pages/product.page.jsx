@@ -13,7 +13,40 @@ export default class ProductPage extends Component {
 
 
     state = {
-        product: {},
+        product: {
+            
+        },
+        cart: {
+            qty: 1,
+            productId: this.props.match.params.id,
+            size: 43
+        }
+        
+
+    }
+
+    updateCount = (add) => {
+        let product = {...this.state}.cart
+
+        console.log(this.state)
+
+        if(add) {
+            product.qty ++
+            this.setState({ cart: product})
+        }else {
+
+            product.qty > 1 ? product.qty-- : null 
+            this.setState({cart: product})
+        }
+    }
+
+    updateSize = (newSize) => {
+        let cart = {...this.state}.cart
+        cart.size = newSize.target.value
+
+        this.setState({cart: cart})
+
+        console.log(cart)
 
     }
 
@@ -27,7 +60,6 @@ export default class ProductPage extends Component {
     }
     render() {
 
-        console.log(this.props)
         return (
             <Fragment>
                   <Header
@@ -49,21 +81,21 @@ export default class ProductPage extends Component {
                         </Typography>
                         <FormControl>
                         <p className="product-label"> Size    </p>
-                         <Select labelId="label" variant="outlined" id="label" Label="Size" className="product-select">
-                            <MenuItem > 230 </MenuItem>
-                            <MenuItem > 230 </MenuItem>
+                         <Select onChange={this.updateSize} labelId="label" variant="outlined" id="label" Label="Size" value={this.state.cart.size} className="product-select">
+                            <MenuItem  value={43}> 43 </MenuItem>
+                            <MenuItem value={40}> 54 </MenuItem>
                         </Select>
                         </FormControl>
 
                         <p className="product-label"> Quantinty    </p>
                         <div className="counterForm">
-                       <div className="count-i">
+                       <div className="count-i" onClick={() => this.updateCount(false)}>
                        <i width="100%" className="fas fa-minus"></i>
                        </div>
                        <div className="count-i">
-                        10
+                        { this.state.cart.qty }
                        </div>
-                       <div className="count-i">
+                       <div onClick={() => this.updateCount(true)} className="count-i">
                         <i width="100%" className="fas fa-plus"></i>
                         </div>
                         </div>

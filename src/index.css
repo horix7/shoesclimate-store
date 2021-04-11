@@ -1,3 +1,5 @@
+
+
 .card_count {
     background-color: rgb(0, 177, 247);
     color: white;
@@ -222,14 +224,12 @@ option {
     height: 60px;
 }
 
-
-
 button, a, span, select:hover {
     cursor: pointer;
 }
 
 .counterForm {
-    background-color: rgb(189, 189, 189);
+    background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 10% 80% 10%;
     text-align: center;
@@ -250,6 +250,11 @@ button, a, span, select:hover {
 .count-i {
     padding: 10px;
     width: 100%;
+    font-weight: 800;
+}
+
+.count-i {
+    border: 1px solid grey;
 }
 
 
