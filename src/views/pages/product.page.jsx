@@ -87,7 +87,7 @@ export default class ProductPage extends Component {
                         </Select>
                         </FormControl>
 
-                        <p className="product-label"> Quantinty    </p>
+                        <p className="product-label"> Quantinty </p>
                         <div className="counterForm">
                        <div className="count-i" onClick={() => this.updateCount(false)}>
                        <i width="100%" className="fas fa-minus"></i>
@@ -103,8 +103,8 @@ export default class ProductPage extends Component {
                         <button className="cart-button"> Add To cart </button>
 
                         <Typography className="product-description">
-                        {this.state.product.description }
-                              </Typography>
+                            {this.state.product.description }
+                        </Typography>
                     </div>
                 </div>
                 

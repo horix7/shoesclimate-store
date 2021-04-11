@@ -1,6 +1,7 @@
 import http from "./http"
 
 export const userLogin = async(data) => {
+    console.log(data)
     const login = await http.post("/login", data)
 
     return login 

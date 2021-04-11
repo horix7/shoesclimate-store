@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip"
 import { userLogin, userSignUp } from "../../services/authServices";
 import { CircularProgress } from '@material-ui/core';
+import { Alert } from "@material-ui/lab"
 
 const useStyles = makeStyles(styles);
 
@@ -38,21 +39,34 @@ export default function FormDialog(props) {
   }
 
   const [loading, setLoading] = React.useState(false)
+  const [error, seterror] = React.useState({status: false , message: null})
+  const [success, setsuccess] = React.useState({status: false, message: null})
 
   const hanldeSubmit = async () => {
     setLoading(true)
-    if(register) {
-      const check = Object.values(state).length >= 6
-      if(check) {
-        const signup = await userSignUp(state)
-        console.log(signup)
+    try {
+      if(register) {
+        const check = Object.values(state).length >= 6
+        if(check) {
+          const signup = await userSignUp(state)
+          setsuccess({status: true, message: "registered successfully"})
+        seterror({status: false, message: null})
 
+          console.log(signup)
+  
+        }else {
+         alert("missing content")
+        }
       }else {
-       alert("missing content")
+        const login = await userLogin(state)
+
+        setsuccess({status: true, message: "login successfully"})
+        seterror({status: false, message: null})
+        console.log(login)
       }
-    }else {
-      const login = await userLogin(state)
-      console.log(login)
+    } catch (error) {
+      setLoading(false)
+      seterror({status: true, message: "something went wrong"})
     }
   }
 
@@ -82,10 +96,21 @@ export default function FormDialog(props) {
             <i className={classes.socialIcons + " fas fa-user"} />
           </Button> }
       <Dialog open={open} onClose={handleClose} maxWidth={"xs"} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Login To Your Account </DialogTitle>
+        <DialogTitle id="form-dialog-title"> Account </DialogTitle>
         <DialogContent>
-            Create An Account For Easy Checkout 
+           
+         {success.status ?  <Alert severity="success" color="info">
+            {success.message}
+          </Alert> : null}
+
+               
+         {error.status ?  <Alert severity="error" color="info">
+            {error.message}
+          </Alert> : null}
+
           <DialogContentText>
+
+
           </DialogContentText>
         
          { register ?  <div className="hidden-signup">
@@ -147,6 +172,19 @@ export default function FormDialog(props) {
             variant="outlined"
             fullWidth
           />
+
+    { register ? 
+
+<TextField
+margin="dense"
+id="passwordConfirmation"
+onChange={handleInputChange}
+label="confirm password"
+type="password"
+variant="outlined"
+fullWidth
+/> : null }
+
 
         <div className="links-holder">
             <span onClick={() => setRegister(!register)}> {!register ? "register" : "login"} </span> here 
