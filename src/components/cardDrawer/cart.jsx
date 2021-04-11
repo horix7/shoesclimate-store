@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -12,7 +12,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Tooltip from '@material-ui/core/Tooltip'
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
-
+import { Avatar, Typography } from '@material-ui/core';
+import { StoreContext } from "../../mobxState/stateManagment"
 
 const useStyles = makeStyles({
   list: {
@@ -27,6 +28,8 @@ const useStyles2 = makeStyles(styles);
 
 
 export default function TemporaryDrawer(props) {
+  const store = useContext(StoreContext)
+  
   const classes = useStyles();
   const classes2 = useStyles2();
   const [state, setState] = React.useState({
@@ -53,23 +56,35 @@ export default function TemporaryDrawer(props) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+      <div className="cart-content" style={{height: "90vh"}}>
+        <Typography  variant="h6" style={{color: "grey", textAlign: "center", backgroundColor: "whitesmoke", padding: "2px"}}  component="h6">CART ITEMS</Typography>
+        <div className="total-amount">
+        <Typography>grand total</Typography>
+        <Typography style={{textAlign: "end"}}> 123 USD</Typography>
+        </div>
+
+        <List>
+         {[1,2,3,4,5,6,7].map(elem => {
+           return (
+            <ListItem>
+            <div className="cart-item">
+            <img alt="Remy Sharp" className="cart-image"  src="https://cdn.shopify.com/s/files/1/0502/0067/4468/products/C31CEEE8-BFB3-42CD-AEDC-6241EB0D783A_1024x1024@2x.jpg?v=1617023610" />
+            <div className="cart-item-info">
+              <span>  adidas Originals x Disney Stan Smith </span> 
+              <span> 12 * 2</span>
+            </div>
+            <Typography> 300</Typography>
+            </div>
           </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+           )
+         })}
+        </List>
+
+      </div>
+      <div className="cart-bottom" style={{height: "10vh"}}>
+        <Button variant="outlined" style={{borderColor: "white", color: "white"}}> Close </Button>
+        <Button href="/checkout" variant="contained" style={{backgroundColor: "blue", color: "white"}}> Checkout  </Button>
+      </div>
     </div>
   );
 

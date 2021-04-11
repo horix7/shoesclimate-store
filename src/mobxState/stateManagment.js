@@ -1,6 +1,7 @@
 import React, { createContext } from "react";
 import { useLocalStore } from "mobx-react";
 
+
 export const StoreContext = createContext();
 
 
@@ -10,6 +11,8 @@ export const UniversalState = ( {children }) => {
         cart: {
             
         },
+        loginModel: false,
+        openLogin: () => loginModel = true,
         updateProduct: newCart =>  {
             cart.product = {...newCart}
         },

@@ -9,12 +9,19 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip"
+import { userLogin, userSignUp } from "../../services/authServices";
+import { CircularProgress } from '@material-ui/core';
+import { Alert } from "@material-ui/lab"
+import LoginForm from "../forms/loginForm"
 
 const useStyles = makeStyles(styles);
 
 export default function FormDialog(props) {
   const [open, setOpen] = React.useState(false);
 
+  const [register, setRegister ] = React.useState(false)
+
+  const [state, setState] = React.useState({})
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -22,6 +29,48 @@ export default function FormDialog(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleInputChange = (event ) => {
+
+    let newState = {...state}
+    newState[event.target.id] = event.target.value
+
+    setState({...newState})
+
+  }
+
+  const [loading, setLoading] = React.useState(false)
+  const [error, seterror] = React.useState({status: false , message: null})
+  const [success, setsuccess] = React.useState({status: false, message: null})
+
+  const hanldeSubmit = async () => {
+    setLoading(true)
+    try {
+      if(register) {
+        const check = Object.values(state).length >= 6
+        if(check) {
+        await userSignUp(state)
+        setsuccess({status: true, message: "registered successfully"})
+        seterror({status: false, message: null})
+        location.href = "/account"
+  
+        }else {
+      seterror({status: true, message: "validation Error"})
+      setLoading(false)
+
+        }
+      }else {
+        await userLogin(state)
+
+        setsuccess({status: true, message: "login successfully"})
+        seterror({status: false, message: null})
+        location.href = "/account"
+      }
+    } catch (error) {
+      setLoading(false)
+      seterror({status: true, message: "incorrect email or password"})
+    }
+  }
 
   const classes = useStyles();
 
@@ -36,49 +85,42 @@ export default function FormDialog(props) {
         >
           <Button
             color="transparent"
-            onClick={handleClickOpen}
+            onClick={() => {
+              !localStorage.AUTH_TOKEN ? handleClickOpen() : location.href = "/account"
+            }}
             className={props.className ? props.className : classes.navLink}
           >
             <i className={classes.socialIcons + " fas fa-user"} />
           </Button>
         </Tooltip> : <Button
             color="black"
-            onClick={handleClickOpen}
+            onClick={() => {
+              !localStorage.AUTH_TOKEN ? handleClickOpen() : location.href = "/account"
+            }}
             className={classes.navLink}
           >
             <i className={classes.socialIcons + " fas fa-user"} />
           </Button> }
       <Dialog open={open} onClose={handleClose} maxWidth={"xs"} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Login To Your Account </DialogTitle>
+        <DialogTitle id="form-dialog-title"> Account </DialogTitle>
         <DialogContent>
-            Create An Account For Easy Checkout 
+           
+         {success.status ?  <Alert severity="success" color="success">
+            {success.message}
+          </Alert> : null}
+
+               
+         {error.status ?  <Alert severity="error" color="error">
+            {error.message}
+          </Alert> : null}
+
           <DialogContentText>
+
+            <LoginForm register={register} hanldeSubmit={hanldeSubmit} loading={loading} setLoading={setLoading}  handleClose={handleClose} handleInputChange={handleInputChange} setRegister={setRegister} />
+
           </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            variant="outlined"
-            fullWidth
-          />
-
-        <TextField
-            margin="dense"
-            id="password"
-            label="password"
-            type="password"
-            variant="outlined"
-            fullWidth
-          />
-
-        <div className="links-holder">
-            <span> register </span> for new users 
-        </div>
-        <Button onClick={handleClose} style={{marginTop: "10px"}} fullWidth color="primary" variant="outlined">
-            login
-          </Button>
+        
+       
         </DialogContent>
         <DialogActions>
          

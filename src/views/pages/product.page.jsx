@@ -6,11 +6,60 @@ import HeaderLinks from 'components/Header/HeaderLinks'
 import LogoImg from 'assets/img/logo.png'
 import RelatedCoursel from 'components/productCoursel/showcasecoursel'
 import Footer from 'components/Footer/Footer'
+import { Oneproductservice } from "../../services/productService";
 
 
 export default class ProductPage extends Component {
 
+
+    state = {
+        product: {
+            
+        },
+        cart: {
+            qty: 1,
+            productId: this.props.match.params.id,
+            size: 43
+        }
+        
+
+    }
+
+    updateCount = (add) => {
+        let product = {...this.state}.cart
+
+        console.log(this.state)
+
+        if(add) {
+            product.qty ++
+            this.setState({ cart: product})
+        }else {
+
+            product.qty > 1 ? product.qty-- : null 
+            this.setState({cart: product})
+        }
+    }
+
+    updateSize = (newSize) => {
+        let cart = {...this.state}.cart
+        cart.size = newSize.target.value
+
+        this.setState({cart: cart})
+
+        console.log(cart)
+
+    }
+
+    componentDidMount() {
+        this.getProductData()
+    }
+
+    getProductData = async () => {
+        const product = await Oneproductservice(this.props.match.params.id)
+        this.setState({product: product.data})
+    }
     render() {
+
         return (
             <Fragment>
                   <Header
@@ -24,29 +73,29 @@ export default class ProductPage extends Component {
                     }}
                 />
                 <div className="product-grid">
-                    <ProductCoursel /> 
+                    <ProductCoursel images={this.state.product.imageAddress || [this.state.product.imageUrl]} /> 
                     <div className="product-content">
-                        <h1>Air Jordan 1 Retro High OG 'Patina' </h1>
+                        <h1> {this.state.product.title }</h1>
                         <Typography className="product-price" >
-                            157,000 RWF 
+                        {this.state.product.price }
                         </Typography>
                         <FormControl>
                         <p className="product-label"> Size    </p>
-                         <Select labelId="label" variant="outlined" id="label" Label="Size" className="product-select">
-                            <MenuItem > 230 </MenuItem>
-                            <MenuItem > 230 </MenuItem>
+                         <Select onChange={this.updateSize} labelId="label" variant="outlined" id="label" Label="Size" value={this.state.cart.size} className="product-select">
+                            <MenuItem  value={43}> 43 </MenuItem>
+                            <MenuItem value={40}> 54 </MenuItem>
                         </Select>
                         </FormControl>
 
-                        <p className="product-label"> Quantinty    </p>
+                        <p className="product-label"> Quantinty </p>
                         <div className="counterForm">
-                       <div className="count-i">
+                       <div className="count-i" onClick={() => this.updateCount(false)}>
                        <i width="100%" className="fas fa-minus"></i>
                        </div>
                        <div className="count-i">
-                        10
+                        { this.state.cart.qty }
                        </div>
-                       <div className="count-i">
+                       <div onClick={() => this.updateCount(true)} className="count-i">
                         <i width="100%" className="fas fa-plus"></i>
                         </div>
                         </div>
@@ -54,8 +103,7 @@ export default class ProductPage extends Component {
                         <button className="cart-button"> Add To cart </button>
 
                         <Typography className="product-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, aliquam harum perferendis sit incidunt odit alias beatae mollitia exercitationem velit eaque quidem laboriosam natus nulla tenetur, accusantium provident, unde excepturi.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, aliquam harum perferendis sit incidunt odit alias beatae mollitia exercitationem velit eaque quidem laboriosam natus nulla tenetur, accusantium provident, unde excepturi.
+                            {this.state.product.description }
                         </Typography>
                     </div>
                 </div>
