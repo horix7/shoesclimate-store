@@ -33,6 +33,7 @@ export default function HeaderLinks(props) {
           color="transparent"
           className={classes.navLink}
           style={linksStyles}
+          href="/"
 
         >
            HOME 
@@ -43,6 +44,8 @@ export default function HeaderLinks(props) {
           color="transparent"
           className={classes.navLink}
           style={linksStyles}
+          href="/shop"
+
         >
            SHOP 
         </Button>

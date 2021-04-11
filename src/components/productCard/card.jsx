@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import { Link } from "react-router-dom";
-import { useRouteMatch } from 'react-router-dom'
 
 export default class ProductCard extends Component {
 
