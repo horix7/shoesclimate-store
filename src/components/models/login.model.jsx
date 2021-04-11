@@ -99,12 +99,12 @@ export default function FormDialog(props) {
         <DialogTitle id="form-dialog-title"> Account </DialogTitle>
         <DialogContent>
            
-         {success.status ?  <Alert severity="success" color="info">
+         {success.status ?  <Alert severity="success" color="success">
             {success.message}
           </Alert> : null}
 
                
-         {error.status ?  <Alert severity="error" color="info">
+         {error.status ?  <Alert severity="error" color="error">
             {error.message}
           </Alert> : null}
 
