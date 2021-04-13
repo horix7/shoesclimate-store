@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import DeliveryForm from "../forms/delivery.form";
 import PaymentForm from "../forms/payment.form";
 import AuthForm from "../forms/loginForm";
-
+import FlutterPayment from "../../flutterwave/flutterwave"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +39,7 @@ function getStepContent(step) {
     case 1:
       return <DeliveryForm />;
     case 2:                                             
-      return <PaymentForm />;
+      return <FlutterPayment />;
     default:
       return 'Unknown step';
   }

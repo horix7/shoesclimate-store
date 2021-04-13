@@ -11,7 +11,7 @@ export default function FlutterWave () {
     payment_options: 'card,mobilemoney',
     customer: {
       email: 'user@gmail.com',
-      phonenumber: '07064586146',
+      phonenumber: '0500px4586146',
       name: 'joel ugwumadu',
     },
     customizations: {
@@ -28,9 +28,9 @@ export default function FlutterWave () {
   return (
     <div className="App">
     
-    <TextField variant="outlined" label="email" type="email" />
-    <TextField variant="outlined" label="name" type="name" />
-    <TextField variant="outlined" label="phone" type="number" />
+    <TextField variant="outlined" fullWidth style={{width: "500px"}} label="email" type="email" /> <br/> <br/>
+    <TextField variant="outlined" fullWidth style={{width: "500px"}} label="name" type="name" /> <br/> <br/>
+    <TextField variant="outlined" fullWidth style={{width: "500px"}} label="phone" type="number" /> <br/> <br/> 
 
       <Button
         variant="contained"
