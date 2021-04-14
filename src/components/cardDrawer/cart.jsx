@@ -14,7 +14,6 @@ import Tooltip from '@material-ui/core/Tooltip'
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 import { Avatar, Typography } from '@material-ui/core';
 import { StoreContext } from "../../mobxState/stateManagment"
-import LoginModal from "../../components/models/login.model"
 import { useObserver } from 'mobx-react';
 
 
@@ -64,26 +63,25 @@ export default function TemporaryDrawer(props) {
         <Typography  variant="h6" style={{color: "grey", textAlign: "center", backgroundColor: "whitesmoke", padding: "2px"}}  component="h6">CART ITEMS</Typography>
         <div className="total-amount">
         <Typography>grand total</Typography>
-        <Typography style={{textAlign: "end"}}> 123 USD</Typography>
+        <Typography style={{textAlign: "end"}}> {localStorage.displayCart ? JSON.parse(localStorage.displayCart).map(elem => Number(elem.price) * Number(elem.qty)).reduce((a,b) => a + b ) : 0 } USD </Typography>
         </div>
 
         <List>
-         {[1,2,3,4,5,6,7].map(elem => {
+         { localStorage.displayCart ? JSON.parse(localStorage.displayCart).map(elem => {
            return (
             <ListItem>
             <div className="cart-item">
-            <img alt="Remy Sharp" className="cart-image"  src="https://cdn.shopify.com/s/files/1/0502/0067/4468/products/C31CEEE8-BFB3-42CD-AEDC-6241EB0D783A_1024x1024@2x.jpg?v=1617023610" />
+            <img alt="Remy Sharp" className="cart-image"  src={elem.image} />
             <div className="cart-item-info">
-              <span>  adidas Originals x Disney Stan Smith </span> 
-              <span> 12 * 2</span>
+              <span> {elem.title} </span> 
+              <span> {`${elem.price} * ${elem.qty}`} </span>
             </div>
-            <Typography> 300</Typography>
+            <Typography> { Number(elem.price) * Number(elem.qty)}</Typography>
             </div>
           </ListItem>
            )
-         })}
+         }) : null }
         </List>
-         <LoginModal />
       </div>
       <div className="cart-bottom" style={{height: "10vh"}}>
         <Button onClick={toggleDrawer(anchor, false) } variant="outlined" style={{borderColor: "white", color: "white"}}> Close </Button>
@@ -124,7 +122,7 @@ export default function TemporaryDrawer(props) {
         >
         <i className={classes2.socialIcons + " fas fa-shopping-cart"} />
         <div className="card_count">
-          <span>9</span>
+          <span> {localStorage.cart ? JSON.parse(localStorage.cart).length : 0 }</span>
         </div>
         </Button>
          :
@@ -144,7 +142,7 @@ export default function TemporaryDrawer(props) {
           >
           <i className={classes2.socialIcons + " fas fa-shopping-cart"} />
           <div className="card_count">
-            <span>9</span>
+          <span> {localStorage.cart ? JSON.parse(localStorage.cart).length : 0 }</span>
           </div>
           </Button>
         </Tooltip>

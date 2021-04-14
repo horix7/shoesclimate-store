@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, Context } from 'react'
 import ProductCoursel from 'components/productCoursel/coursel'
-import { Button, InputLabel , Select, MenuItem, Typography, FormControl } from "@material-ui/core"
+import { Button, InputLabel, CircularProgress , Select, MenuItem, Typography, FormControl } from "@material-ui/core"
 import Header from 'components/Header/Header'
 import HeaderLinks from 'components/Header/HeaderLinks'
 import LogoImg from 'assets/img/logo.png'
@@ -20,8 +20,10 @@ export default class ProductPage extends Component {
             qty: 1,
             productId: this.props.match.params.id,
             size: 43
-        }
+        },
+        loading: false
     }
+
 
     updateCount = (add) => {
         let product = {...this.state}.cart
@@ -46,6 +48,7 @@ export default class ProductPage extends Component {
     }
 
     addToCart = (product) => {
+        this.setState({loading: true})
         try {
             let cart = JSON.parse(localStorage.cart)
             let displayCart = JSON.parse(localStorage.displayCart)
@@ -102,7 +105,6 @@ export default class ProductPage extends Component {
         this.setState({product: product.data})
     }
     render() {
-
         return (
             <Fragment>
                   <Header
@@ -143,7 +145,7 @@ export default class ProductPage extends Component {
                         </div>
                         </div>
 
-                        <button onClick={() => this.addToCart(this.state.cart)} className="cart-button"> Add To cart </button>
+                        <button onClick={() => this.addToCart(this.state.cart)} className="cart-button">{this.state.loading ? <CircularProgress /> : " Add To cart "}</button>
 
                         <Typography className="product-description">
                             {this.state.product.description }
