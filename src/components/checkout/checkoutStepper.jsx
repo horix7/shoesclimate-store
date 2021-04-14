@@ -8,10 +8,9 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import DeliveryForm from "../forms/delivery.form";
-import PaymentForm from "../forms/payment.form";
-import AuthForm from "../forms/loginForm";
 import FlutterPayment from "../../flutterwave/flutterwave"
 import { StoreContext } from "../../mobxState/stateManagment";
+import { useObserver } from "mobx-react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,11 +47,11 @@ function getStepContent(step) {
 
 export default function VerticalLinearStepper() {
   const classes = useStyles();
-  
+
   const store = useContext(StoreContext)
 
   const [activeStep, setActiveStep] = React.useState(store.checkout.current);
-  const steps = getSteps();
+  const steps = Object.keys(store.checkout.active);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -66,7 +65,9 @@ export default function VerticalLinearStepper() {
     setActiveStep(0);
   };
 
-  return (
+  
+
+  return useObserver( () => (
     <div className={classes.root}>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((label, index) => (
@@ -83,14 +84,14 @@ export default function VerticalLinearStepper() {
                   >
                     Back
                   </Button>
-                  <Button
+                  {store.checkout.active[label] ?  <Button
                     variant="contained"
                     color="primary"
                     onClick={handleNext}
                     className={classes.button}
                   >
                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                  </Button>
+                  </Button> : null}
                 </div>
               </div>
             </StepContent>
@@ -106,5 +107,6 @@ export default function VerticalLinearStepper() {
         </Paper>
       )}
     </div>
+  )
   );
 }

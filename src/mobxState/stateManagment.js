@@ -13,11 +13,11 @@ export const UniversalState = ( {children }) => {
             location: "rwanda "
         },
         checkout: {
-            current: 1,
+            current: 0,
             active: {
-                address: false,
-                payment: false,
-                order: false
+                "delivery address": false,
+                "confirm payment": false,
+                "place order": false
             }
         },
         updateStep: (page) => {
