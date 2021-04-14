@@ -51,12 +51,15 @@ export default class ProductPage extends Component {
             if(cart.some(elem => elem.productId === product.productId)) {
                 cart.forEach(elem  => {
                     if(elem.productId === product.productId) {
-                        cart[cart.indexOf(elem)].qty += elem.qty
-                    }else {
-                        return 
+                        console.log(elem.qty)
+                        cart[cart.indexOf(elem)].qty =  Number(cart[cart.indexOf(elem)].qty) + this.state.cart.qty
                     }
                 });
+            } else {
+                cart.push(product)
             }
+            localStorage.setItem("cart", JSON.stringify(cart))
+
         } catch (error) {
                 let cart = []
                 cart.push(product)
