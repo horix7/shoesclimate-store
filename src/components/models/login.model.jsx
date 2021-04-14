@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -14,7 +14,7 @@ import { CircularProgress } from '@material-ui/core';
 import { Alert } from "@material-ui/lab"
 import LoginForm from "../forms/loginForm"
 import { StoreContext } from "../../mobxState/stateManagment";
-
+import { useObserver } from "mobx-react";
 
 const useStyles = makeStyles(styles);
 
@@ -23,15 +23,21 @@ export default function FormDialog(props) {
 
   const [open, setOpen] = React.useState(store.loginModal);
 
+  useEffect(() => {
+    setOpen(store.loginModal)
+  }, store.loginModal)
   const [register, setRegister ] = React.useState(false)
 
   const [state, setState] = React.useState({})
   const handleClickOpen = () => {
+    store.openModal(true)
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
+    store.openModal(false)
+
   };
 
   const handleInputChange = (event ) => {
@@ -79,7 +85,7 @@ export default function FormDialog(props) {
   const classes = useStyles();
 
 
-  return (
+  return useObserver (() => (
     <div>
        {!props.className ?  <Tooltip
           id="account"
@@ -105,7 +111,7 @@ export default function FormDialog(props) {
           >
             <i className={classes.socialIcons + " fas fa-user"} />
           </Button> }
-      <Dialog open={open} onClose={handleClose} maxWidth={"xs"} aria-labelledby="form-dialog-title">
+      <Dialog open={store.loginModal} onClose={handleClose} maxWidth={"xs"} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title"> Account </DialogTitle>
         <DialogContent>
            
@@ -131,6 +137,7 @@ export default function FormDialog(props) {
         </DialogActions>
       </Dialog>
     </div>
+  )
   );
 }
 

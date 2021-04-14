@@ -15,6 +15,7 @@ import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js
 import { Avatar, Typography } from '@material-ui/core';
 import { StoreContext } from "../../mobxState/stateManagment"
 import LoginModal from "../../components/models/login.model"
+import { useObserver } from 'mobx-react';
 
 
 const useStyles = makeStyles({
@@ -36,7 +37,7 @@ export default function TemporaryDrawer(props) {
   const classes2 = useStyles2();
   const [state, setState] = React.useState({
     top: false,
-    left: store.loginModal,
+    left: store.openCart,
     bottom: false,
     right: false,
   });
@@ -45,9 +46,10 @@ export default function TemporaryDrawer(props) {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
+
   };
+
 
   const list = (anchor) => (
     <div
@@ -89,7 +91,6 @@ export default function TemporaryDrawer(props) {
           if(localStorage.AUTH_TOKEN ) {
             location.href="/checkout"
           } else {
-            alert("login first to checkout")
             return  store.openModal()
           } 
         }} variant="contained" style={{backgroundColor: "blue", color: "white"}}> Checkout  </Button>
@@ -101,7 +102,7 @@ export default function TemporaryDrawer(props) {
 
     if(checker) {
 
-      return ( <div>
+      return useObserver ( () => ( <div>
    
         <React.Fragment key={'right'}>
           <Button onClick={toggleDrawer('right', true)}> </Button>
@@ -109,9 +110,9 @@ export default function TemporaryDrawer(props) {
             {list('right')}
           </Drawer>
         </React.Fragment>
-    </div>)
+    </div>))
     } else {
-       return (
+       return useObserver ( () => (
        <Fragment>
          {props.className ? 
           <Button
@@ -149,6 +150,7 @@ export default function TemporaryDrawer(props) {
         </Tooltip>
   }
        </Fragment>
+       )
        )
     }
 }

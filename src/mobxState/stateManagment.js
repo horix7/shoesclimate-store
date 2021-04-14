@@ -27,8 +27,9 @@ export const UniversalState = ( {children }) => {
             store.checkout.active[step] =  true
         },
         loginModal: false,
-        openModal: () => {
-            store.loginModal = true 
+        openCart: false,
+        openModal: (open = true) => {
+            store.loginModal = open 
         },
         updateShipping: (newInfo) => {
             store.shipping = {...newInfo}
