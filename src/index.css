@@ -270,9 +270,16 @@ button, a, span, select:hover {
 }
 
 .product-slider-image {
+    width: fit-content;
+    height: 500px;
     object-fit: cover;
 }
 
+
+.thumb {
+    height: 50px;
+    object-fit: cover;
+}
 
 .product-label {
     margin-top: 10px;
