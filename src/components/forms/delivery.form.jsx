@@ -52,7 +52,8 @@ export default function  DeliveryForm  () {
                 <TextField
                         variant="outlined" 
                         className="text-fields" 
-                        label="messages"
+                        label="message"
+                        
                         onChange={handleInputChange}
                         value={state.message}
                         id="message"

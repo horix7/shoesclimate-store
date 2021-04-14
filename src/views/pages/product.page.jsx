@@ -14,27 +14,22 @@ export default class ProductPage extends Component {
 
     state = {
         product: {
-            
+
         },
         cart: {
             qty: 1,
             productId: this.props.match.params.id,
             size: 43
         }
-        
-
     }
 
     updateCount = (add) => {
         let product = {...this.state}.cart
 
-        console.log(this.state)
-
         if(add) {
             product.qty ++
             this.setState({ cart: product})
         }else {
-
             product.qty > 1 ? product.qty-- : null 
             this.setState({cart: product})
         }
@@ -48,6 +43,26 @@ export default class ProductPage extends Component {
 
         console.log(cart)
 
+    }
+
+    addToCart = (product) => {
+        try {
+            let cart = JSON.parse(localStorage.cart)
+            if(cart.some(elem => elem.productId === product.productId)) {
+                cart.forEach(elem  => {
+                    if(elem.productId === product.productId) {
+                        cart[cart.indexOf(elem)].qty += elem.qty
+                    }else {
+                        return 
+                    }
+                });
+            }
+        } catch (error) {
+                let cart = []
+                cart.push(product)
+                localStorage.setItem("cart", JSON.stringify(cart))
+
+        }
     }
 
     componentDidMount() {
@@ -100,7 +115,7 @@ export default class ProductPage extends Component {
                         </div>
                         </div>
 
-                        <button className="cart-button"> Add To cart </button>
+                        <button onClick={() => this.addToCart(this.state.cart)} className="cart-button"> Add To cart </button>
 
                         <Typography className="product-description">
                             {this.state.product.description }
