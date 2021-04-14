@@ -18,7 +18,7 @@ export default function  DeliveryForm  () {
 
             setState({...newState})
             store.updateShipping(newState)
-            if(Object.values(newState).some(elem => elem == null || elem == "")) {
+            if(Object.values(newState).some(elem => elem == null || elem == "" || elem == " ")) {
                 return
             }else {
                 store.activateNextBtn("delivery address")

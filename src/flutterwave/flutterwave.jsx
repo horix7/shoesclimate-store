@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
-import { TextField, Button } from "@material-ui/core"
+import { TextField, Typography, Button } from "@material-ui/core"
+import { StoreContext } from "../mobxState/stateManagment";
 
 export default function FlutterWave () {
   const [config, setConfig ] = useState({
@@ -21,6 +22,9 @@ export default function FlutterWave () {
     },
   })
 
+  const store = useContext(StoreContext)
+
+  const [succes, setSucces] = useState(false)
 
   const handleClientInput = (event) => {
     let payment_info = {...config}
@@ -34,7 +38,9 @@ export default function FlutterWave () {
   return (
     <div className="App">
     
-    <TextField variant="outlined" onChange={handleClientInput} fullWidth style={{width: "500px"}}  id="email" label="email" type="email" /> <br/> <br/>
+   {!succes ?
+    <>
+   <TextField variant="outlined" onChange={handleClientInput} fullWidth style={{width: "500px"}}  id="email" label="email" type="email" /> <br/> <br/>
     <TextField variant="outlined" onChange={handleClientInput} fullWidth style={{width: "500px"}} id="name" label="name" type="name" /> <br/> <br/>
     <TextField variant="outlined" onChange={handleClientInput} fullWidth style={{width: "500px"}} label="phone"   id="phonenumber" type="number" /> <br/> <br/> 
 
@@ -47,7 +53,9 @@ export default function FlutterWave () {
 
           handleFlutterPayment({
             callback: (response) => {
+                store.activateNextBtn("confirm payment")
                 closePaymentModal() 
+                setSucces(true)
             },
             onClose: () => {},
           });
@@ -55,7 +63,7 @@ export default function FlutterWave () {
       }}
       >
       Confirm Payment 
-      </Button>
+      </Button> </> : <Typography> payment made successfully </Typography> }
     </div>
   );
 }
