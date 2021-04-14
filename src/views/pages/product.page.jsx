@@ -48,22 +48,47 @@ export default class ProductPage extends Component {
     addToCart = (product) => {
         try {
             let cart = JSON.parse(localStorage.cart)
+            let displayCart = JSON.parse(localStorage.displayCart)
+
             if(cart.some(elem => elem.productId === product.productId)) {
                 cart.forEach(elem  => {
                     if(elem.productId === product.productId) {
                         console.log(elem.qty)
                         cart[cart.indexOf(elem)].qty =  Number(cart[cart.indexOf(elem)].qty) + this.state.cart.qty
+                        displayCart[cart.indexOf(elem)].qty =  Number(cart[cart.indexOf(elem)].qty) + this.state.cart.qty
                     }
                 });
             } else {
                 cart.push(product)
+                displayCart.push({
+                    id: product.productId,
+                    title: this.state.product.title,
+                    description: this.state.product.title,
+                    image: this.state.product.imageUrl,
+                    qty: this.state.cart.qty,
+                    size: this.state.cart.size,
+                    price: this.state.product.price
+                })
             }
             localStorage.setItem("cart", JSON.stringify(cart))
+            localStorage.setItem("displayCart", JSON.stringify(displayCart))
 
         } catch (error) {
                 let cart = []
+                let displayCart = []
                 cart.push(product)
+                displayCart.push({
+                    id: product.productId,
+                    title: this.state.product.title,
+                    description: this.state.product.title,
+                    image: this.state.product.imageUrl,
+                    qty: this.state.cart.qty,
+                    size: this.state.cart.size,
+                    price: this.state.product.price
+                })
                 localStorage.setItem("cart", JSON.stringify(cart))
+                localStorage.setItem("displayCart", JSON.stringify(displayCart))
+
 
         }
     }
