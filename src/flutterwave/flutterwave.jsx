@@ -24,7 +24,7 @@ export default function FlutterWave () {
 
   const store = useContext(StoreContext)
 
-  const [succes, setSucces] = useState(false)
+  const [succes, setSucces] = useState(store.checkout.active["confirm payment"])
 
   const handleClientInput = (event) => {
     let payment_info = {...config}
@@ -38,7 +38,8 @@ export default function FlutterWave () {
   return (
     <div className="App">
     
-   {!succes ?
+   { !succes  ?
+   
     <>
    <TextField variant="outlined" onChange={handleClientInput} fullWidth style={{width: "500px"}}  id="email" label="email" type="email" /> <br/> <br/>
     <TextField variant="outlined" onChange={handleClientInput} fullWidth style={{width: "500px"}} id="name" label="name" type="name" /> <br/> <br/>
