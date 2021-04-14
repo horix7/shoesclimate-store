@@ -54,7 +54,7 @@ export default function FlutterWave () {
         }
       }}
       >
-        Contiue To Payment 
+      Confirm Payment 
       </Button>
     </div>
   );

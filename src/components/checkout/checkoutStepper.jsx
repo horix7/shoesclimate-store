@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -11,6 +11,7 @@ import DeliveryForm from "../forms/delivery.form";
 import PaymentForm from "../forms/payment.form";
 import AuthForm from "../forms/loginForm";
 import FlutterPayment from "../../flutterwave/flutterwave"
+import { StoreContext } from "../../mobxState/stateManagment";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 function getSteps() {
   return ['delivery address', 'confirm payment', 'place order'];
 }
@@ -35,10 +38,8 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return < AuthForm/>;
-    case 1:
       return <DeliveryForm />;
-    case 2:                                             
+    case 1:
       return <FlutterPayment />;
     default:
       return 'Unknown step';
@@ -47,7 +48,10 @@ function getStepContent(step) {
 
 export default function VerticalLinearStepper() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
+  
+  const store = useContext(StoreContext)
+
+  const [activeStep, setActiveStep] = React.useState(store.checkout.current);
   const steps = getSteps();
 
   const handleNext = () => {

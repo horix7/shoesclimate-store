@@ -12,6 +12,20 @@ export const UniversalState = ( {children }) => {
         shipping: {
             location: "rwanda "
         },
+        checkout: {
+            current: 1,
+            active: {
+                address: false,
+                payment: false,
+                order: false
+            }
+        },
+        updateStep: (page) => {
+            store.checkout.current = page
+        },
+        activateNextBtn: (step) => {
+            store.checkout.active[step] =  true
+        },
         loginModal: false,
         openModal: () => {
             store.loginModal = true 
