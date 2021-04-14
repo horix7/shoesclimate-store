@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -13,11 +13,15 @@ import { userLogin, userSignUp } from "../../services/authServices";
 import { CircularProgress } from '@material-ui/core';
 import { Alert } from "@material-ui/lab"
 import LoginForm from "../forms/loginForm"
+import { StoreContext } from "../../mobxState/stateManagment";
+
 
 const useStyles = makeStyles(styles);
 
 export default function FormDialog(props) {
-  const [open, setOpen] = React.useState(false);
+  const store = useContext(StoreContext)
+
+  const [open, setOpen] = React.useState(store.loginModal);
 
   const [register, setRegister ] = React.useState(false)
 

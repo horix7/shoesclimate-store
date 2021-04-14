@@ -1,9 +1,7 @@
 import React, { createContext } from "react";
 import { useLocalStore } from "mobx-react";
 
-
 export const StoreContext = createContext();
-
 
 export const UniversalState = ( {children }) => {
 
@@ -11,10 +9,18 @@ export const UniversalState = ( {children }) => {
         cart: {
             
         },
-        loginModel: false,
-        openLogin: () => loginModel = true,
+        shipping: {
+            location: "rwanda "
+        },
+        loginModal: false,
+        openModal: () => {
+            store.loginModal = true 
+        },
+        updateShipping: (newInfo) => {
+            store.shipping = {...newInfo}
+        },
         updateProduct: newCart =>  {
-            cart.product = {...newCart}
+            store.product = {...newCart}
         },
     }));
 

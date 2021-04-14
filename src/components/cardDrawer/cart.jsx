@@ -14,6 +14,8 @@ import Tooltip from '@material-ui/core/Tooltip'
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 import { Avatar, Typography } from '@material-ui/core';
 import { StoreContext } from "../../mobxState/stateManagment"
+import LoginModal from "../../components/models/login.model"
+
 
 const useStyles = makeStyles({
   list: {
@@ -34,7 +36,7 @@ export default function TemporaryDrawer(props) {
   const classes2 = useStyles2();
   const [state, setState] = React.useState({
     top: false,
-    left: false,
+    left: store.loginModal,
     bottom: false,
     right: false,
   });
@@ -79,11 +81,19 @@ export default function TemporaryDrawer(props) {
            )
          })}
         </List>
-
+         <LoginModal />
       </div>
       <div className="cart-bottom" style={{height: "10vh"}}>
         <Button variant="outlined" style={{borderColor: "white", color: "white"}}> Close </Button>
-        <Button href="/checkout" variant="contained" style={{backgroundColor: "blue", color: "white"}}> Checkout  </Button>
+        <Button onClick={() => {
+          if(localStorage.AUTH_TOKEN ) {
+            location.href="/checkout" 
+            
+          } else {
+            store.openModal()
+            toggleDrawer('right', true)
+          }
+          }} variant="contained" style={{backgroundColor: "blue", color: "white"}}> Checkout  </Button>
       </div>
     </div>
   );
@@ -124,7 +134,8 @@ export default function TemporaryDrawer(props) {
           onClick={toggleDrawer('right', true)}
           placement={window.innerWidth > 959 ? "top" : "left"}
           classes={{ tooltip: classes2.tooltip }}
-        >
+          >
+
           <Button
             color="transparent"
             className={props.className ? props.className : classes2.navLink}
