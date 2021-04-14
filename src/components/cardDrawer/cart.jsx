@@ -84,16 +84,15 @@ export default function TemporaryDrawer(props) {
          <LoginModal />
       </div>
       <div className="cart-bottom" style={{height: "10vh"}}>
-        <Button variant="outlined" style={{borderColor: "white", color: "white"}}> Close </Button>
+        <Button onClick={toggleDrawer(anchor, false) } variant="outlined" style={{borderColor: "white", color: "white"}}> Close </Button>
         <Button onClick={() => {
           if(localStorage.AUTH_TOKEN ) {
-            location.href="/checkout" 
-            
+            location.href="/checkout"
           } else {
-            store.openModal()
-            toggleDrawer('right', true)
-          }
-          }} variant="contained" style={{backgroundColor: "blue", color: "white"}}> Checkout  </Button>
+            alert("login first to checkout")
+            return  store.openModal()
+          } 
+        }} variant="contained" style={{backgroundColor: "blue", color: "white"}}> Checkout  </Button>
       </div>
     </div>
   );
@@ -118,6 +117,7 @@ export default function TemporaryDrawer(props) {
           <Button
           color="transparent"
           className={classes2.navLink}
+          id="openModal"
           onClick={toggleDrawer('right', true)}
           placement={window.innerWidth > 959 ? "top" : "left"}
         >
@@ -130,6 +130,7 @@ export default function TemporaryDrawer(props) {
           <Tooltip
           id="shop"
           title="view Your Cart"
+          id="openModal"
       
           onClick={toggleDrawer('right', true)}
           placement={window.innerWidth > 959 ? "top" : "left"}
