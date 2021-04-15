@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -15,6 +15,7 @@ import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js
 import { Avatar, Typography } from '@material-ui/core';
 import { StoreContext } from "../../mobxState/stateManagment"
 import { useObserver } from 'mobx-react';
+import { getUserCart } from "../../services/cartServices"
 
 
 const useStyles = makeStyles({
@@ -41,6 +42,20 @@ export default function TemporaryDrawer(props) {
     right: false,
   });
 
+  const [cartItems, setCartItems] = React.useState(null)
+
+  const getCartItem = async () => {
+    try {
+      const cart = await getUserCart()
+      setCartItems({...cart.cartItem})
+    } catch (error) {
+      setCartItems(null)
+    }
+  }
+  useEffect(() => {
+    getCartItem()
+  }, cartItems)
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -63,11 +78,24 @@ export default function TemporaryDrawer(props) {
         <Typography  variant="h6" style={{color: "grey", textAlign: "center", backgroundColor: "whitesmoke", padding: "2px"}}  component="h6">CART ITEMS</Typography>
         <div className="total-amount">
         <Typography>grand total</Typography>
-        <Typography style={{textAlign: "end"}}> {localStorage.displayCart ? JSON.parse(localStorage.displayCart).map(elem => Number(elem.price) * Number(elem.qty)).reduce((a,b) => a + b ) : 0 } USD </Typography>
+        <Typography style={{textAlign: "end"}}> { cartItems ? cartItems.totalAmount :  localStorage.displayCart ? JSON.parse(localStorage.displayCart).map(elem => Number(elem.price) * Number(elem.qty)).reduce((a,b) => a + b ) : 0 } USD </Typography>
         </div>
 
         <List>
-         { localStorage.displayCart ? JSON.parse(localStorage.displayCart).map(elem => {
+         { cartItems ? cartItems.items.map(elem => {
+           return (
+            <ListItem>
+            <div className="cart-item">
+            <img alt="Remy Sharp" className="cart-image"  src={elem.image} />
+            <div className="cart-item-info">
+              <span> {elem.title} </span> 
+              <span> {`${elem.price} * ${elem.qty}`} </span>
+            </div>
+            <Typography> { Number(elem.price) * Number(elem.qty)}</Typography>
+            </div>
+          </ListItem>
+           )
+         }) :  localStorage.displayCart ? JSON.parse(localStorage.displayCart).map(elem => {
            return (
             <ListItem>
             <div className="cart-item">
