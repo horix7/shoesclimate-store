@@ -10,6 +10,7 @@ import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip"
 import { userLogin, userSignUp } from "../../services/authServices";
+import { createCart } from "../../services/cartServices";
 import { CircularProgress } from '@material-ui/core';
 import { Alert } from "@material-ui/lab"
 import LoginForm from "../forms/loginForm"
@@ -62,7 +63,7 @@ export default function FormDialog(props) {
         await userSignUp(state)
         setsuccess({status: true, message: "registered successfully"})
         seterror({status: false, message: null})
-        location.href = "/account"
+
   
         }else {
       seterror({status: true, message: "validation Error"})
@@ -74,7 +75,8 @@ export default function FormDialog(props) {
 
         setsuccess({status: true, message: "login successfully"})
         seterror({status: false, message: null})
-        location.href = "/account"
+            location.href = "/account"
+
       }
     } catch (error) {
       setLoading(false)

@@ -54,7 +54,7 @@ export default function TemporaryDrawer(props) {
   }
   useEffect(() => {
     getCartItem()
-  }, [state, cartItems])
+  },  state)
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
