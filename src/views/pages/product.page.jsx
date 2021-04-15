@@ -7,7 +7,7 @@ import LogoImg from 'assets/img/logo.png'
 import RelatedCoursel from 'components/productCoursel/showcasecoursel'
 import Footer from 'components/Footer/Footer'
 import { Oneproductservice } from "../../services/productService";
-
+import { createCart } from "../../services/cartServices";
 
 export default class ProductPage extends Component {
 
@@ -23,7 +23,6 @@ export default class ProductPage extends Component {
         },
         loading: false
     }
-
 
     updateCount = (add) => {
         let product = {...this.state}.cart
@@ -47,11 +46,18 @@ export default class ProductPage extends Component {
 
     }
 
-    addToCart = (product) => {
+    addToCart = async (product) => {
         this.setState({loading: true})
+
         try {
-            let cart = JSON.parse(localStorage.cart)
-            let displayCart = JSON.parse(localStorage.displayCart)
+            await createCart(this.state.cart)
+            this.setState({loading: false})
+
+        } catch (error) {
+       
+            try {
+                let cart = JSON.parse(localStorage.cart)
+                let displayCart = JSON.parse(localStorage.displayCart)
 
             if(cart.some(elem => elem.productId === product.productId)) {
                 cart.forEach(elem  => {
@@ -75,6 +81,8 @@ export default class ProductPage extends Component {
             }
             localStorage.setItem("cart", JSON.stringify(cart))
             localStorage.setItem("displayCart", JSON.stringify(displayCart))
+            this.setState({loading: false})
+
 
         } catch (error) {
                 let cart = []
@@ -92,8 +100,10 @@ export default class ProductPage extends Component {
                 localStorage.setItem("cart", JSON.stringify(cart))
                 localStorage.setItem("displayCart", JSON.stringify(displayCart))
 
+                this.setState({loading: false})
 
         }
+    }
     }
 
     componentDidMount() {

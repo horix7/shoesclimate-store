@@ -150,7 +150,7 @@ export default function TemporaryDrawer(props) {
         >
         <i className={classes2.socialIcons + " fas fa-shopping-cart"} />
         <div className="card_count">
-          <span> {localStorage.cart ? JSON.parse(localStorage.cart).length : 0 }</span>
+          <span> { cartItems ? cartItems.items.length :  localStorage.cart ? JSON.parse(localStorage.cart).length : 0 }</span>
         </div>
         </Button>
          :
@@ -170,7 +170,7 @@ export default function TemporaryDrawer(props) {
           >
           <i className={classes2.socialIcons + " fas fa-shopping-cart"} />
           <div className="card_count">
-          <span> {localStorage.cart ? JSON.parse(localStorage.cart).length : 0 }</span>
+          <span> { cartItems ? cartItems.items.length :  localStorage.cart ? JSON.parse(localStorage.cart).length : 0 }</span>
           </div>
           </Button>
         </Tooltip>

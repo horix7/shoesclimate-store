@@ -3,7 +3,7 @@ import http from "./http"
 export const createCart = async(data) => {
     const cart = await http.post("/api/v1/cart/add", data)
 
-    return cart 
+    return cart.data.data
 } 
 
 
@@ -16,6 +16,6 @@ export const UpdateCart = async(id) => {
 export const getUserCart = async() => {
 
     const userOrders = await http.get("/api/v1/cart")
-    return userOrders.data 
+    return userOrders.data.data
 }
 
