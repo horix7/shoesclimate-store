@@ -86,7 +86,7 @@ export default function TemporaryDrawer(props) {
            return (
             <ListItem>
             <div className="cart-item">
-            <img alt="Remy Sharp" className="cart-image"  src={elem.image} />
+            <img alt="Remy Sharp" className="cart-image"  src={JSON.parse(elem.image)[0]} />
             <div className="cart-item-info">
               <span> {elem.title} </span> 
               <span> {`${elem.price} * ${elem.qty}`} </span>

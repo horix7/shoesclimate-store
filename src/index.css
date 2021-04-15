@@ -116,7 +116,7 @@ option {
 .product_cardmedia {
     width: 100%;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain;
     background-color: transparent;
 }
 
