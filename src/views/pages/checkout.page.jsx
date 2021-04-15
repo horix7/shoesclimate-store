@@ -1,9 +1,29 @@
 import React, { Component, Fragment } from 'react' 
 import CheckoutStepper from "../../components/checkout/checkoutStepper";       
 import { AppBar, List, ListItem, Typography } from "@material-ui/core"
-
+import { getUserCart } from "../../services/cartServices";
 
 export default class Checkout extends Component {
+
+    state = {
+        cartItems: null,
+
+    }
+
+    getCartItems = async () => {
+
+        const cart = await getUserCart()
+        this.setState({cartItems: cart.cartItem})
+
+    }
+
+    componentDidMount() {
+        if(localStorage.AUTH_TOKEN) {
+        this.getCartItems()
+        }else {
+            location.href = '/'
+        }
+    }
 
     render() {
         return (
@@ -13,32 +33,42 @@ export default class Checkout extends Component {
 
                 <div className="checkout">
                     <CheckoutStepper />
-              
-
                 <div className="checkout-summary">
 
               
                 <List>
-                {[1,2,3].map(elem => {
+                { this.state.cartItems ? this.state.cartItems.items.map(elem => {
                 return (
                     <ListItem>
                     <div className="cart-item">
-                    <img alt="Remy Sharp" className="cart-image"  src="https://cdn.shopify.com/s/files/1/0502/0067/4468/products/C31CEEE8-BFB3-42CD-AEDC-6241EB0D783A_1024x1024@2x.jpg?v=1617023610" />
+                    <img alt="Remy Sharp" className="cart-image"  src={JSON.parse(elem.image)[0]} />
                     <div className="cart-item-info">
-                    <span>  adidas Originals x Disney Stan Smith </span> 
-                    <span> 12 * 2</span>
+                    <span> {elem.title} </span> 
+                    <span> {`${elem.price} * ${elem.qty}`} </span>
                     </div>
-                    <Typography> 300</Typography>
+                    <Typography> { Number(elem.price) * Number(elem.qty)}</Typography>
                     </div>
                 </ListItem>
-                
                 )
-                })}
+                }) :  localStorage.displayCart ? JSON.parse(localStorage.displayCart).map(elem => {
+                    return (
+                        <ListItem>
+                        <div className="cart-item">
+                        <img alt="Remy Sharp" className="cart-image"  src={elem.image} />
+                        <div className="cart-item-info">
+                        <span> {elem.title} </span> 
+                        <span> {`${elem.price} * ${elem.qty}`} </span>
+                        </div>
+                        <Typography> { Number(elem.price) * Number(elem.qty)}</Typography>
+                        </div>
+                    </ListItem>
+                    )
+                    }) : null }
                 </List>
                 <div className="total-amount">
-                <Typography>grand total</Typography>
-                <Typography style={{textAlign: "end"}}> 123 USD</Typography>
-                </div>
+        <Typography>grand total</Typography>
+        <Typography style={{textAlign: "end"}}> { this.state.cartItems ? this.state.cartItems.totalAmount :  localStorage.displayCart ? JSON.parse(localStorage.displayCart).map(elem => Number(elem.price) * Number(elem.qty)).reduce((a,b) => a + b ) : 0 } USD </Typography>
+        </div>
                 </div>
                 </div>
             </Fragment>

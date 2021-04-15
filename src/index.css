@@ -272,7 +272,7 @@ button, a, span, select:hover {
 .product-slider-image {
     width: fit-content;
     height: 500px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .thumb {
