@@ -344,6 +344,10 @@ button, a, span, select:hover {
        display: none;
    }
 
+   .slide .product-slider-image  {
+       height: 50vh;
+   }
+
    .account {
         margin-top: 20%;
     }
