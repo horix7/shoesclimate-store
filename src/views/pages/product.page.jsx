@@ -1,6 +1,6 @@
 import React, { Component, Fragment, Context } from 'react'
 import ProductCoursel from 'components/productCoursel/coursel'
-import { Button, InputLabel, CircularProgress , Select, MenuItem, Typography, FormControl } from "@material-ui/core"
+import { Snackbar, CircularProgress , Select, MenuItem, Typography, FormControl } from "@material-ui/core"
 import Header from 'components/Header/Header'
 import HeaderLinks from 'components/Header/HeaderLinks'
 import LogoImg from 'assets/img/logo.png'
@@ -21,7 +21,8 @@ export default class ProductPage extends Component {
             productId: this.props.match.params.id,
             size: 43
         },
-        loading: false
+        loading: false,
+        open: false
     }
 
     updateCount = (add) => {
@@ -51,7 +52,7 @@ export default class ProductPage extends Component {
 
         try {
             await createCart(this.state.cart)
-            this.setState({loading: false})
+            this.setState({loading: false, open: true})
 
         } catch (error) {
        
@@ -81,7 +82,7 @@ export default class ProductPage extends Component {
             }
             localStorage.setItem("cart", JSON.stringify(cart))
             localStorage.setItem("displayCart", JSON.stringify(displayCart))
-            this.setState({loading: false})
+            this.setState({loading: false, open: true})
 
 
         } catch (error) {
@@ -100,7 +101,7 @@ export default class ProductPage extends Component {
                 localStorage.setItem("cart", JSON.stringify(cart))
                 localStorage.setItem("displayCart", JSON.stringify(displayCart))
 
-                this.setState({loading: false})
+                this.setState({loading: false, open: true})
 
         }
     }
@@ -127,6 +128,16 @@ export default class ProductPage extends Component {
                     color: "white"
                     }}
                 />
+                      <Snackbar
+                        anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                        }}
+                        open={this.state.open}
+                        autoHideDuration={1000}
+                        onClose={() => this.setState({open: false})}
+                        message="product added to cart"
+                    />
                 <div className="product-grid">
                     <ProductCoursel images={this.state.product.imageAddress || [this.state.product.imageUrl]} /> 
                     <div className="product-content">
@@ -157,8 +168,8 @@ export default class ProductPage extends Component {
 
                         <button onClick={() => this.addToCart(this.state.cart)} className="cart-button">{this.state.loading ? <CircularProgress /> : " Add To cart "}</button>
 
-                        <Typography className="product-description">
-                            {this.state.product.description }
+                        <Typography  className="product-description">
+                            <p dangerouslySetInnerHTML={{__html: this.state.product.description }}></p>
                         </Typography>
                     </div>
                 </div>
