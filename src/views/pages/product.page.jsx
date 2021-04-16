@@ -143,7 +143,7 @@ export default class ProductPage extends Component {
                     <div className="product-content">
                         <h1> {this.state.product.title }</h1>
                         <Typography className="product-price" >
-                        {this.state.product.price }
+                        {this.state.product.price } RWF
                         </Typography>
                         <FormControl>
                         <p className="product-label"> Size    </p>

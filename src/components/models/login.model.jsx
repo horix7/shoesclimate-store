@@ -63,6 +63,7 @@ export default function FormDialog(props) {
         await userSignUp(state)
         setsuccess({status: true, message: "registered successfully"})
         seterror({status: false, message: null})
+        location.href = "/account"
 
   
         }else {
@@ -75,7 +76,7 @@ export default function FormDialog(props) {
 
         setsuccess({status: true, message: "login successfully"})
         seterror({status: false, message: null})
-            location.href = "/account"
+        location.href = "/account"
 
       }
     } catch (error) {

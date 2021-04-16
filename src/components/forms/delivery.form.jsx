@@ -9,7 +9,7 @@ export default function  DeliveryForm  () {
         const [state, setState] = useState({
             location: store.shipping.location,
             street: store.shipping.street,
-            message: store.shipping.store
+            message: store.shipping.message
         })
 
         const handleInputChange = (event ) => {

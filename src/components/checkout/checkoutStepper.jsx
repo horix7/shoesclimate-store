@@ -11,6 +11,7 @@ import DeliveryForm from "../forms/delivery.form";
 import FlutterPayment from "../../flutterwave/flutterwave"
 import { StoreContext } from "../../mobxState/stateManagment";
 import { useObserver } from "mobx-react";
+import { createOrder } from "../../services/productService";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +42,16 @@ function getStepContent(step) {
     case 1:
       return <FlutterPayment />;
     default:
-      return 'Unknown step';
+      return <Button 
+      variant="contained"
+      style={{backgroundColor: "darkblue", color: "white"}}
+      onClick={async () => {
+        try {
+          await createOrder()
+        } catch (error) {
+          
+        }
+      }}> Place Your Order </Button>;
   }
 }
 

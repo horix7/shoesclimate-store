@@ -10,7 +10,9 @@ export const UniversalState = ( {children }) => {
             
         },
         shipping: {
-            location: "rwanda "
+            location: "",
+            street: "",
+            message: ""
         },
         checkout: {
             current: 0,

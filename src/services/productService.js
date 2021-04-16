@@ -25,7 +25,7 @@ export const getUserOrders = async () => {
 export const createOrder = async(newOrder) => {
 
     const order = await http.post("/api/v1/orders", newOrder)
-    return order
+    return order.data
 }
 
 
