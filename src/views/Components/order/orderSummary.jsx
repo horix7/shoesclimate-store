@@ -17,7 +17,7 @@ export default function OrderSummary(props) {
             <img alt="Remy Sharp" className="cart-image"  src={JSON.parse(elem.image)[0]} />
             <div className="cart-item-info">
             <span> {elem.title} </span> 
-            <span> {`${elem.price} * ${elem.qty}`} </span>
+            <span> {`${elem.price} X ${elem.qty}`} </span>
             </div>
             <Typography> { Number(elem.price) * Number(elem.qty)}</Typography>
             </div>
@@ -30,7 +30,7 @@ export default function OrderSummary(props) {
                 <img alt="Remy Sharp" className="cart-image"  src={elem.image} />
                 <div className="cart-item-info">
                 <span> {elem.title} </span> 
-                <span> {`${elem.price} * ${elem.qty}`} </span>
+                <span> {`${elem.price} X ${elem.qty}`} </span>
                 </div>
                 <Typography> { Number(elem.price) * Number(elem.qty)}</Typography>
                 </div>

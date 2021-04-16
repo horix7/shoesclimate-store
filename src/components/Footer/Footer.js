@@ -28,7 +28,7 @@ export default function Footer(props) {
   });
 
   const contacts = {
-    "email": '@ contact@shoesclimate.com',
+    "email": 'contact@shoesclimate.com',
     phone: "0782374832"
   }
 
@@ -37,25 +37,27 @@ export default function Footer(props) {
   const social = ["instgram", "facebook"]
   
   return (
-    <footer style={{backgroundColor: "black"}} className={footerClasses}>
+    <footer  className="footer">
 
-      <div className={classes.container}>
-        <div className={classes.left}>
-          <List className={classes.list}>
-          {Object.values(contacts).map(elem => (  <ListItem key={elem} className={classes.inlineBlock}>
+        <List>
+          {Object.values(contacts).map(elem => (  <ListItem key={elem} className="footer-list">
               <a
                 href="#"
-                className={classes.block}
+                className="footer-link"
                 target="_blank"
               >
                {elem}
               </a>
             </ListItem>))}
 
-            {links.map(elem => (  <ListItem key={elem} className={classes.inlineBlock}>
+          </List>
+          <List>
+
+
+            {links.map(elem => (  <ListItem key={elem} className="footer-list">
               <a
                 href="#"
-                className={classes.block}
+                className="footer-link"
                 target="_blank"
               >
                {elem}
@@ -64,8 +66,20 @@ export default function Footer(props) {
             
          
           </List>
-        </div>
-        <div className={classes.right}>
+
+          <List>
+          {Object.values(social).map(elem => (  <ListItem key={elem} className="footer-list">
+              <a
+                href="#"
+                className="footer-link"
+                target="_blank"
+              >
+               {elem}
+              </a>
+            </ListItem>))}
+
+          </List>
+        <div>
           &copy; {1900 + new Date().getYear()} , by{" "}
           <a
             href="#?ref=mkr-footer"
@@ -75,7 +89,6 @@ export default function Footer(props) {
             Shoesclimate 
           </a>{" "}
         </div>
-      </div>
     </footer>
   );
 }
