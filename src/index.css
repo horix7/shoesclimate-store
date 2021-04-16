@@ -374,9 +374,9 @@ button, a, span, select:hover {
        display: none;
    }
 
-   .footer {
-    grid-template-columns: 1fr;
-}
+    .footer {
+        grid-template-columns: 1fr;
+    }
    
    .checkout-summary-mobile {
     display: block;
