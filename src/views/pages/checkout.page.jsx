@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import CheckoutStepper from "../../components/checkout/checkoutStepper";       
 import { AppBar, List, ListItem, Typography } from "@material-ui/core"
 import { getUserCart } from "../../services/cartServices";
+import OrderSummary  from "../Components/order/orderSummary";
 
 export default class Checkout extends Component {
 
@@ -34,41 +35,8 @@ export default class Checkout extends Component {
                 <div className="checkout">
                     <CheckoutStepper />
                 <div className="checkout-summary">
-
-              
-                <List>
-                { this.state.cartItems ? this.state.cartItems.items.map(elem => {
-                return (
-                    <ListItem>
-                    <div className="cart-item">
-                    <img alt="Remy Sharp" className="cart-image"  src={JSON.parse(elem.image)[0]} />
-                    <div className="cart-item-info">
-                    <span> {elem.title} </span> 
-                    <span> {`${elem.price} * ${elem.qty}`} </span>
-                    </div>
-                    <Typography> { Number(elem.price) * Number(elem.qty)}</Typography>
-                    </div>
-                </ListItem>
-                )
-                }) :  localStorage.displayCart ? JSON.parse(localStorage.displayCart).map(elem => {
-                    return (
-                        <ListItem>
-                        <div className="cart-item">
-                        <img alt="Remy Sharp" className="cart-image"  src={elem.image} />
-                        <div className="cart-item-info">
-                        <span> {elem.title} </span> 
-                        <span> {`${elem.price} * ${elem.qty}`} </span>
-                        </div>
-                        <Typography> { Number(elem.price) * Number(elem.qty)}</Typography>
-                        </div>
-                    </ListItem>
-                    )
-                    }) : null }
-                </List>
-                <div className="total-amount">
-        <Typography>grand total</Typography>
-        <Typography style={{textAlign: "end"}}> { this.state.cartItems ? this.state.cartItems.totalAmount :  localStorage.displayCart ? JSON.parse(localStorage.displayCart).map(elem => Number(elem.price) * Number(elem.qty)).reduce((a,b) => a + b ) : 0 } USD </Typography>
-        </div>
+                    <OrderSummary state={this.state} />
+     
                 </div>
                 </div>
             </Fragment>

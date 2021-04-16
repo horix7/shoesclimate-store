@@ -240,6 +240,11 @@ option {
     height: 60px;
 }
 
+.checkout-summary-mobile {
+    display: none;
+    
+}
+
 button, a, span, select:hover {
     cursor: pointer;
 }
@@ -343,10 +348,29 @@ button, a, span, select:hover {
     font-size: 20px;
     color: white;
 }
+
+.caps {
+    color: rgb(111, 185, 0);
+    text-transform: uppercase;
+}
+
+.endSpan {
+    color: black;
+    padding-left: 10px;
+    font-weight: lighter;
+}
 @media only screen and (max-width: 900px) {
    .nav-text {
        display: none;
    }
+
+   
+   .checkout-summary-mobile {
+    display: block;
+    background-color: white;
+    color: black;
+    
+}
 
    .checkout-summary  {
        display: none;

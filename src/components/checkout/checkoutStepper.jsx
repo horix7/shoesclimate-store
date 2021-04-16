@@ -12,6 +12,7 @@ import FlutterPayment from "../../flutterwave/flutterwave"
 import { StoreContext } from "../../mobxState/stateManagment";
 import { useObserver } from "mobx-react";
 import { createOrder } from "../../services/productService";
+import  PlaceOrder from "../../views/Components/order/placeOrder";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,17 +44,8 @@ function getStepContent(step) {
     case 1:
       return <FlutterPayment />;
     default:
-      return <Button 
-      variant="contained"
-      style={{backgroundColor: "darkblue", color: "white"}}
-      onClick={async () => {
-        try {
-          await createOrder()
-        } catch (error) {
-          
-        }
-      }}> Place Your Order </Button>;
-  }
+     return <PlaceOrder/>  
+    }
 }
 
 export default function VerticalLinearStepper() {
