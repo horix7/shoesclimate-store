@@ -9,7 +9,8 @@ export default function  DeliveryForm  () {
         const [state, setState] = useState({
             location: store.shipping.location,
             street: store.shipping.street,
-            message: store.shipping.message
+            message: store.shipping.message,
+            customer: store.shipping.customer,
         })
 
         const handleInputChange = (event ) => {
@@ -31,6 +32,14 @@ export default function  DeliveryForm  () {
             <Fragment>
 
                 <FormControl>
+                <TextField
+                        variant="outlined" 
+                        className="text-fields" 
+                        label="your names"
+                        onChange={handleInputChange}
+                        value={state.customer}
+                        id="customer"
+                />
                 <TextField
                         variant="outlined" 
                         className="text-fields" 

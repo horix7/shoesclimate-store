@@ -374,6 +374,10 @@ button, a, span, select:hover {
        display: none;
    }
 
+
+.text-fields {
+    width: fit-content;
+}
     .footer {
         grid-template-columns: 1fr;
     }

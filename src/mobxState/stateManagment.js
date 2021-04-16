@@ -12,7 +12,8 @@ export const UniversalState = ( {children }) => {
         shipping: {
             location: "",
             street: "",
-            message: ""
+            message: "",
+            customer: ""
         },
         checkout: {
             current: 0,
