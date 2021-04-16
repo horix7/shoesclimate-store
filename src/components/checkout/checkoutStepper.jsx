@@ -14,7 +14,6 @@ import { useObserver } from "mobx-react";
 import { createOrder } from "../../services/productService";
 
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -81,7 +80,7 @@ export default function VerticalLinearStepper() {
 
   return useObserver( () => (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep} orientation="vertical">
+      <Stepper activeStep={activeStep} style={{backgroundColor: "#f5f5f5"}} orientation="vertical">
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>

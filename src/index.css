@@ -203,6 +203,10 @@ option {
     /* background-color: black; */
 }
 
+.checkout-summary {
+    background-color: white;
+    color: black;
+}
 
 .product-holder {
     margin: 0px;
@@ -344,6 +348,10 @@ button, a, span, select:hover {
        display: none;
    }
 
+   .checkout-summary  {
+       display: none;
+   }
+
    .slide .product-slider-image  {
        height: 50vh;
    }
@@ -365,6 +373,7 @@ button, a, span, select:hover {
     height: 140px;
     object-fit: contain;
 }
+
 
    .product_grids {
     display: grid;
