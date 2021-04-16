@@ -43,6 +43,7 @@ export default class ProductCoursel extends Component {
                 settings: {
                   slidesToShow: 2,
                   slidesToScroll: 2,
+                  dots: false,
                   initialSlide: 2
                 }
               },
@@ -50,6 +51,7 @@ export default class ProductCoursel extends Component {
                 breakpoint: 480,
                 settings: {
                   slidesToShow: 1,
+                  dots: false,
                   slidesToScroll: 1
                 }}
             ]
