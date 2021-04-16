@@ -53,6 +53,7 @@ export default class ProductPage extends Component {
         try {
             await createCart(this.state.cart)
             this.setState({loading: false, open: true})
+            location.reload()
 
         } catch (error) {
        
