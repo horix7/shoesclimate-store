@@ -83,25 +83,20 @@ export default function HeaderLinks(props) {
           }}
           style={linksStyles}
 
-          dropdownList={[
-            <>
-
-{["YEEZY", "AIR MAX", "AIR FORCE", "AIR ZOOM", "NIKE", "NIKE DUNKs", "ADIDAS", "CONVERSE", "BALENCIAGA", "OFF-WHITE", "NEW BALANCE", "SACAI", "VERSACE", "NBA", "LEBRONs", "CURRY", "KOBE", "KYRIE", "KEVIN DURANT", "FILA", "SLIDES", "VANS", "VAPORMAX", "HUARACHE", "HUMAN RACE", "PUMA", "McQUEEN", "REEBOK"].map(elem => {
+          dropdownList={[...["YEEZY", "AIR MAX", "AIR FORCE", "AIR ZOOM", "NIKE", "NIKE DUNKs", "ADIDAS", "CONVERSE", "BALENCIAGA", "OFF-WHITE", "NEW BALANCE", "SACAI", "VERSACE", "NBA", "LEBRONs", "CURRY", "KOBE", "KYRIE", "KEVIN DURANT", "FILA", "SLIDES", "VANS", "VAPORMAX", "HUARACHE", "HUMAN RACE", "PUMA", "McQUEEN", "REEBOK"].map(elem => {
               return (
                 <Link
                   color="transparent"
-                  className={classes.navLink}
-                  style={linksStyles}
-                  href="/shop"
+                  className={classes.dropdownList}
+                  to="/shop"
 
                 >
-                   {elem}  
+                  
                 </Link>
                
+               
               )
-            })}
-           
-          </>
+            })
            
           ]}
         />
