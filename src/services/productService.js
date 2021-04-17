@@ -8,6 +8,13 @@ export const getProductData = async () => {
 
 }
 
+
+export const getProductDataByCollection = async (collection) => {
+
+    const products = await http.get("/api/v1/products/collection/" + collection)
+    return products.data
+
+}
 export const getUserCart = async () => {
 
     const cart = await http.get("/api/v1/cart")
