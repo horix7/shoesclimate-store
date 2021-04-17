@@ -39,14 +39,16 @@ export default function Receipt(props) {
         
         <div className="checkout-summary-mobile">
 
-            <CartSummary state={state} />
+        <CartSummary state={state} />
         </div>
         <Success open={open} />
         <List>
-             <ListItem> delivery location : <span className="endSpan"> {`${orderDetails.location } ${orderDetails.street}`}</span> </ListItem>               
-             <ListItem> order message : <span className="endSpan"> {`${orderDetails.message }`}</span> </ListItem>               
+             <ListItem> delivery location </ListItem>   
+             <ListItem> <span className="endSpan"> {`${orderDetails.location } ${orderDetails.street}`}</span> </ListItem>            
+             <ListItem> order message   </ListItem> 
+             <ListItem> <span className="endSpan"> {`${orderDetails.message }`}</span></ListItem>              
         </List>
-        <Button variant="outlined" onClick={placingOrder}> {loading ? <CircularProgress /> : "Place Order " } </Button>
+        <Button variant="outlined" fullWidth style={{marginBottom: "100px"}} onClick={placingOrder}> {loading ? <CircularProgress /> : "Place Order " } </Button>
            
         </>
     ))

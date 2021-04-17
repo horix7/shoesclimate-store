@@ -41,12 +41,14 @@ export default function FlutterWave () {
    { !succes  ?
    
     <>
-   <TextField variant="outlined" onChange={handleClientInput} fullWidth style={{width: "500px"}}  id="email" label="email" type="email" /> <br/> <br/>
-    <TextField variant="outlined" onChange={handleClientInput} fullWidth style={{width: "500px"}} id="name" label="name" type="name" /> <br/> <br/>
-    <TextField variant="outlined" onChange={handleClientInput} fullWidth style={{width: "500px"}} label="phone"   id="phonenumber" type="number" /> <br/> <br/> 
+   <TextField variant="outlined" onChange={handleClientInput} className="text-fields"  id="email" label="email" type="email" /> <br/> <br/>
+    <TextField variant="outlined" onChange={handleClientInput} className="text-fields" id="name" label="name" type="name" /> <br/> <br/>
+    <TextField variant="outlined" onChange={handleClientInput} className="text-fields" label="phone"   id="phonenumber" type="number" /> <br/> <br/> 
 
       <Button
         variant="contained"
+        fullWidth
+        style={{width: "200px", marginBottom: "20px"}}
         onClick={() => {
           if(Object.values(config.customer).some(elem => elem == null)) {
             alert("filling in your billing information please")

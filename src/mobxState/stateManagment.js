@@ -19,7 +19,7 @@ export const UniversalState = ( {children }) => {
             current: 0,
             active: {
                 "delivery address": false,
-                "confirm payment": true,
+                "confirm payment": false,
                 "place order": false
             }
         },

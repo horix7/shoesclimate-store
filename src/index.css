@@ -375,7 +375,6 @@ button, a, span, select:hover {
 
 .endSpan {
     color: black;
-    padding-left: 10px;
     font-weight: lighter;
 }
 
@@ -395,7 +394,7 @@ button, a, span, select:hover {
 
 
 .text-fields {
-    width: fit-content;
+    width: 270px;
 }
     .footer {
         grid-template-columns: 1fr;
@@ -403,7 +402,10 @@ button, a, span, select:hover {
    
    .checkout-summary-mobile {
     display: block;
+    width: 320px;
     background-color: white;
+    margin-left: -30px;
+    padding: 10px;
     color: black;
     
 }
