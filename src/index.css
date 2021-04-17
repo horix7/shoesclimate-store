@@ -1,6 +1,7 @@
 
 #root {
     background-color: white;
+    outline: none;
 }
 
 .card_count {

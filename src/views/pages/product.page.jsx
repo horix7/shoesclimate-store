@@ -19,7 +19,7 @@ export default class ProductPage extends Component {
         cart: {
             qty: 1,
             productId: this.props.match.params.id,
-            size: 43
+            size: 35
         },
         loading: false,
         open: false
@@ -146,10 +146,9 @@ export default class ProductPage extends Component {
                         {this.state.product.price } RWF
                         </Typography>
                         <FormControl>
-                        <p className="product-label"> Size    </p>
+                        <p className="product-label"> Size </p>
                          <Select onChange={this.updateSize} labelId="label" variant="outlined" id="label" Label="Size" value={this.state.cart.size} className="product-select">
-                            <MenuItem  value={43}> 43 </MenuItem>
-                            <MenuItem value={40}> 54 </MenuItem>
+                            {[35,36,37,38,39,40,41,42,43].map( elem => <MenuItem  value={elem}> {elem} </MenuItem> )}
                         </Select>
                         </FormControl>
 
