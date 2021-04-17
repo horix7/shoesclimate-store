@@ -50,6 +50,29 @@ export default function HeaderLinks(props) {
            SHOP 
         </Button>
       </ListItem>
+      <div className="hide-on-big">
+
+      {["YEEZY", "AIR MAX", "AIR FORCE", "AIR ZOOM", "NIKE", "NIKE DUNKs", "ADIDAS", "CONVERSE", "BALENCIAGA", "OFF-WHITE", "NEW BALANCE", "SACAI", "VERSACE", "NBA", "LEBRONs", "CURRY", "KOBE", "KYRIE", "KEVIN DURANT", "FILA", "SLIDES", "VANS", "VAPORMAX", "HUARACHE", "HUMAN RACE", "PUMA", "McQUEEN", "REEBOK"].map(elem => {
+              return (
+               <ListItem
+               className={classes.listItem}
+               
+               >
+                  <Button
+                  color="transparent"
+                  className={classes.navLink}
+                  style={linksStyles}
+                  href="/shop"
+
+                >
+                   {elem}  
+                </Button>
+               
+               </ListItem>
+              )
+            })}
+      </div>
+
       <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
@@ -61,15 +84,25 @@ export default function HeaderLinks(props) {
           style={linksStyles}
 
           dropdownList={[
-            <Link to="/" className={classes.dropdownLink}>
-               collections
-            </Link>,
-            <a
-              href="#"
-              className={classes.dropdownLink}
-            >
-              shop 
-            </a>
+            <>
+
+{["YEEZY", "AIR MAX", "AIR FORCE", "AIR ZOOM", "NIKE", "NIKE DUNKs", "ADIDAS", "CONVERSE", "BALENCIAGA", "OFF-WHITE", "NEW BALANCE", "SACAI", "VERSACE", "NBA", "LEBRONs", "CURRY", "KOBE", "KYRIE", "KEVIN DURANT", "FILA", "SLIDES", "VANS", "VAPORMAX", "HUARACHE", "HUMAN RACE", "PUMA", "McQUEEN", "REEBOK"].map(elem => {
+              return (
+                <Link
+                  color="transparent"
+                  className={classes.navLink}
+                  style={linksStyles}
+                  href="/shop"
+
+                >
+                   {elem}  
+                </Link>
+               
+              )
+            })}
+           
+          </>
+           
           ]}
         />
       </ListItem>

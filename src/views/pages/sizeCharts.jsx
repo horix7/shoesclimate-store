@@ -27,6 +27,8 @@ export default class SizeChart extends Component {
                 <div
                     dangerouslySetInnerHTML={{__html: `
                     <div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
                     <div>
                 <caption>Men's Size Conversions</caption> 
                 <table class="table table-bordered">

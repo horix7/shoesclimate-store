@@ -14,6 +14,10 @@
 
 }
 
+.hide-on-big {
+    display: none;
+}
+
 .cart-content {
     overflow-x: scroll;
     overflow-x: hidden;
@@ -393,6 +397,11 @@ button, a, span, select:hover {
        display: none;
    }
 
+
+
+.hide-on-big {
+    display: block;
+}
 
 .text-fields {
     width: 270px;

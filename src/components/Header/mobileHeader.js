@@ -21,10 +21,12 @@ export default function HeaderLinks(props) {
     <Fragment>
 
       <div className="mobileHeader">
-
+     
           <div className="div-holder">
+         
           <LoginModel className="mobile-nav-link" />
           </div>
+
           <Button
             color="transparent"
             href="#"
