@@ -1,11 +1,11 @@
 /*eslint-disable*/
-import React from "react";
+import React, {Fragment} from "react";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // material-ui core components
-import { List, ListItem } from "@material-ui/core";
+import { List, ListItem, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 // @material-ui/icons
@@ -37,6 +37,19 @@ export default function Footer(props) {
   const social = ["instgram", "facebook"]
   
   return (
+
+    <Fragment>
+
+      <div className="sizechartlink">
+
+      <h3> Size </h3>
+      <p> All sizes listed on our products are men sizes click to check our Size Conversion Chart</p>
+
+      <Button variant="contained" color="primary" href="/size"> Size Chart </Button>
+      </div>
+
+
+
     <footer  className="footer">
 
         <List>
@@ -90,6 +103,8 @@ export default function Footer(props) {
           </a>{" "}
         </div>
     </footer>
+    </Fragment>
+
   );
 }
 
