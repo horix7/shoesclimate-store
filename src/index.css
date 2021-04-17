@@ -156,7 +156,7 @@ option {
 
 
 .product_cardmedia:hover {
-    cursor: progress;
+    cursor: pointer;
     object-fit: cover;
 
 }
@@ -391,6 +391,10 @@ button, a, span, select:hover {
 
 .footer-link {
     color: white;
+}
+
+.shopPage {
+    margin-top: 60px;
 }
 @media only screen and (max-width: 900px) {
    .nav-text {

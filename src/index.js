@@ -11,6 +11,7 @@ import Components from "views/Components/Components";
 import ProductPage from 'views/pages/product.page'
 import AccountPage from 'views/pages/account.page'
 import CheckoutPage from 'views/pages/checkout.page'
+import ShopPage from 'views/pages/shop.page'
 import { UniversalState } from "./mobxState/stateManagment";
 import SizeChart from "./views/pages/sizeCharts"
 
@@ -26,6 +27,7 @@ ReactDOM.render(
        <Route path="/size" component={SizeChart} />
        <Route path="/checkout" component={CheckoutPage} />
        <Route path="/account" component={AccountPage} />
+       <Route path="/:collection" component={ShopPage} />
        <Route path="/" component={Components} />
      </Switch>
    </Router>
