@@ -87,10 +87,11 @@ export default function HeaderLinks(props) {
               return (
                 <Link
                   color="transparent"
-                  className={classes.dropdownList}
-                  to="/shop"
+                  className={classes.dropdownLink}
+                  to={`/${elem}`}
 
                 >
+                  {elem}
                   
                 </Link>
                

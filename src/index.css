@@ -400,7 +400,10 @@ button, a, span, select:hover {
 
 
 .hide-on-big {
-    display: block;
+    display: inline-block;
+    overflow-y: auto;
+    height: 70vh;
+
 }
 
 .text-fields {
