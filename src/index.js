@@ -14,6 +14,9 @@ import CheckoutPage from 'views/pages/checkout.page'
 import ShopPage from 'views/pages/shop.page'
 import { UniversalState } from "./mobxState/stateManagment";
 import SizeChart from "./views/pages/sizeCharts"
+import SearchPage from "views/pages/search-results"
+
+
 
 var hist = createBrowserHistory();
 
@@ -24,6 +27,7 @@ ReactDOM.render(
    <Router history={hist}>
      <Switch>
        <Route path="/product/:id" component={ProductPage} />
+       <Route path="/search/:search" component={SearchPage} />
        <Route path="/size" component={SizeChart} />
        <Route path="/checkout" component={CheckoutPage} />
        <Route path="/account" component={AccountPage} />

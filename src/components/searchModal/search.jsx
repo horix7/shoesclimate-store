@@ -31,6 +31,7 @@ export default function SwipeableTemporaryDrawer(props) {
     setState({ ...state, [anchor]: open });
   };
 
+  const [searchQuery, setSearchQuery] = React.useState("")
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -41,8 +42,10 @@ export default function SwipeableTemporaryDrawer(props) {
     //   onKeyDown={toggleDrawer(anchor, false)}
       style={{padding: "10px",display: "grid", gridTemplateColumns: "75% 20%", gridColumnGap: "5%"}}
     >
-        <TexField label="search" style={{width: "100%"}}  fullWidth variant="outlined" autoFocus /> 
-        <Button variant="contained" style={{maxWidth: "100px" ,backgroundColor: "black", color: "white"}}> Search</Button>
+        <TexField value={searchQuery} onChange={(e) => {
+          setSearchQuery(e.target.value)
+        }} label="search" style={{width: "100%"}}  fullWidth variant="outlined" autoFocus /> 
+        <Button variant="contained"  href={"/search/" + searchQuery} style={{maxWidth: "100px" ,backgroundColor: "black", color: "white"}}> Search</Button>
 
     </div>
   );

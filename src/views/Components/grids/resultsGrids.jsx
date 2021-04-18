@@ -7,7 +7,7 @@ export default class ProductGrids extends Component {
         return (
 
             <Fragment>
-                <h1 className="gridHeader">Product Result For {this.props.search} </h1>
+                <h1 className="gridHeader"> Result For :  {this.props.search} </h1>
                   <div className="product_grids"> { this.props.products.map(elem => <ProductCard key={elem.id} product={elem} />)} </div> 
             </Fragment>
         )

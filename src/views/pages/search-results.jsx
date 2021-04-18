@@ -26,8 +26,12 @@ export default function SearchResults(props) {
 
   useEffect(async () => {
 
-    const products = await searchProducts(this.props.match.params.search)
+    try {
+      const products = await searchProducts(props.match.params.search)
     setState(products.data)
+    }catch {
+      setState([])
+    }
 
   }, state)
   return (
@@ -44,7 +48,7 @@ export default function SearchResults(props) {
                 />
 
      <div className="shopPage">
-     <ProductGrids products={state} search={this.props.match.params.search} />
+     <ProductGrids products={state} search={props.match.params.search} />
 
      </div>
  <Footer />
