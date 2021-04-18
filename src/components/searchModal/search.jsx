@@ -42,7 +42,11 @@ export default function SwipeableTemporaryDrawer(props) {
     //   onKeyDown={toggleDrawer(anchor, false)}
       style={{padding: "10px",display: "grid", gridTemplateColumns: "75% 20%", gridColumnGap: "5%"}}
     >
-        <TexField value={searchQuery} onChange={(e) => {
+        <TexField value={searchQuery} onKeyDown={(event) => {
+          if(event.key === "Enter") {
+            location.href= "/search/" + searchQuery
+          }
+}}  onChange={(e) => {
           setSearchQuery(e.target.value)
         }} label="search" style={{width: "100%"}}  fullWidth variant="outlined" autoFocus /> 
         <Button variant="contained"  href={"/search/" + searchQuery} style={{maxWidth: "100px" ,backgroundColor: "black", color: "white"}}> Search</Button>
