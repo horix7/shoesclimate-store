@@ -15,6 +15,13 @@ export const getProductDataByCollection = async (collection) => {
     return products.data
 
 }
+
+export const getProductDataByCollection = async (search) => {
+
+    const products = await http.get("/api/v1/product/search?q=" + search)
+    return products.data
+
+}
 export const getUserCart = async () => {
 
     const cart = await http.get("/api/v1/cart")
