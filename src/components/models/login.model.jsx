@@ -114,7 +114,7 @@ export default function FormDialog(props) {
           >
             <i className={classes.socialIcons + " fas fa-user"} />
           </Button> }
-      <Dialog open={store.loginModal} onClose={handleClose} maxWidth={"xs"} aria-labelledby="form-dialog-title">
+      <Dialog open={store.loginModal} onClose={handleClose} maxWidth={"sm"} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title"> Account </DialogTitle>
         <DialogContent>
            
@@ -122,7 +122,6 @@ export default function FormDialog(props) {
             {success.message}
           </Alert> : null}
 
-               
          {error.status ?  <Alert severity="error" color="error">
             {error.message}
           </Alert> : null}

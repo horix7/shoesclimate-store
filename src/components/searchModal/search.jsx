@@ -37,12 +37,12 @@ export default function SwipeableTemporaryDrawer(props) {
         [classes.fullList]: anchor === 'top' || anchor === 'bottom',
       })}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-      style={{padding: "20px",display: "grid", gridTemplateColumns: "75% 15%", gridColumnGap: "5%"}}
+    //   onClick={toggleDrawer(anchor, false)}
+    //   onKeyDown={toggleDrawer(anchor, false)}
+      style={{padding: "10px",display: "grid", gridTemplateColumns: "75% 20%", gridColumnGap: "5%"}}
     >
         <TexField label="search" style={{width: "100%"}}  fullWidth variant="outlined" autoFocus /> 
-        <Button variant="contained" style={{backgroundColor: "black", color: "white"}}> Search</Button>
+        <Button variant="contained" style={{maxWidth: "100px" ,backgroundColor: "black", color: "white"}}> Search</Button>
 
     </div>
   );
