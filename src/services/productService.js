@@ -16,7 +16,7 @@ export const getProductDataByCollection = async (collection) => {
 
 }
 
-export const getProductDataByCollection = async (search) => {
+export const searchProducts = async (search) => {
 
     const products = await http.get("/api/v1/product/search?q=" + search)
     return products.data
