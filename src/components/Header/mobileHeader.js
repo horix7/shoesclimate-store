@@ -11,6 +11,7 @@ import Button from "components/CustomButtons/Button.js";
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 import CartDrawer from 'components/cardDrawer/cart'
 import LoginModel from 'components/models/login.model'
+import SearchModal from "components/searchModal/search"
 
 
 const useStyles = makeStyles(styles);
@@ -27,14 +28,16 @@ export default function HeaderLinks(props) {
           <LoginModel className="mobile-nav-link" />
           </div>
 
-          <Button
+          <SearchModal iconClassName={classes.socialIcons} classNames={classes.navLink}/>
+          
+          {/* <Button
             color="transparent"
             href="#"
             target="_blank"
             className={classes.navLink}
           >
             <i className={classes.socialIcons + " fas fa-search"} />
-          </Button>
+          </Button> */}
       
         <div>
 

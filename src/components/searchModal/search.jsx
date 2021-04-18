@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+import TexField from '@material-ui/core/TextField'
 
 const useStyles = makeStyles({
   list: {
@@ -38,8 +39,11 @@ export default function SwipeableTemporaryDrawer(props) {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
+      style={{padding: "20px",display: "grid", gridTemplateColumns: "75% 15%", gridColumnGap: "5%"}}
     >
-        drawer open 
+        <TexField label="search" style={{width: "100%"}}  fullWidth variant="outlined" autoFocus /> 
+        <Button variant="contained" style={{backgroundColor: "black", color: "white"}}> Search</Button>
+
     </div>
   );
 
