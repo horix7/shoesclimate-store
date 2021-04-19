@@ -20,6 +20,14 @@ import SearchPage from "views/pages/search-results"
 
 var hist = createBrowserHistory();
 
+if(!localStorage.currency) {
+  localStorage.setItem("currency", JSON.stringify({
+    name: "RWF",
+    rate: "1"
+  }))
+}
+
+
 ReactDOM.render(
   (
   <UniversalState>

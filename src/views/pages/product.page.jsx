@@ -148,7 +148,7 @@ export default class ProductPage extends Component {
                         <FormControl>
                         <p className="product-label"> Size </p>
                          <Select onChange={this.updateSize} labelId="label" variant="outlined" id="label" Label="Size" value={this.state.cart.size} className="product-select">
-                            {[35,36,37,38,39,40,41,42,43].map( elem => <MenuItem  value={elem}> {elem} </MenuItem> )}
+                            {[35,36,37,38,39,40,41,42,43,44,45,46,47,48,49].map( elem => <MenuItem  value={elem}> {elem} </MenuItem> )}
                         </Select>
                         </FormControl>
 
