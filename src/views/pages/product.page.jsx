@@ -143,7 +143,7 @@ export default class ProductPage extends Component {
                     <div className="product-content">
                         <h1> {this.state.product.title }</h1>
                         <Typography className="product-price" >
-                        {this.state.product.price } RWF
+                        {(this.state.product.price * Number(JSON.parse(localStorage.currency).rate)).toFixed(2)} {JSON.parse(localStorage.currency).name}
                         </Typography>
                         <FormControl>
                         <p className="product-label"> Size </p>

@@ -20,7 +20,8 @@ export default class ProductCard extends Component {
             </p>
           </CardContent>
           <div style={{textAlign: "center"}}>
-          {this.props.product.price} RWF 
+          {(this.props.product.price * Number(JSON.parse(localStorage.currency).rate)).toFixed(2)} {JSON.parse(localStorage.currency).name}
+
 
           </div>
         </div>
