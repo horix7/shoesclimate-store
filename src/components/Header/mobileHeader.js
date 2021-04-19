@@ -40,16 +40,31 @@ export default function HeaderLinks(props) {
           </Button> */}
       
         <div>
-
         <select
           id="nav-simple-select"
           className={classes.navLink}
+          value={JSON.parse(localStorage.currency).name}
+          onChange={(event) => {
+            let conversion = {
+              USD : 0.0010,
+              EURO: 0.00085,
+              RWF: 1
+            }
+
+            localStorage.setItem("currency", JSON.stringify({
+              name: event.target.value,
+              rate: conversion[event.target.value]
+            }))
+
+            location.reload()
+          }}
 
         >
-          <option value={10}>USD</option>
-          <option value={20}>EURO</option>
-          <option value={30}>FR</option>
+          <option value={"RWF"}>RWF</option>
+          <option value={"USD"}>USD</option>
+          <option value={"EURO"}>EURO</option>
         </select>
+
           </div>
           <CartDrawer className="mobile-nav-link" />
          
