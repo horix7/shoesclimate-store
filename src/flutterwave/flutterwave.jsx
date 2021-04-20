@@ -3,13 +3,14 @@ import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import { TextField, Typography, Button } from "@material-ui/core"
 import { StoreContext } from "../mobxState/stateManagment";
 
-export default function FlutterWave () {
+export default function FlutterWave (props) {
+
+  console.log(props)
   const [config, setConfig ] = useState({
     public_key: 'FLWPUBK_TEST-96bc0402de1213b618f9f58986fd0701-X',
     tx_ref: Date.now(),
-    amount: 100,
-    currency: 'RWF',
-    payment_options: 'card,mobilemoney',
+    amount: props.total,
+    currency: props.currency,
     customer: {
       email: null,
       phonenumber: null,

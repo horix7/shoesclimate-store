@@ -4,7 +4,6 @@ import { List, ListItem, Typography } from "@material-ui/core"
 
 export default function OrderSummary(props) {
 
-    const [state, setState] = useState(null)
 
     return (
         <Fragment>

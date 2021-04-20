@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -13,6 +13,7 @@ import { StoreContext } from "../../mobxState/stateManagment";
 import { useObserver } from "mobx-react";
 import { createOrder } from "../../services/productService";
 import  PlaceOrder from "../../views/Components/order/placeOrder";
+import { getUserCart } from "../../services/productService";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,18 +38,28 @@ function getSteps() {
   return ['delivery address', 'confirm payment', 'place order'];
 }
 
-function getStepContent(step) {
+function getStepContent(step, state) {
+
+  if(state.cartItems) {
+    state = state
+  }else {
+    state = {
+      cartItems: {
+        totalAmount: 0
+      }
+    }
+  }
   switch (step) {
     case 0:
       return <DeliveryForm />;
     case 1:
-      return <FlutterPayment />;
+      return <FlutterPayment state={state}   total={(Number(state.cartItems.totalAmount ) * JSON.parse(localStorage.currency).rate).toFixed(2)}  currency={JSON.parse(localStorage.currency).name}/>;
     default:
-     return <PlaceOrder/>  
+     return <PlaceOrder state={state} />  
     }
 }
 
-export default function VerticalLinearStepper() {
+export default function VerticalLinearStepper(props) {
   const classes = useStyles();
 
   const store = useContext(StoreContext)
@@ -77,7 +88,7 @@ export default function VerticalLinearStepper() {
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
             <StepContent>
-              <Typography>{getStepContent(index)}</Typography>
+              <Typography>{getStepContent(index, props.state)}</Typography>
               <div className={classes.actionsContainer}>
                 <div>
                   <Button

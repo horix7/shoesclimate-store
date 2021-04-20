@@ -4,20 +4,12 @@ import { useObserver } from "mobx-react";
 import { StoreContext } from "../../../mobxState/stateManagment";
 import { getUserCart  } from "../../../services/cartServices";
 import { List, ListItem, Button, CircularProgress } from "@material-ui/core";
-import { createOrder } from "../../../services/productService";
+import { createOrder } from "../../../services/productService"; 
 import Success from "./succesModel"
 
 export default function Receipt(props) {
     
     const store = useContext(StoreContext)
-
-    const [state, setState] = useState({})
-
-    useEffect(async () => {
-        const cart = await getUserCart()
-        setState({cartItems: cart.cartItem})
-    }, state )
-
 
     const orderDetails = {
         ...store.shipping
@@ -39,7 +31,7 @@ export default function Receipt(props) {
         
         <div className="checkout-summary-mobile">
 
-        <CartSummary state={state} />
+        <CartSummary state={props.state} />
         </div>
         <Success open={open} />
         <List>

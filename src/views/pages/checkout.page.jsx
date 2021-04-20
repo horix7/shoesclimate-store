@@ -33,7 +33,7 @@ export default class Checkout extends Component {
                 <AppBar color="inherit"> <Typography component="h2" style={{fontWeight: "900",padding: "10px", textTransform: "uppercase", color: "black"}}>Checkout Shoes Climate</Typography> </AppBar>
 
                 <div className="checkout">
-                    <CheckoutStepper />
+                    <CheckoutStepper state={this.state} />
                 <div className="checkout-summary">
                     <OrderSummary state={this.state} />
      
