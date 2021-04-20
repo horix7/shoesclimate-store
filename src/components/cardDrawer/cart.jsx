@@ -80,7 +80,7 @@ export default function TemporaryDrawer(props) {
         <Typography  variant="h6" style={{color: "grey", textAlign: "center", backgroundColor: "whitesmoke", padding: "2px"}}  component="h6">CART ITEMS</Typography>
         <div className="total-amount">
         <Typography>grand total</Typography>
-        <Typography style={{textAlign: "end"}}> { cartItems ? cartItems.totalAmount :  localStorage.displayCart ? (JSON.parse(localStorage.displayCart).map(elem => Number(elem.price) * Number(elem.qty)).reduce((a,b) => a + b ) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) : 0 } {JSON.parse(localStorage.currency).name} </Typography>
+        <Typography style={{textAlign: "end"}}> { cartItems ? (Number(cartItems.totalAmount ) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) :  localStorage.displayCart ? (JSON.parse(localStorage.displayCart).map(elem => Number(elem.price) * Number(elem.qty)).reduce((a,b) => a + b ) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) : 0 } {JSON.parse(localStorage.currency).name} </Typography>
         </div>
 
 
@@ -92,7 +92,7 @@ export default function TemporaryDrawer(props) {
             <img alt="Remy Sharp" className="cart-image"  src={JSON.parse(elem.image)[0]} />
             <div className="cart-item-info">
               <span> {elem.title} </span> 
-              <span> {`${(elem.price * Number(JSON.parse(localStorage.currency).rate)).toFixed(2)} * ${elem.qty}`} </span>
+              <span> {`${(elem.price * Number(JSON.parse(localStorage.currency).rate)).toFixed(2)} X ${elem.qty}`} </span>
 
             </div>
             <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) }</Typography>
@@ -108,7 +108,7 @@ export default function TemporaryDrawer(props) {
             <div className="cart-item-info">
               <span> {elem.title} </span> 
 
-              <span> {`${(elem.price * Number(JSON.parse(localStorage.currency).rate)).toFixed(2)} * ${elem.qty}`} </span>
+              <span> {`${(elem.price * Number(JSON.parse(localStorage.currency).rate)).toFixed(2)} X ${elem.qty}`} </span>
             </div>
             <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) }</Typography>
             </div>
