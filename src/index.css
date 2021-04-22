@@ -149,7 +149,19 @@ option {
 
 }
 
+.collectiondrop {
+    color: rgba(0, 0, 0, 0.795);
+    background-color: transparent;
+    width: 100%;
+    padding: 10px;
+    font-size: large;
+    text-transform: lowercase;
+    margin-bottom: 20px;
+}
 
+.collectiondrop:hover {
+    color: white;
+}
 .product_cardmedia {
     width: 100%;
     height: 180px;
@@ -472,6 +484,7 @@ button, a, span, select:hover {
     padding: 2px;
     margin-top: 30px;
 }
+
 
    .product-content {
     padding: 10px;

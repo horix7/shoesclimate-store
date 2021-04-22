@@ -87,8 +87,8 @@ export default function HeaderLinks(props) {
           dropdownList={[...["YEEZY", "AIR MAX", "AIR FORCE", "AIR ZOOM", "NIKE", "NIKE DUNKs", "ADIDAS", "CONVERSE", "BALENCIAGA", "OFF-WHITE", "NEW BALANCE", "SACAI", "VERSACE", "NBA", "LEBRONs", "CURRY", "KOBE", "KYRIE", "KEVIN DURANT", "FILA", "SLIDES", "VANS", "VAPORMAX", "HUARACHE", "HUMAN RACE", "PUMA", "McQUEEN", "REEBOK"].map(elem => {
               return (
                 <a
-                  color="transparent"
-                  className={classes.dropdownLink}
+                  // color="transparent"
+                  className={"collectiondrop"}
                   href={`/${elem}`}
 
                 >
