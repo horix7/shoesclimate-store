@@ -33,8 +33,8 @@ export default function Footer(props) {
   }
 
 
-  const links = ["About us", "Contact us", "Shipping" , "FAQS", "Terms & Conditions", "Purchase and returns"]
-  const social = ["instgram", "facebook"]
+  const links = ["About us", "Contact us", "Shipping" ]
+  const social = ["instagram", "facebook"]
   
   return (
 
@@ -92,17 +92,19 @@ export default function Footer(props) {
             </ListItem>))}
 
           </List>
-        <div>
-          &copy; {1900 + new Date().getYear()} , by{" "}
+          <div></div>
+    </footer>
+
+    <div className="bottomFooter">
+          &copy; {1900 + new Date().getYear()} , all right deserved {" "}
           <a
-            href="#?ref=mkr-footer"
+            href="/"
             className={aClasses}
             target="_blank"
           >
-            Shoesclimate 
+            shoesclimate 
           </a>{" "}
         </div>
-    </footer>
     </Fragment>
 
   );

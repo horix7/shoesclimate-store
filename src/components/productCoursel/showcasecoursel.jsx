@@ -24,7 +24,7 @@ export default class ProductCoursel extends Component {
             infinite: true,
             slidesToShow: 4 ,
             slidesToScroll: 1,
-            autoplay: this.props.play,
+            autoplay: true,
             speed: 2000,
             autoplaySpeed: 2000,
             cssEase: "linear",
@@ -62,7 +62,7 @@ export default class ProductCoursel extends Component {
         <div className="slider">
         <h2> </h2>
         <Slider {...settings}>
-          {this.state.products.map(elem => (
+          {this.state.products.reverse().slice(10, 100).map(elem => (
             <div key={elem.id}>
             <ProductBox product={elem} />
             </div>  

@@ -14,6 +14,16 @@
 
 }
 
+.bottomFooter {
+    background-color: rgba(0, 0, 0, 0.908);
+    text-align: end;
+    padding: 10px;
+    color: grey;
+}
+
+.bottomFooter a {
+    color: white;
+}
 .hide-on-big {
     display: none;
 }
@@ -387,10 +397,12 @@ button, a, span, select:hover {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .footer-link {
-    color: white;
+    color: rgba(255, 255, 255, 0.856);
+    text-transform: capitalize;
 }
 
 .shopPage {
