@@ -33,9 +33,31 @@ export default function Footer(props) {
   }
 
 
-  const links = ["About us", "Contact us", "Shipping" ]
-  const social = ["instagram", "facebook"]
-  
+  const links = [ {
+    link: "contact",
+    name: "contact us"
+  },
+{
+  link: "contact",
+  name: "about us"
+},
+{
+link: "contact",
+name: "shipping "
+}
+]
+  const social = [
+    {
+      link: "https://www.instagram.com/shoesclimate/",
+      name: "instagram"
+    },
+
+    {
+      link: "https://www.instagram.com/shoesclimate/",
+      name: "facebook"
+    }
+  ]
+
   return (
 
     <Fragment>
@@ -57,7 +79,6 @@ export default function Footer(props) {
               <a
                 href="#"
                 className="footer-link"
-                target="_blank"
               >
                {elem}
               </a>
@@ -69,11 +90,10 @@ export default function Footer(props) {
 
             {links.map(elem => (  <ListItem key={elem} className="footer-list">
               <a
-                href="#"
+                href={`/${elem.link}`}
                 className="footer-link"
-                target="_blank"
               >
-               {elem}
+               {elem.name}
               </a>
             </ListItem>))}
             
@@ -83,11 +103,11 @@ export default function Footer(props) {
           <List>
           {Object.values(social).map(elem => (  <ListItem key={elem} className="footer-list">
               <a
-                href="#"
+                href={elem.link}
                 className="footer-link"
                 target="_blank"
               >
-               {elem}
+               {elem.name}
               </a>
             </ListItem>))}
 
