@@ -28,8 +28,8 @@ export default function Footer(props) {
   });
 
   const contacts = {
-    "email": 'contact@shoesclimate.com',
-    phone: "0782374832"
+    email: 'shoesclimate@gmail.com',
+    phone: "+250782374832"
   }
 
 

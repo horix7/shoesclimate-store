@@ -14,6 +14,22 @@
 
 }
 
+.contact-info {
+    max-width: 600px;
+}
+
+.two-end {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.two-end p {
+    text-align: start;
+}
+
+.two-end:last-child {
+    text-align: start;
+}
 .bottomFooter {
     background-color: rgba(0, 0, 0, 0.908);
     text-align: end;

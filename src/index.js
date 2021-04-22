@@ -15,6 +15,7 @@ import ShopPage from 'views/pages/shop.page'
 import { UniversalState } from "./mobxState/stateManagment";
 import SizeChart from "./views/pages/sizeCharts"
 import SearchPage from "views/pages/search-results"
+import Contact from 'views/pages/contact-us'
 
 
 
@@ -40,6 +41,7 @@ ReactDOM.render(
        <Route path="/search/:search" component={SearchPage} />
        <Route path="/size" component={SizeChart} />
        <Route path="/checkout" component={CheckoutPage} />
+       <Route path="/contact" component={Contact} />
        <Route path="/account" component={AccountPage} />
        <Route path="/:collection" component={ShopPage} />
        <Route path="/" component={Components} />
