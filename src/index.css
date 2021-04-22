@@ -162,6 +162,8 @@ option {
 .collectiondrop:hover {
     color: white;
 }
+
+
 .product_cardmedia {
     width: 100%;
     height: 180px;
@@ -508,6 +510,8 @@ button, a, span, select:hover {
     font-size: small;
     font-weight: normal;
     outline: none;
+    position: static;
+    width: fit-content;
 }
 
 
