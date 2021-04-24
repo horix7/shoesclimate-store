@@ -7,7 +7,7 @@ export default function FlutterWave (props) {
 
   console.log(props)
   const [config, setConfig ] = useState({
-    public_key: 'FLWPUBK_TEST-96bc0402de1213b618f9f58986fd0701-X',
+    public_key: process.env.FLUTTER_KEY,
     tx_ref: Date.now(),
     amount: props.total,
     currency: props.currency,

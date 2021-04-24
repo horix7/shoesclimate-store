@@ -17,6 +17,8 @@ import SizeChart from "./views/pages/sizeCharts"
 import SearchPage from "views/pages/search-results"
 import Contact from 'views/pages/contact-us'
 
+require("dotenv").config()
+
 
 
 var hist = createBrowserHistory();
