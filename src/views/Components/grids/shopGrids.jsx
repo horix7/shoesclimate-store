@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import  ProductCard from "components/productCard/card";
-import { getProductDataByCollection, getProductData } from "../../../services/productService";
+import { getProductDataByCollection, getProductDataShop } from "../../../services/productService";
 
 export default class ProductGrids extends Component {
     
@@ -13,7 +13,7 @@ export default class ProductGrids extends Component {
     }
 
     getProductsData = async () => {
-        const products = this.props.collection == "shop" ? await getProductData()  : await getProductDataByCollection(this.props.collection)
+        const products = this.props.collection == "shop" ? await getProductDataShop()  : await getProductDataByCollection(this.props.collection)
         this.setState({products: products.data})
 
     }

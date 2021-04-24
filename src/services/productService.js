@@ -9,6 +9,14 @@ export const getProductData = async () => {
 }
 
 
+export const getProductDataShop = async () => {
+
+    const products = await http.get("/api/v1/shop")
+    return products.data
+
+}
+
+
 export const getProductDataByCollection = async (collection) => {
 
     const products = await http.get("/api/v1/products/collection/" + collection)
