@@ -476,6 +476,12 @@ button, a, span, select:hover {
        display: none;
    }
 
+   .category {
+    grid-template-columns: 70% 1fr;
+    padding: 15px;
+}
+
+
 
 
 .hide-on-big {
