@@ -38,11 +38,11 @@ export default function Footer(props) {
     name: "contact us"
   },
 {
-  link: "contact",
+  link: "about",
   name: "about us"
 },
 {
-link: "contact",
+link: "shipping",
 name: "shipping "
 }
 ]
@@ -53,8 +53,13 @@ name: "shipping "
     },
 
     {
-      link: "https://www.instagram.com/shoesclimate/",
-      name: "facebook"
+      link: "https://www.pinterest.com/iradukunda250rwanda/_created/",
+      name: "pinterest"
+    },
+
+    {
+      link: "https://twitter.com/shoesclimate",
+      name: "twitter"
     }
   ]
 

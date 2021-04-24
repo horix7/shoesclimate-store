@@ -28,8 +28,8 @@ export default class Contact extends Component {
                 <div className="contact-info">
                     <List>
                         <ListItem>
-                            <div className="two-end">
-                                <p>email : </p> <p> shoesclimate@gmail.com </p>
+                            <div className="">
+                                <p>EMAIL Us to shoesclimate@gmail.com </p>
                             </div>
                         </ListItem>
 

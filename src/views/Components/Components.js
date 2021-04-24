@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState,  useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
@@ -11,11 +11,21 @@ import ProductCoursel from "components/productCoursel/coursel";
 import SHowCaseCoursel from  'components/productCoursel/showcasecoursel'
 import Button from '@material-ui/core/Button'
 import LogoImg from '../../assets/img/logo.png'
-import ProductGrids from "./grids/productsGrids"
+import ProductGrids from "./grids/homeGrids"
 import BackgroundImage from 'assets/img/bg4.jpg'
 const useStyles = makeStyles(styles);
+import { getProductDataByCollectionHome } from "../../services/productService";
+
 
 export default function HomePage(props) {
+
+  const [homeProducts, setHomeProducts] = useState({})
+
+  useEffect(async() => {
+    const products = await getProductDataByCollectionHome()
+    setHomeProducts(products.data)
+  }, homeProducts)
+  
   const classes = useStyles();
   const { ...rest } = props;
   return (
@@ -49,7 +59,13 @@ export default function HomePage(props) {
         </div>
       </Parallax>
       <SHowCaseCoursel play={true} />
-      <ProductGrids />
+      {
+        Object.keys(homeProducts).length >= 1 ? <> 
+         { Object.keys(homeProducts).map(elem => {
+            return <ProductGrids products={homeProducts[elem]} />
+           }) }
+        </> : null 
+      }
 
  <Footer />
     </div>

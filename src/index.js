@@ -16,6 +16,8 @@ import { UniversalState } from "./mobxState/stateManagment";
 import SizeChart from "./views/pages/sizeCharts"
 import SearchPage from "views/pages/search-results"
 import Contact from 'views/pages/contact-us'
+import About from 'views/pages/about-us'
+import Shipping from 'views/pages/shipping'
 
 require("dotenv").config()
 
@@ -43,6 +45,8 @@ ReactDOM.render(
        <Route path="/search/:search" component={SearchPage} />
        <Route path="/size" component={SizeChart} />
        <Route path="/checkout" component={CheckoutPage} />
+       <Route path="/shipping" component={Shipping} />
+       <Route path="/about" component={About} />
        <Route path="/contact" component={Contact} />
        <Route path="/account" component={AccountPage} />
        <Route path="/:collection" component={ShopPage} />

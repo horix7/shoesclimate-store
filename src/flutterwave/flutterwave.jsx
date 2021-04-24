@@ -2,7 +2,9 @@ import React, { useState, useContext } from 'react';
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import { TextField, Typography, Button } from "@material-ui/core"
 import { StoreContext } from "../mobxState/stateManagment";
+require("dotenv").config()
 
+ 
 export default function FlutterWave (props) {
 
   console.log(props)

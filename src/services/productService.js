@@ -16,6 +16,17 @@ export const getProductDataByCollection = async (collection) => {
 
 }
 
+
+export const getProductDataByCollectionHome = async () => {
+
+    const products = await http.get("/api/v1/products/home")
+    
+    return products.data
+
+}
+
+
+
 export const searchProducts = async (search) => {
 
     const products = await http.get("/api/v1/product/search?q=" + search)

@@ -4,6 +4,14 @@
     outline: none;
 }
 
+
+.about-page p {
+    font-size: x-large;
+    text-align: start;
+    padding: 20px;
+    width: 90%;
+}
+
 .card_count {
     background-color: rgb(0, 177, 247);
     color: white;
@@ -16,8 +24,13 @@
 
 .contact-info {
     max-width: 600px;
+    font-size: x-large;
 }
 
+
+.contact-info p {
+    font-size: x-large;
+}
 .two-end {
     display: grid;
     grid-template-columns: 1fr 1fr;
