@@ -511,8 +511,8 @@ button, a, span, select:hover {
     height: 300px;
     width: 100%;
     text-align: center;
-    background-attachment: fixed;
-    background-size:  contain;
+    background-attachment: local;
+    background-size:  cover;
 }
 
    .collection-grids {
