@@ -15,6 +15,8 @@ import ProductGrids from "./grids/homeGrids"
 import BackgroundImage from 'assets/img/bg4.jpg'
 const useStyles = makeStyles(styles);
 import { getProductDataByCollectionHome } from "../../services/productService";
+import ComponentsGrids from "../Components/grids/featured_collection"
+
 
 
 export default function HomePage(props) {
@@ -50,7 +52,7 @@ export default function HomePage(props) {
                 <h3 className={classes.subtitle}>
                   best shoes store in kigali 
                 </h3>
-                <button className="shop-button">
+                <button onClick={() => location.href = "#shop-now"} className="shop-button">
                   Shop Now 
                 </button>
               </div>
@@ -58,7 +60,12 @@ export default function HomePage(props) {
           </GridContainer>
         </div>
       </Parallax>
+
       <SHowCaseCoursel play={true} />
+
+      <div id="shop-now">
+        <ComponentsGrids />
+      </div>
       {
         Object.keys(homeProducts).length >= 1 ? <> 
          { Object.keys(homeProducts).map(elem => {
