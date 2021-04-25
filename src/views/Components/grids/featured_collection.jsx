@@ -14,7 +14,7 @@ export default class FeaturedGrids extends Component {
                     }} />
 
                 <Collection collection={{
-                        name: "ADDIDAS",
+                        name: "ADIDAS",
                         image: "https://i.pinimg.com/originals/ca/26/71/ca267137829f6205b7080528f3619b4c.jpg"
                     }} />
 

@@ -12,7 +12,7 @@ export default class ProducGrids extends Component {
                     <p>
                         {this.props.collection.name} collection
                     </p>
-                    <Button variant="outlined" style={{color: "white", borderColor: "white"}}>
+                    <Button variant="outlined" href={'/search/' + this.props.collection.name } style={{color: "white", borderColor: "white"}}>
                         View Collection
                     </Button>
                     </div>
