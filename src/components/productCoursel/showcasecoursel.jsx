@@ -2,6 +2,7 @@ import React, {Component , Fragment } from 'react'
 import Slider from "react-slick";
 import ProductBox from 'components/productCard/card'
 import { getProductData } from "../../services/productService";
+import GridSkeleton from "../../views/Components/skeleton/gridSkeleton"
 
 export default class ProductCoursel extends Component {
 
@@ -61,15 +62,14 @@ export default class ProductCoursel extends Component {
             <Fragment>  
         <div className="slider">
         <h2> </h2>
-        <Slider {...settings}>
-          {this.state.products.reverse().slice(10, 100).map(elem => (
+       {this.state.products.length >= 1 ?  <Slider {...settings}>
+          {this.state.products.map(elem => (
             <div key={elem.id}>
             <ProductBox product={elem} />
             </div>  
           ))}
-         
+        </Slider> :  <Slider {...settings}>  {[1,2,3,4,5,6,7,8,9,10,11,12].map(() => <GridSkeleton /> )} </Slider>}
 
-        </Slider>
       </div>
             </Fragment>
         )

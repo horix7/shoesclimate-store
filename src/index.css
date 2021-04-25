@@ -520,6 +520,8 @@ button, a, span, select:hover {
    }
    .product-skeleton  {
        grid-template-columns: 1fr;
+       grid-gap: 10px;
+       padding: 2px;
    }
 
    .card_holder {

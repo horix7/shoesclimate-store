@@ -16,7 +16,7 @@ import BackgroundImage from 'assets/img/bg4.jpg'
 const useStyles = makeStyles(styles);
 import { getProductDataByCollectionHome } from "../../services/productService";
 import ComponentsGrids from "../Components/grids/featured_collection"
-
+import GridSkeleton from "../Components/skeleton/gridSkeleton"
 
 
 export default function HomePage(props) {
@@ -71,7 +71,10 @@ export default function HomePage(props) {
          { Object.keys(homeProducts).map(elem => {
             return <ProductGrids products={homeProducts[elem]} />
            }) }
-        </> : null 
+        </> :   <div className="product_grids">
+                    {[1,2,3,4,5,6,7,8,9,10,11,12].map(() => <GridSkeleton /> )}
+                </div>
+ 
       }
 
  <Footer />
