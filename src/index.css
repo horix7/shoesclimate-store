@@ -20,6 +20,13 @@
     font-weight: bold;
 }
 
+.product-skeleton {
+    display: grid;
+    margin-top: 80px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    padding: 20px;
+}
 .feat-content {
     display: grid;
     place-items: center;
@@ -510,6 +517,9 @@ button, a, span, select:hover {
 @media only screen and (max-width: 900px) {
    .nav-text {
        display: none;
+   }
+   .product-skeleton  {
+       grid-template-columns: 1fr;
    }
 
    .card_holder {

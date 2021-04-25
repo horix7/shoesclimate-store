@@ -8,6 +8,8 @@ import RelatedCoursel from 'components/productCoursel/showcasecoursel'
 import Footer from 'components/Footer/Footer'
 import { Oneproductservice } from "../../services/productService";
 import { createCart } from "../../services/cartServices";
+import ProducSkeleton from "../Components/skeleton/productSkeleton"
+
 
 export default class ProductPage extends Component {
 
@@ -118,7 +120,7 @@ export default class ProductPage extends Component {
     render() {
         return (
             <Fragment>
-                  <Header
+                   <Header
                     brand={<Fragment> <img className="nav-logo" src={LogoImg} /> <span className="nav-text"> SHOES CLIMATE </span></Fragment>}
                     rightLinks={<HeaderLinks />}
                     fixed
@@ -128,6 +130,11 @@ export default class ProductPage extends Component {
                     color: "white"
                     }}
                 />
+
+                {
+                    Object.keys(this.state.product).length > 1 ? 
+                    <>
+                
                       <Snackbar
                         anchorOrigin={{
                         vertical: 'top',
@@ -174,7 +181,7 @@ export default class ProductPage extends Component {
                 </div>
                 
                 <RelatedCoursel play={false}/>  
-
+                </> : <ProducSkeleton />}
                 <Footer  />  
             </Fragment>
         )
