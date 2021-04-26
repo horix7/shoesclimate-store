@@ -9,6 +9,7 @@ import Footer from 'components/Footer/Footer'
 import { Oneproductservice } from "../../services/productService";
 import { createCart } from "../../services/cartServices";
 import ProducSkeleton from "../Components/skeleton/productSkeleton"
+import { v4 as uuidv4 } from "uuid";
 
 
 export default class ProductPage extends Component {
@@ -117,7 +118,10 @@ export default class ProductPage extends Component {
         const product = await Oneproductservice(this.props.match.params.id)
         this.setState({product: product.data})
     }
+    shareLink = location.href.split("product/")[0] + "product/" + localStorage.USER_EMAIL + "/"+ uuidv4() + "/" + location.href.split("product/")[1]
+
     render() {
+        
         return (
             <Fragment>
                    <Header
@@ -186,7 +190,7 @@ export default class ProductPage extends Component {
                             document.execCommand("copy");
 
                         }} className="cart-button">{this.state.loading2 ? "Link copied": "click to share and earn 10%"}</button>
-                            <TextField type="text" value={location.href} style={{fontSize: "xx-small", color: "blue"}} color="blue" id="myInput" />
+                            <TextField type="text" onChange={() => console.log("do nothing")} value={this.shareLink} style={{fontSize: "xx-small", color: "blue"}} color="blue" id="myInput" />
                            
                     </div>
                 </div>
