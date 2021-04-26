@@ -499,6 +499,11 @@ button, a, span, select:hover {
     font-weight: lighter;
 }
 
+#myInput {
+    background-color: rgb(134, 134, 134);
+    color: whitesmoke;
+    font-size: x-small;
+}
 .footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

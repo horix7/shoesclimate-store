@@ -1,6 +1,6 @@
 import React, { Component, Fragment, Context } from 'react'
 import ProductCoursel from 'components/productCoursel/coursel'
-import { Snackbar, CircularProgress , Select, MenuItem, Typography, FormControl } from "@material-ui/core"
+import { Snackbar, CircularProgress , Select, MenuItem, Typography, FormControl, TextField } from "@material-ui/core"
 import Header from 'components/Header/Header'
 import HeaderLinks from 'components/Header/HeaderLinks'
 import LogoImg from 'assets/img/logo.png'
@@ -172,11 +172,22 @@ export default class ProductPage extends Component {
                         </div>
                         </div>
 
-                        <button onClick={() => this.addToCart(this.state.cart)} className="cart-button">{this.state.loading ? <CircularProgress /> : " Add To cart "}</button>
+                        <button onClick={() => this.addToCart(this.state.cart)} className="cart-button">{this.state.loading ? <CircularProgress color="white" /> : " Add To cart "}</button>
 
                         <Typography  className="product-description">
                             <p dangerouslySetInnerHTML={{__html: this.state.product.description }}></p>
                         </Typography>
+                        <button onClick={() => {
+                            this.setState({loading2: true})
+                            
+                            let copyText = document.getElementById("myInput");
+                            copyText.select();
+                            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+                            document.execCommand("copy");
+
+                        }} className="cart-button">{this.state.loading2 ? "Link copied": "click to share and earn 10%"}</button>
+                            <TextField type="text" value={location.href} style={{fontSize: "xx-small", color: "blue"}} color="blue" id="myInput" />
+                           
                     </div>
                 </div>
                 
