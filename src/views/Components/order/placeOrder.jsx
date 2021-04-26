@@ -12,7 +12,8 @@ export default function Receipt(props) {
     const store = useContext(StoreContext)
 
     const orderDetails = {
-        ...store.shipping
+        ...store.shipping,
+        referal: localStorage.referral
     }
 
     const [loading, setloading] = useState(false)

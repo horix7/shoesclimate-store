@@ -53,6 +53,12 @@ export default class ProductPage extends Component {
     addToCart = async (product) => {
         this.setState({loading: true})
 
+        localStorage.setItem("referral", JSON.stringify({
+            referral: this.props.match.params.email,
+            product: this.props.match.params.id,
+            price: this.state.product.price
+        }))
+
         try {
             await createCart(this.state.cart)
             this.setState({loading: false, open: true})
