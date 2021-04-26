@@ -29,7 +29,7 @@ export default function Footer(props) {
 
   const contacts = {
     email: 'shoesclimate@gmail.com',
-    phone: "+250782374832"
+    phone: "+250788910236"
   }
 
 
@@ -84,6 +84,7 @@ name: "shipping "
               <a
                 href="#"
                 className="footer-link"
+                style={{textTransform: "lowercase"}}
               >
                {elem}
               </a>
