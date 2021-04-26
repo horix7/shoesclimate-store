@@ -69,6 +69,10 @@ export default class ProductPage extends Component {
                 <div className="orders">
                     <OrderTables />
                 </div>
+                <div className="orders">
+                    <h1>Your Referals Earnings </h1>
+                    <OrderTables />
+                </div>
                 </div>
                 {/* <Footer  />   */}
             </Fragment>
