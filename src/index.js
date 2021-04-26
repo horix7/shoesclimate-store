@@ -9,6 +9,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import Components from "views/Components/Components";
 import ProductPage from 'views/pages/product.page'
+import AffiliateProduct from 'views/pages/product.page.affiliate'
 import AccountPage from 'views/pages/account.page'
 import CheckoutPage from 'views/pages/checkout.page'
 import ShopPage from 'views/pages/shop.page'
@@ -41,6 +42,7 @@ ReactDOM.render(
 
    <Router history={hist}>
      <Switch>
+       <Route path="/product/:email/:uuid/:id" component={AffiliateProduct} />
        <Route path="/product/:id" component={ProductPage} />
        <Route path="/search/:search" component={SearchPage} />
        <Route path="/size" component={SizeChart} />

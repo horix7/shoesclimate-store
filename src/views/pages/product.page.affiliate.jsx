@@ -181,17 +181,13 @@ export default class ProductPage extends Component {
                         <Typography  className="product-description">
                             <p dangerouslySetInnerHTML={{__html: this.state.product.description }}></p>
                         </Typography>
-                        <button onClick={() => {
-                            this.setState({loading2: true})
-                            
-                            let copyText = document.getElementById("myInput");
-                            copyText.select();
-                            copyText.setSelectionRange(0, 99999); /* For mobile devices */
-                            document.execCommand("copy");
 
-                        }} className="cart-button">{this.state.loading2 ? "Link copied": "click to share and earn 10%"}</button>
-                            <TextField type="text" onChange={() => console.log("do nothing")} value={this.shareLink} style={{fontSize: "xx-small", color: "blue"}} color="blue" id="myInput" />
-                           
+                        <br/>
+                        <Typography  className="product-description">
+                            this is a referral link by user { this.props.match.params.email}
+                        </Typography>
+                       
+                        
                     </div>
                 </div>
                 
