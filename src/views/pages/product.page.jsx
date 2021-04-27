@@ -176,8 +176,11 @@ export default class ProductPage extends Component {
                         </div>
                         </div>
 
+                        <div className="towGrids">
                         <button onClick={() => this.addToCart(this.state.cart)} className="cart-button">{this.state.loading ? <CircularProgress color="white" /> : " Add To cart "}</button>
+                        <button onClick={() => this.addToCart(this.state.cart)} className="cart-button1">{this.state.loading ? <CircularProgress color="white" /> : "Buy Now"}</button>
 
+                        </div>
                         <Typography  className="product-description">
                             <p dangerouslySetInnerHTML={{__html: this.state.product.description }}></p>
                         </Typography>

@@ -359,7 +359,13 @@ option {
     font-weight: bold;
 }
 
-.product-content .cart-button {
+.towGrids {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+}
+
+.product-content .cart-button, .product-content .cart-button1 {
     margin-top: 20px;
 }
 
@@ -374,6 +380,16 @@ option {
     background-color: rgb(34, 34, 34);
     color: white;
     border: 1px solid black;
+    font-weight: 800;
+    font-size: large;
+    text-transform: uppercase;
+    height: 60px;
+}
+
+.cart-button1 {
+    background-color: transparent;
+    color: black;
+    border: 2px solid rgba(0, 0, 0, 0.733);
     font-weight: 800;
     font-size: large;
     text-transform: uppercase;

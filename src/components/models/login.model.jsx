@@ -98,6 +98,7 @@ export default function FormDialog(props) {
         >
           <Button
             color="transparent"
+            id="login_model"
             onClick={() => {
               !localStorage.AUTH_TOKEN ? handleClickOpen() : location.href = "/account"
             }}
@@ -107,6 +108,7 @@ export default function FormDialog(props) {
           </Button>
         </Tooltip> : <Button
             color="black"
+            id="login_model"
             onClick={() => {
               !localStorage.AUTH_TOKEN ? handleClickOpen() : location.href = "/account"
             }}
