@@ -125,7 +125,7 @@
 }
 
 .cart-bottom {
-    background-color: rgba(0, 0, 0, 0.915);
+    background-color: rgba(0, 9, 10, 0.174)
 }
 .card_count span {
     padding: 7.5px;
@@ -135,13 +135,22 @@
     font-size: smaller;
 }
 
+.order-cart-item {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 23% 73% 4%;
+    column-gap: 10px;
+    padding: 5px;
+    border-bottom: 4px double rgba(0, 0, 0, 0.074);
+}
+
 .cart-item {
     display: grid;
     width: 100%;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 21% 68% 10%;
     column-gap: 10px;
-    padding: 10px;
-    border-bottom: 2px solid whitesmoke;
+    padding: 3px;
+    border-bottom: 4px double rgba(0, 0, 0, 0.074);
 }
 
 .cart-image {
@@ -158,7 +167,8 @@
 
 .cart-bottom {
     display: grid;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 80% 1fr;
+    font-weight: bold;
     padding: 10px;
     column-gap: 10px;
 }

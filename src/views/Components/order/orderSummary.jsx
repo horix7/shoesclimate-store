@@ -12,14 +12,14 @@ export default function OrderSummary(props) {
         { props.state.cartItems ? props.state.cartItems.items.map(elem => {
         return (
             <ListItem>
-            <div className="cart-item">
+            <div className="order-cart-item">
             <img alt="Remy Sharp" className="cart-image"  src={JSON.parse(elem.image)[0]} />
             <div className="cart-item-info">
             <span> {elem.title} </span> 
             <span> {`${(elem.price * Number(JSON.parse(localStorage.currency).rate)).toFixed(2)} X ${elem.qty}`} </span>
+            <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) + " " + JSON.parse(localStorage.currency).name }</Typography>
 
             </div>
-            <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) }</Typography>
 
             </div>
         </ListItem>
@@ -32,9 +32,9 @@ export default function OrderSummary(props) {
                 <div className="cart-item-info">
                 <span> {elem.title} </span> 
                 <span> {`${(elem.price * Number(JSON.parse(localStorage.currency).rate)).toFixed(2)} X ${elem.qty}`} </span>
+                <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) }</Typography>
 
                 </div>
-            <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) }</Typography>
 
                 </div>
             </ListItem>

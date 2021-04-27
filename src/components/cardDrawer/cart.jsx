@@ -16,7 +16,7 @@ import { Avatar, Typography } from '@material-ui/core';
 import { StoreContext } from "../../mobxState/stateManagment"
 import { useObserver } from 'mobx-react';
 import { getUserCart } from "../../services/cartServices"
-
+import { RemoveShoppingCart, Close, ShoppingCart } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   list: {
@@ -76,13 +76,19 @@ export default function TemporaryDrawer(props) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <div className="cart-content" style={{height: "90vh"}}>
-        <Typography  variant="h6" style={{color: "grey", textAlign: "center", backgroundColor: "whitesmoke", padding: "2px"}}  component="h6">CART ITEMS</Typography>
-        <div className="total-amount">
-        <Typography>grand total</Typography>
-        <Typography style={{textAlign: "end"}}> { cartItems ? (Number(cartItems.totalAmount ) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) :  localStorage.displayCart ? (JSON.parse(localStorage.displayCart).map(elem => Number(elem.price) * Number(elem.qty)).reduce((a,b) => a + b ) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) : 0 } {JSON.parse(localStorage.currency).name} </Typography>
-        </div>
+      <div className="cart-bottom" style={{height: "10vh"}}>
+        <Button startIcon={<ShoppingCart />} onClick={() => {
+          if(localStorage.AUTH_TOKEN ) {
+            location.href="/checkout"
+          } else {
+            return  store.openModal()
+          } 
+        }} variant="contained" style={{backgroundColor: "blue", color: "white"}}> Checkout  </Button>
+        <Button onClick={toggleDrawer(anchor, false) } variant="contained" style={{borderColor: "black", color: "black", width: "fit-content"}}> <Close /> </Button>
 
+      </div>
+
+        <div className="cart-content" style={{height: "80vh"}}>
 
         <List>
          { cartItems ? cartItems.items.map(elem => {
@@ -93,9 +99,10 @@ export default function TemporaryDrawer(props) {
             <div className="cart-item-info">
               <span> {elem.title} </span> 
               <span> {`${(elem.price * Number(JSON.parse(localStorage.currency).rate)).toFixed(2)} X ${elem.qty}`} </span>
+              <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) } {JSON.parse(localStorage.currency).name}</Typography>
 
             </div>
-            <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) }</Typography>
+            <RemoveShoppingCart />
 
             </div>
           </ListItem>
@@ -107,26 +114,24 @@ export default function TemporaryDrawer(props) {
             <img alt="Remy Sharp" className="cart-image"  src={elem.image} />
             <div className="cart-item-info">
               <span> {elem.title} </span> 
-
               <span> {`${(elem.price * Number(JSON.parse(localStorage.currency).rate)).toFixed(2)} X ${elem.qty}`} </span>
+              <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) }  {JSON.parse(localStorage.currency).name}</Typography>
+
             </div>
-            <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) }</Typography>
+            <RemoveShoppingCart />
             </div>
           </ListItem>
            )
          }) : null }
         </List>
       </div>
-      <div className="cart-bottom" style={{height: "10vh"}}>
-        <Button onClick={toggleDrawer(anchor, false) } variant="outlined" style={{borderColor: "white", color: "white"}}> Close </Button>
-        <Button onClick={() => {
-          if(localStorage.AUTH_TOKEN ) {
-            location.href="/checkout"
-          } else {
-            return  store.openModal()
-          } 
-        }} variant="contained" style={{backgroundColor: "blue", color: "white"}}> Checkout  </Button>
-      </div>
+
+            {/* <Typography  variant="h6" style={{color: "grey", textAlign: "center", backgroundColor: "whitesmoke", padding: "2px"}}  component="h6">CART ITEMS</Typography> */}
+            <div className="total-amount" style={{height: "10vh", color: "grey", fontWeight: "bold", backgroundColor: "rgba(0, 9, 10, 0.074)"}}>
+        <Typography>grand total</Typography>
+        <Typography style={{textAlign: "end", fontWeight: "bold"}}> { cartItems ? (Number(cartItems.totalAmount ) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) :  localStorage.displayCart ? (JSON.parse(localStorage.displayCart).map(elem => Number(elem.price) * Number(elem.qty)).reduce((a,b) => a + b ) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) : 0 } {JSON.parse(localStorage.currency).name} </Typography>
+        </div>
+
     </div>
   );
 
