@@ -177,8 +177,19 @@ export default class ProductPage extends Component {
                         </div>
 
                         <div className="towGrids">
-                        <button onClick={() => this.addToCart(this.state.cart)} className="cart-button">{this.state.loading ? <CircularProgress color="white" /> : " Add To cart "}</button>
-                        <button onClick={() => this.addToCart(this.state.cart)} className="cart-button1">{this.state.loading ? <CircularProgress color="white" /> : "Buy Now"}</button>
+                        <button onClick={() => this.addToCart(this.state.cart)} className="cart-button">{this.state.loading !== this.state.loading1 && this.state.loading ? <CircularProgress color="white" /> : " Add To cart "}</button>
+                        <button onClick={async () => {
+                            this.setState({loading1: true})
+
+                            await this.addToCart(this.state.cart)
+                            
+                            if(localStorage.AUTH_TOKEN) {
+                                location.href = "/checkout"
+                            }else {
+                                document.querySelector("#login_model").click()
+                            
+                            }
+                            }} className="cart-button1">{this.state.loading1 ? <CircularProgress color="white" /> : "Buy Now"}</button>
 
                         </div>
                         <Typography  className="product-description">
