@@ -15,7 +15,7 @@ import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js
 import { Avatar, Typography } from '@material-ui/core';
 import { StoreContext } from "../../mobxState/stateManagment"
 import { useObserver } from 'mobx-react';
-import { getUserCart } from "../../services/cartServices"
+import { getUserCart, removeCart } from "../../services/cartServices"
 import { RemoveShoppingCart, Close, ShoppingCart } from "@material-ui/icons";
 
 const useStyles = makeStyles({
@@ -35,6 +35,14 @@ export default function TemporaryDrawer(props) {
   
   const classes = useStyles();
   const classes2 = useStyles2();
+  const localDisplayCart = () => {
+    try {
+      return JSON.parse(localStorage.displayCart)
+    }catch(err) {
+      return false 
+    }
+  }
+  const [localCart, setLocalCart] = React.useState(localDisplayCart())
   const [state, setState] = React.useState({
     top: false,
     left: store.openCart,
@@ -73,7 +81,6 @@ export default function TemporaryDrawer(props) {
         [classes.fullList]: anchor === 'top' || anchor === 'bottom',
       })}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <div className="cart-bottom" style={{height: "10vh"}}>
@@ -102,12 +109,14 @@ export default function TemporaryDrawer(props) {
               <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) } {JSON.parse(localStorage.currency).name}</Typography>
 
             </div>
-            <RemoveShoppingCart />
+            <RemoveShoppingCart onClick={() => {
+              console.log("clicked")
+            }} />
 
             </div>
           </ListItem>
            )
-         }) :  localStorage.displayCart ? JSON.parse(localStorage.displayCart).map(elem => {
+         }) :  localCart.length >= 1 ? localCart.map(elem => {
            return (
             <ListItem>
             <div className="cart-item">
@@ -118,7 +127,18 @@ export default function TemporaryDrawer(props) {
               <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) }  {JSON.parse(localStorage.currency).name}</Typography>
 
             </div>
-            <RemoveShoppingCart />
+            <RemoveShoppingCart onClick={() => {
+              if(localCart.length == 1) {
+                localStorage.removeItem("displayCart")
+                localStorage.removeItem("cart")
+                setLocalCart(null)
+              }else {
+                const newLoc = localCart.filter(elen => elen.id !== elem.id )
+                localStorage.setItem("displayCart", JSON.stringify(newLoc))
+                localStorage.setItem("cart", JSON.stringify(JSON.parse(localStorage.cart).filter(elen => elen.productId !== elem.id )))
+                setLocalCart(newLoc)
+              }
+            }} />
             </div>
           </ListItem>
            )
@@ -161,7 +181,7 @@ export default function TemporaryDrawer(props) {
         >
         <i className={classes2.socialIcons + " fas fa-shopping-cart"} />
         <div className="card_count">
-          <span> { cartItems ? cartItems.items.length :  localStorage.cart ? JSON.parse(localStorage.cart).length : 0 }</span>
+          <span> { cartItems ? cartItems.items.length :  localCart ? localCart.length : 0 }</span>
         </div>
         </Button>
          :
