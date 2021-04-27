@@ -8,12 +8,14 @@ export const getProductData = async () => {
 
 }
 
-export const getUserReferalInfo = async () => {
+export const getUserReferalInfo = async (email) => {
 
-    const products = await http.get("/api/v1/referal")
+    const products = await http.get("/api/v1/referal/" + email)
     return products.data
 
 }
+
+
 
 
 export const getProductDataShop = async () => {

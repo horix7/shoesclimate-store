@@ -7,6 +7,13 @@ export const createCart = async(data) => {
 } 
 
 
+export const removeCart = async(id) => {
+    
+    const cart = await http.delete("/api/v1/cart/removeitem/" +  id)
+    return cart.data.data
+} 
+
+
 export const UpdateCart = async(id) => {
     
     const updatedCart = await http.post(`/api/v1/cart/${id}`, data)
