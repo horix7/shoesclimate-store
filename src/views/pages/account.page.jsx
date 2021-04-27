@@ -6,6 +6,7 @@ import HeaderLinks from 'components/Header/HeaderLinks'
 import LogoImg from 'assets/img/logo.png'
 import { ExitToApp, LocalSeeOutlined } from "@material-ui/icons";
 import OrderTables from "views/Components/tables/orderTables"
+import ReferalTables from "views/Components/tables/referalTable"
 import { createCart } from "../../services/cartServices";
 
 
@@ -59,7 +60,7 @@ export default class ProductPage extends Component {
                 />
                <div className="account">
                 <div className="account-header">
-                    <Typography variant="button"> Orders</Typography>
+                    <Typography variant="h4" > Account</Typography>
                     <Button onClick={() => {
                         localStorage.removeItem("AUTH_TOKEN")
                         location.href = "/"
@@ -70,8 +71,7 @@ export default class ProductPage extends Component {
                     <OrderTables />
                 </div>
                 <div className="orders">
-                    <h1>Your Referals Earnings </h1>
-                    <OrderTables />
+                    <ReferalTables />
                 </div>
                 </div>
                 {/* <Footer  />   */}

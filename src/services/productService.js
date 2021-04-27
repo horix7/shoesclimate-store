@@ -16,8 +16,6 @@ export const getUserReferalInfo = async (email) => {
 }
 
 
-
-
 export const getProductDataShop = async () => {
 
     const products = await http.get("/api/v1/shop")
