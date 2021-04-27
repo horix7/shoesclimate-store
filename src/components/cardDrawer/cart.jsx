@@ -12,7 +12,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Tooltip from '@material-ui/core/Tooltip'
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
-import { Avatar, Typography } from '@material-ui/core';
+import { CircularProgress, Typography } from '@material-ui/core';
 import { StoreContext } from "../../mobxState/stateManagment"
 import { useObserver } from 'mobx-react';
 import { getUserCart, removeCart } from "../../services/cartServices"
@@ -35,6 +35,7 @@ export default function TemporaryDrawer(props) {
   
   const classes = useStyles();
   const classes2 = useStyles2();
+  const [loadindIndex, setLoadindIndex] = React.useState(null)
   const localDisplayCart = () => {
     try {
       return JSON.parse(localStorage.displayCart)
@@ -109,9 +110,14 @@ export default function TemporaryDrawer(props) {
               <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) } {JSON.parse(localStorage.currency).name}</Typography>
 
             </div>
-            <RemoveShoppingCart onClick={() => {
-              console.log("clicked")
-            }} />
+            {
+              loadindIndex == elem.id ? <CircularProgress size="20px" color="grey" /> :
+              <RemoveShoppingCart htmlColor="#9e5555" onClick={async() => {
+                setLoadindIndex(elem.id)
+                await removeCart(elem.id)
+                getCartItem()
+              }} />
+            }
 
             </div>
           </ListItem>
@@ -127,7 +133,7 @@ export default function TemporaryDrawer(props) {
               <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) }  {JSON.parse(localStorage.currency).name}</Typography>
 
             </div>
-            <RemoveShoppingCart onClick={() => {
+            <RemoveShoppingCart  htmlColor="#9e5555" onClick={() => {
               if(localCart.length == 1) {
                 localStorage.removeItem("displayCart")
                 localStorage.removeItem("cart")
