@@ -15,7 +15,7 @@ import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js
 import { Avatar, Typography } from '@material-ui/core';
 import { StoreContext } from "../../mobxState/stateManagment"
 import { useObserver } from 'mobx-react';
-import { getUserCart } from "../../services/cartServices"
+import { getUserCart, removeCart } from "../../services/cartServices"
 import { RemoveShoppingCart, Close, ShoppingCart } from "@material-ui/icons";
 
 const useStyles = makeStyles({
@@ -109,7 +109,9 @@ export default function TemporaryDrawer(props) {
               <Typography> { ((Number(elem.price) * Number(elem.qty)) * Number(JSON.parse(localStorage.currency).rate)).toFixed(2) } {JSON.parse(localStorage.currency).name}</Typography>
 
             </div>
-            <RemoveShoppingCart />
+            <RemoveShoppingCart onClick={() => {
+              console.log("clicked")
+            }} />
 
             </div>
           </ListItem>
