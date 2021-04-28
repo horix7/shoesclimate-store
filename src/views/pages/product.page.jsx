@@ -195,7 +195,10 @@ export default class ProductPage extends Component {
                         <Typography  className="product-description">
                             <p dangerouslySetInnerHTML={{__html: this.state.product.description }}></p>
                         </Typography>
-                        <button onClick={() => {
+                    {
+                        localStorage.USER_EMAIL ? 
+                        <>
+                         <button onClick={() => {
                             this.setState({loading2: true})
                             
                             let copyText = document.getElementById("myInput");
@@ -206,6 +209,8 @@ export default class ProductPage extends Component {
                         }} className="cart-button">{this.state.loading2 ? "Link copied": "click to share and earn 10%"}</button>
                             <TextField type="text" onChange={() => console.log("do nothing")} value={this.shareLink} style={{fontSize: "xx-small", color: "blue"}} color="blue" id="myInput" />
                            
+                        </> : null 
+                    }
                     </div>
                 </div>
                 

@@ -17,6 +17,7 @@ import {
 } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { getUserOrders } from '../../../services/productService'
+import { getUserReferalInfo } from '../../../services/productService'
 
 import React, { useState , useEffect } from 'react';
 
@@ -30,21 +31,22 @@ const LatestOrders = (props) => {
   const getOrdersData = async() => {
 
     const orders = await getUserOrders()
+    const refrals = await getUserReferalInfo(localStorage.USER_EMAIL)
     let newSTate = {...state}
 
-    newSTate.orders = orders.data.length >= 1 ? orders.data.map(element => {
-      return {
-        id: element.id,
-        ref: element.id,
-        amount: element.grandTotal,
-        createdAt: element.createdAt,
-        status: element.status
-      }
-    }) : []
-    setState({...newSTate})
+    // newSTate.orders = orders.data.length >= 1 ? orders.data.map(element => {
+    //   return {
+    //     id: element.id,
+    //     ref: element.id,
+    //     amount: element.grandTotal,
+    //     createdAt: element.createdAt,
+    //     status: element.status
+    //   }
+    // }) : []
+    // setState({...newSTate})
 
 
-    console.log(newSTate)
+    // console.log(newSTate)
     
 
   }
