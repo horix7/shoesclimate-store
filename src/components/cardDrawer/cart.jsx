@@ -67,7 +67,7 @@ export default function TemporaryDrawer(props) {
 
   const toggleDrawer = (anchor, open) => (event) => {
     getCartItem()
-    
+    setLocalCart(localDisplayCart())
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
@@ -137,7 +137,7 @@ export default function TemporaryDrawer(props) {
               if(localCart.length == 1) {
                 localStorage.removeItem("displayCart")
                 localStorage.removeItem("cart")
-                setLocalCart(null)
+                setLocalCart(false)
               }else {
                 const newLoc = localCart.filter(elen => elen.id !== elem.id )
                 localStorage.setItem("displayCart", JSON.stringify(newLoc))
