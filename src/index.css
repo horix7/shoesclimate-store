@@ -542,10 +542,6 @@ button, a, span, select:hover {
     text-transform: capitalize;
 }
 
-.uls {
-    display: grid;
-    grid: 1fr 1fr 1fr 1fr 1fr;
-}
 
 .shopPage {
     margin-top: 60px;
