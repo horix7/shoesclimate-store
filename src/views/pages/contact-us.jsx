@@ -29,13 +29,13 @@ export default class Contact extends Component {
                     <List>
                         <ListItem>
                             <div className="">
-                                <p> for inquiries or more information Email Us to shoesclimate@gmail.com </p>
+                                <p> for inquiries or more information Email Us at shoesclimate@gmail.com </p>
                             </div>
                         </ListItem>
 
                         <ListItem>
                             <div className="two-end">
-                                <p>or contact us on phone </p> <p> +250788910236 </p>
+                                <p>or contact us on phone +250788910236 </p>
                             </div>
                         </ListItem>
                     </List>

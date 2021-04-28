@@ -23,7 +23,7 @@ export default function HomePage(props) {
   return (
     <Fragment>
                   <Header
-                    brand={<Fragment> <img className="nav-logo" src={LogoImg} /> <span className="nav-text"> SHOES CLIMATE </span></Fragment>}
+                    brand={<Fragment> <img className="nav-logo"   src={LogoImg} /> <span className="nav-text"> SHOES CLIMATE </span></Fragment>}
                     rightLinks={<HeaderLinks />}
                     fixed
                     color="white"
