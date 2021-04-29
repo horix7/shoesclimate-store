@@ -47,12 +47,12 @@ export default function HomePage(props) {
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
-              <div className={classes.brand}>
-                <h1 className={classes.title}>SHOES CLIMATE </h1>
-                <h3 className={classes.subtitle}>
-                  best shoes store in kigali 
+              <div style={{textAlign: "center"}} className={classes.brand}>
+                <h1 className="home-content"> SHOES CLIMATE </h1>
+                <h3 className="home-content">
+                  authentic shoes store  
                 </h3>
-                <button onClick={() => location.href = "#shop-now"} className="shop-button">
+                <button onClick={() => location.href = "#shop-now"} style={{textAlign: "center"}} className="shop-button home-content">
                   Shop Now 
                 </button>
               </div>
