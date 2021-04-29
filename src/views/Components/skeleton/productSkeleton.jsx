@@ -13,7 +13,7 @@ export default function Variants() {
 
       </div>
 
-    <div>
+    <div className="product-skeleton-descr">
 
     <Skeleton variant="rec" width={"90%"} height={50} />
     <br/>

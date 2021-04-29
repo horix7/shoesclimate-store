@@ -5,6 +5,9 @@
     outline: none;
 }
 
+.product-slider-images {
+    max-width: 700px;
+}
 
 .home-content {
     font-family: 'Freckle Face', cursive;
@@ -55,7 +58,7 @@
     text-align: center;
 }
 .about-page p {
-    font-size: x-large;
+    font-size: large;
     text-align: start;
     padding: 20px;
     width: 90%;
@@ -72,13 +75,16 @@
 }
 
 .contact-info {
-    max-width: 600px;
-    font-size: x-large;
+    max-width: 700px;
+    font-size: large;
 }
 
+.product-skeleton-descr {
+    margin-left: 10%;
+}
 
 .contact-info p {
-    font-size: x-large;
+    font-size: large;
 }
 .two-end {
     display: grid;
