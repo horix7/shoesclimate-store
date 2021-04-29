@@ -206,9 +206,8 @@ export default class ProductPage extends Component {
                             copyText.setSelectionRange(0, 99999); /* For mobile devices */
                             document.execCommand("copy");
 
-                        }} className="cart-button">{this.state.loading2 ? "Link copied": "click to share and earn 10%"}</button>
+                        }} className="cart-button">{this.state.loading2 ? "Link copied": "click to refer a friend and earn 6%"}</button>
                             <TextField type="text" onChange={() => console.log("do nothing")} value={this.shareLink} style={{fontSize: "xx-small", color: "blue"}} color="blue" id="myInput" />
-                           
                         </> : null 
                     }
                     </div>
