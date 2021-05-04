@@ -61,8 +61,8 @@ export default function FormDialog(props) {
         const check = Object.values(state).length >= 6
         if(check) {
         await userSignUp(state)
+        seterror({status: false, message: null })
         setsuccess({status: true, message: "registered successfully"})
-        seterror({status: false, message: null})
         location.href = "/account"
 
   
@@ -81,6 +81,7 @@ export default function FormDialog(props) {
       }
     } catch (error) {
       setLoading(false)
+      console.log(error)
       seterror({status: true, message: "incorrect email or password"})
     }
   }

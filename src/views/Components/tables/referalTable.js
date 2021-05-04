@@ -58,7 +58,7 @@ const LatestOrders = (props) => {
 
   return (
     <Card {...props}>
-      <CardHeader title="Referal E arnings" />
+      <CardHeader title="Referal Earnings" />
       <Divider />
       <PerfectScrollbar>
         <Box sx={{ minWidth: 800 }}>
