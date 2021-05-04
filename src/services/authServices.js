@@ -15,7 +15,8 @@ export const userSignUp = async(data) => {
     
     const register = await http.post("/register", data)
     localStorage.setItem("AUTH_TOKEN", register.data.data.token)
-    localStorage.setItem("USER_EMAIL", login.data.data.email)
+    localStorage.setItem("USER_EMAIL", register.data.data.email)
+
 
     return register.data 
 } 
