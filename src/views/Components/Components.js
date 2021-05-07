@@ -1,4 +1,4 @@
-import React, { Fragment, useState,  useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
@@ -8,11 +8,11 @@ import Parallax from "components/Parallax/Parallax.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import styles from "assets/jss/material-kit-react/views/components.js";
 import ProductCoursel from "components/productCoursel/coursel";
-import SHowCaseCoursel from  'components/productCoursel/showcasecoursel'
+import SHowCaseCoursel from 'components/productCoursel/showcasecoursel'
 import Button from '@material-ui/core/Button'
 import LogoImg from '../../assets/img/logo.png'
 import ProductGrids from "./grids/homeGrids"
-import BackgroundImage from 'assets/img/bg4.jpg'
+import BackgroundImage from 'assets/img/new_back.jpeg'
 const useStyles = makeStyles(styles);
 import { getProductDataByCollectionHome } from "../../services/productService";
 import ComponentsGrids from "../Components/grids/featured_collection"
@@ -23,11 +23,11 @@ export default function HomePage(props) {
 
   const [homeProducts, setHomeProducts] = useState({})
 
-  useEffect(async() => {
+  useEffect(async () => {
     const products = await getProductDataByCollectionHome()
     setHomeProducts(products.data)
   }, homeProducts)
-  
+
   const classes = useStyles();
   const { ...rest } = props;
   return (
@@ -47,13 +47,13 @@ export default function HomePage(props) {
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
-              <div style={{textAlign: "center"}} className={classes.brand}>
+              <div style={{ textAlign: "center" }} className={classes.brand}>
                 <h1 className="home-content"> SHOES CLIMATE </h1>
                 <h3 className="home-content">
-                  authentic shoes store  
+                  authentic shoes store
                 </h3>
-                <button onClick={() => location.href = "#shop-now"} style={{textAlign: "center"}} className="shop-button home-content">
-                  Shop Now 
+                <button onClick={() => location.href = "#shop-now"} style={{ textAlign: "center" }} className="shop-button home-content">
+                  Shop Now
                 </button>
               </div>
             </GridItem>
@@ -67,17 +67,17 @@ export default function HomePage(props) {
         <ComponentsGrids />
       </div>
       {
-        Object.keys(homeProducts).length >= 1 ? <> 
-         { Object.keys(homeProducts).map(elem => {
+        Object.keys(homeProducts).length >= 1 ? <>
+          { Object.keys(homeProducts).map(elem => {
             return <ProductGrids products={homeProducts[elem]} />
-           }) }
-        </> :   <div className="product_grids">
-                    {[1,2,3,4,5,6,7,8,9,10,11,12].map(() => <GridSkeleton /> )}
-                </div>
- 
+          })}
+        </> : <div className="product_grids">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(() => <GridSkeleton />)}
+          </div>
+
       }
 
- <Footer />
+      <Footer />
     </div>
   );
 }
