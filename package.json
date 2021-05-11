@@ -52,7 +52,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "deploy": "yarn build && firebase deploy --only hosting && git checkout -b deployment-v2-1-1 && git add . && git commit -am \"deployment \" && git push -u origin deployment-v2-1-1 && git checkout develop ",
+    "deploy": "yarn build && firebase deploy --only hosting && git checkout -b deployment-v2-112 && git add . && git commit -am \"deployment \" && git push -u origin deployment-v2-112 && git checkout develop ",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
