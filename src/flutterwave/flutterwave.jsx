@@ -2,13 +2,13 @@ import React, { useState, useContext } from 'react';
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import { TextField, Typography, Button } from "@material-ui/core"
 import { StoreContext } from "../mobxState/stateManagment";
-// import { flutterwaveKey } from "../env"
+import { flutterwaveKey } from "../env"
 
 export default function FlutterWave(props) {
 
   console.log(props)
   const [config, setConfig] = useState({
-    public_key: "flutterwaveKey",
+    public_key: flutterwaveKey,
     tx_ref: Date.now(),
     amount: props.total,
     currency: props.currency,
